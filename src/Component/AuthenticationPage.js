@@ -15,7 +15,7 @@ function AuthenticationPage(props) {
 
   const submitHandler = (e) => {
     //e.preventDefault();
-    Axios.post('http://localhost:3001/api/login', {
+    Axios.post('https://mlmdb.herokuapp.com/api/login', {
       fusername: username,
       fpassword: password
     }).then((resp) => {
@@ -38,7 +38,7 @@ function AuthenticationPage(props) {
   // }
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/api/login').then((response) => {
+    Axios.get('https://mlmdb.herokuapp.com/api/login').then((response) => {
       if (response.data.loggedIn) {
         //setLoginstatus(response.data.loggedUser[0].username);
         //props.auth(response.data.loggedUser[0].username);
