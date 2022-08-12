@@ -17,8 +17,8 @@ function App() {
 
 
   const [loginstatus, setLoginstatus] = useState('');
-
-  const authenticate = (user) => {
+{/* switched from object arrow function to func*/}
+  function authenticate(user)
     setLoginstatus(user);
     console.log(user + ' ' + loginstatus);
   }
