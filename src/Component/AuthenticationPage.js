@@ -40,9 +40,8 @@ function AuthenticationPage(props) {
   useEffect(() => {
     Axios.get('https://mlmdb.herokuapp.com/api/loginstatus').then((response) => {
       if (response.data.loggedIn) {
-        //setLoginstatus(response.data.loggedUser[0].username);
-        //props.auth(response.data.loggedUser[0].username);
-        //console.log(response.data);
+        
+        console.log(response.data);
       }
     });
   }, []);
