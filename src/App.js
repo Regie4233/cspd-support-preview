@@ -44,9 +44,9 @@ function App() {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="https://superb-churros-56b022.netlify.app/">MLM</Navbar.Brand>
+            <Navbar.Brand href="https://superb-churros-56b022.netlify.app">MLM</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="https://superb-churros-56b022.netlify.app/">Home</Nav.Link>
+              <Nav.Link href="https://superb-churros-56b022.netlify.app">Home</Nav.Link>
               <Nav.Link href="https://superb-churros-56b022.netlify.app/reporter">Reporter</Nav.Link>
               <Nav.Link href="https://superb-churros-56b022.netlify.app/viewer">Viewer</Nav.Link>
               <Nav.Link href="https://superb-churros-56b022.netlify.app/login">
