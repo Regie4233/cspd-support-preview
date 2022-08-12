@@ -23,13 +23,13 @@ function App() {
     console.log(user + ' ' + loginstatus);
   }
   const logOff = () => {
-    Axios.post('https://mlmdb.herokuapp.com//api/logoff').then((resp) => {
+    Axios.post('https://mlmdb.herokuapp.com/api/logoff').then((resp) => {
       setLoginstatus('');
     });
   }
 
   useEffect(() => {
-    Axios.get('https://mlmdb.herokuapp.com//api/login').then((response) => {
+    Axios.get('https://mlmdb.herokuapp.com/api/login').then((response) => {
       if (response.data.loggedIn) {
         setLoginstatus(response.data.loggedUser[0].username);
       }
