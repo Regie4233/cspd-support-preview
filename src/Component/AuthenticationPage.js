@@ -37,14 +37,14 @@ function AuthenticationPage(props) {
   //   });
   // }
 
-  useEffect(() => {
-    Axios.get('https://mlmdb.herokuapp.com/api/loginstatus').then((response) => {
-      if (response.data.loggedIn) {
+  // useEffect(() => {
+  //   Axios.get('https://mlmdb.herokuapp.com/api/loginstatus').then((response) => {
+  //     if (response.data.loggedIn) {
         
-        console.log(response.data);
-      }
-    });
-  }, []);
+  //       console.log(response.data);
+  //     }
+  //   });
+  // }, []);
   return (
     <>
       {
