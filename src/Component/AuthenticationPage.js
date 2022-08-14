@@ -10,16 +10,16 @@ function AuthenticationPage(props) {
   const [password, setpassword] = useState('');
   //const [loginstatus, setLoginstatus] = useState('');
    
-  //Axios.defaults.withCredentials = true;
-  const axx = Axios.create({
-    baseURL: 'https://mlmdb.herokuapp.com',
-    withCredentials: true
-  });
+  Axios.defaults.withCredentials = true;
+  // const axx = Axios.create({
+  //   baseURL: 'https://mlmdb.herokuapp.com',
+  //   withCredentials: true
+  // });
 
   const submitHandler = (e) => {
     e.preventDefault();
     
-    axx.post('https://mlmdb.herokuapp.com/api/login', {
+    Axios.post('https://mlmdb.herokuapp.com/api/login', {
       fusername: username,
       fpassword: password
     }).then((resp) => {
