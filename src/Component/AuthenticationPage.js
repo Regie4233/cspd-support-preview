@@ -9,9 +9,9 @@ function AuthenticationPage(props) {
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
   //const [loginstatus, setLoginstatus] = useState('');
-
+   
   //Axios.defaults.withCredentials = true;
-  Axios.defaults.create({
+  const Axios = Axios.create({
     baseURL: 'https://mlmdb.herokuapp.com',
     withCredentials: true
   });
