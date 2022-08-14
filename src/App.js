@@ -29,11 +29,11 @@ function App() {
   }
 
   useEffect(() => {
-    // Axios.get('https://mlmdb.herokuapp.com/api/loginstatus').then((response) => {
-    //   if (response.data.loggedIn) {
-    //     setLoginstatus(response.data.loggedUser[0].username);
-    //   }
-    // });
+    Axios.get('https://mlmdb.herokuapp.com/api/loginstatus').then((response) => {
+      if (response.data.loggedIn) {
+        setLoginstatus(response.data.loggedUser[0].username);
+      }
+    });
   }, []);
 
 
