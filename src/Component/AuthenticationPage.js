@@ -14,7 +14,7 @@ function AuthenticationPage(props) {
 
 
   const submitHandler = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     Axios.post('https://mlmdb.herokuapp.com/api/login', {
       fusername: username,
       fpassword: password
