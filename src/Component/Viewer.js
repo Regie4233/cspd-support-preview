@@ -166,10 +166,10 @@ function Viewer() {
                 }
 
 
-                const resp = await Axios.get(`http://localhost:3001/api/get/or${i}`);
+                const resp = await Axios.get(`https://mlmdb.herokuapp.com/api/get/or${i}`);
                 addTray(resp.data);
 
-                const urg = await Axios.get(`http://localhost:3001/api/get/urgentTrays`);
+                const urg = await Axios.get(`https://mlmdb.herokuapp.com/api/get/urgentTrays`);
                 setUrgent(urg.data);
 
 
@@ -204,7 +204,7 @@ function Viewer() {
         DeleteHandler: (newId, selectedRoom, isurgent) => {
 
 
-            Axios.delete(`http://localhost:3001/api/delete/${newId}`).then(() => {
+            Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${newId}`).then(() => {
                 console.log('Deleting ' + newId + ' ' + selectedRoom);
 
                 const room = arr_room[selectedRoom - 1];
@@ -224,21 +224,21 @@ function Viewer() {
 
         },
         UpdateLocation: (newLocation, entryId) => {
-            Axios.put('http://localhost:3001/api/update/location', {
+            Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
             setlastadded((prevState) => !prevState);
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
-            Axios.put('http://localhost:3001/api/update/casecart', {
+            Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
             setlastadded((prevState) => !prevState);
         },
         UpdateTrayName: (newname, entryId) => {
-            Axios.put('http://localhost:3001/api/update/trayname', {
+            Axios.put('https://mlmdb.herokuapp.com/api/update/trayname', {
                 fid: entryId,
                 fname: newname
             });
