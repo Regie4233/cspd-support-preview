@@ -23,9 +23,9 @@ function AuthenticationPage(props) {
       fusername: username,
       fpassword: password
     }).then((resp) => {
-      if (resp.data[0].message) {
+      if (resp.data.message) {
         //setLoginstatus(resp.data.message);
-        props.auth(resp.data[0].message);
+        props.auth(resp.data.message);
       } else {
         //setLoginstatus(resp.data[0].username);
         props.auth(resp.data[0].username);
