@@ -66,13 +66,13 @@ function App() {
 
             <Route path='/reporter'
               element={
-                <PrivateRoute status={loginstatus}>
-                  <RoomCreator auth={authenticate} />
+                <PrivateRoute status={loginstatus} auth={authenticate}>
+                  <RoomCreator />
                 </PrivateRoute>
               } />
             <Route path='/viewer'
               element={
-                <PrivateRoute status={loginstatus}>
+                <PrivateRoute status={loginstatus} auth={authenticate}>
                   <Viewer />
                 </PrivateRoute>
               } />
