@@ -21,7 +21,7 @@ function AuthenticationPage(props) {
     }).then((resp) => {
       if (resp.data.message) {
         //setLoginstatus(resp.data.message);
-        props.auth(resp.data.message);
+        props.auth(resp.data[0].message);
       } else {
         //setLoginstatus(resp.data[0].username);
         props.auth(resp.data[0].username);
