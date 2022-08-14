@@ -102,7 +102,7 @@ function RoomCreator(props) {
 
         const dddd = await Axios.get('https://mlmdb.herokuapp.com/api/get/or6');
         setRm6(dddd.data);
-        const eeee = await Axios.get('hhttps://mlmdb.herokuapp.com/api/get/or7');
+        const eeee = await Axios.get('https://mlmdb.herokuapp.com/api/get/or7');
         setRm7(eeee.data);
 
         const ffff = await Axios.get('https://mlmdb.herokuapp.com/api/get/or8');
