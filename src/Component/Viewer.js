@@ -176,42 +176,42 @@ function Viewer() {
         //     } catch (e) {
         //         console.log(e);
         //     }
-            const respond = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
-            setOr1(respond.data.or1);
-            setOr2(respond.data.or2);
-            setOr3(respond.data.or3);
-            setOr4(respond.data.or4);
-            setOr5(respond.data.or5);
-            setOr6(respond.data.or6);
-            setOr7(respond.data.or7);
-            setOr8(respond.data.or8);
-            setOr9(respond.data.or9);
-            setOr10(respond.data.or10);
-            setOr11(respond.data.or11);
-            setOr12(respond.data.or12);
-            setOr13(respond.data.or13);
-            setOr14(respond.data.or14);
-            setOr15(respond.data.or15);
-            setOr16(respond.data.or16);
-            setOr17(respond.data.or17);
-            setOr18(respond.data.or18);
-            setOr19(respond.data.or19);
-            setOr20(respond.data.or20);
-            setOr21(respond.data.or21);
-            setOr22(respond.data.or22);
-            setOr23(respond.data.or23);
-            setOr24(respond.data.or24);
-            setOr25(respond.data.or25);
-            setOr26(respond.data.or26);
-            setOr27(respond.data.or27);
-            setOr28(respond.data.or28);
-            setOr29(respond.data.or29);
-            setOr30(respond.data.or30);
-            setOr31(respond.data.or31);
-            setOr32(respond.data.or32);
-  
+        const respond = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
+        setOr1(respond.data.or1);
+        setOr2(respond.data.or2);
+        setOr3(respond.data.or3);
+        setOr4(respond.data.or4);
+        setOr5(respond.data.or5);
+        setOr6(respond.data.or6);
+        setOr7(respond.data.or7);
+        setOr8(respond.data.or8);
+        setOr9(respond.data.or9);
+        setOr10(respond.data.or10);
+        setOr11(respond.data.or11);
+        setOr12(respond.data.or12);
+        setOr13(respond.data.or13);
+        setOr14(respond.data.or14);
+        setOr15(respond.data.or15);
+        setOr16(respond.data.or16);
+        setOr17(respond.data.or17);
+        setOr18(respond.data.or18);
+        setOr19(respond.data.or19);
+        setOr20(respond.data.or20);
+        setOr21(respond.data.or21);
+        setOr22(respond.data.or22);
+        setOr23(respond.data.or23);
+        setOr24(respond.data.or24);
+        setOr25(respond.data.or25);
+        setOr26(respond.data.or26);
+        setOr27(respond.data.or27);
+        setOr28(respond.data.or28);
+        setOr29(respond.data.or29);
+        setOr30(respond.data.or30);
+        setOr31(respond.data.or31);
+        setOr32(respond.data.or32);
 
-        }
+
+
     }
     //canvas control fucntion show/hide to be sent to the children for clicke event
     const ClickHandlers = {
@@ -258,7 +258,7 @@ function Viewer() {
         },
         UpdateLocation: (newLocation, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
-            //Axios.put('http://localhost:3001/api/update/location', {
+                //Axios.put('http://localhost:3001/api/update/location', {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
@@ -266,7 +266,7 @@ function Viewer() {
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-               // Axios.put('http://localhost:3001/api/update/casecart', {
+                // Axios.put('http://localhost:3001/api/update/casecart', {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
