@@ -205,6 +205,7 @@ function Viewer() {
 
 
             Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${newId}`).then(() => {
+                //Axios.delete(`http://localhost:3001/api/delete/${newId}`).then(() => {
                 console.log('Deleting ' + newId + ' ' + selectedRoom);
 
                 const room = arr_room[selectedRoom - 1];
@@ -225,6 +226,7 @@ function Viewer() {
         },
         UpdateLocation: (newLocation, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+            //Axios.put('http://localhost:3001/api/update/location', {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
@@ -232,6 +234,7 @@ function Viewer() {
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+               // Axios.put('http://localhost:3001/api/update/casecart', {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
@@ -239,6 +242,7 @@ function Viewer() {
         },
         UpdateTrayName: (newname, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/trayname', {
+                //Axios.put('http://localhost:3001/api/update/trayname', {
                 fid: entryId,
                 fname: newname
             });

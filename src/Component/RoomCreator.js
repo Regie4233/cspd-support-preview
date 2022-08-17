@@ -84,93 +84,18 @@ function RoomCreator(props) {
     const [rm32, setRm32] = useState([]);
 
     const [urgent, setUrgent] = useState([]);
+    const [traydata, settraydata] = useState([]);
+    const arr_room = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
+        rm11, rm12, rm13, rm14, rm15, rm16, rm17, rm18, rm19, rm20,
+        rm21, rm22, rm23, rm24, rm25, rm26, rm27, rm28, rm29, rm30, rm31, rm32];
 
+   
 
     async function fetchData() {
-        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/or1');
-        setRm1(response.data);
-        const resp = await Axios.get('https://mlmdb.herokuapp.com/api/get/or2');
-        setRm2(resp.data);
-
-        const aaaa = await Axios.get('https://mlmdb.herokuapp.com/api/get/or3');
-        setRm3(aaaa.data);
-        const bbbb = await Axios.get('https://mlmdb.herokuapp.com/api/get/or4');
-        setRm4(bbbb.data);
-
-        const cccc = await Axios.get('https://mlmdb.herokuapp.com/api/get/or5');
-        setRm5(cccc.data);
-
-        const dddd = await Axios.get('https://mlmdb.herokuapp.com/api/get/or6');
-        setRm6(dddd.data);
-        const eeee = await Axios.get('https://mlmdb.herokuapp.com/api/get/or7');
-        setRm7(eeee.data);
-
-        const ffff = await Axios.get('https://mlmdb.herokuapp.com/api/get/or8');
-        setRm8(ffff.data);
-        const gggg = await Axios.get('https://mlmdb.herokuapp.com/api/get/or9');
-        setRm9(gggg.data);
-
-        const hhhh = await Axios.get('https://mlmdb.herokuapp.com/api/get/or10');
-        setRm10(hhhh.data);
-
-        const iiii = await Axios.get('https://mlmdb.herokuapp.com/api/get/or11');
-        setRm11(iiii.data);
-        const jjjj = await Axios.get('https://mlmdb.herokuapp.com/api/get/or12');
-        setRm12(jjjj.data);
-
-        const kkkk = await Axios.get('https://mlmdb.herokuapp.com/api/get/or13');
-        setRm13(kkkk.data);
-        const llll = await Axios.get('https://mlmdb.herokuapp.com/api/get/or14');
-        setRm14(llll.data);
-
-        const mmmm = await Axios.get('https://mlmdb.herokuapp.com/api/get/or15');
-        setRm15(mmmm.data);
-
-        const nnnn = await Axios.get('https://mlmdb.herokuapp.com/api/get/or16');
-        setRm16(nnnn.data);
-        const oooo = await Axios.get('https://mlmdb.herokuapp.com/api/get/or17');
-        setRm17(oooo.data);
-
-        const pppp = await Axios.get('https://mlmdb.herokuapp.com/api/get/or18');
-        setRm18(pppp.data);
-        const qqqq = await Axios.get('https://mlmdb.herokuapp.com/api/get/or19');
-        setRm19(qqqq.data);
-
-        const rrrr = await Axios.get('https://mlmdb.herokuapp.com/api/get/or20');
-        setRm20(rrrr.data);
-        const ssss = await Axios.get('https://mlmdb.herokuapp.com/api/get/or21');
-        setRm21(ssss.data);
-        const tttt = await Axios.get('https://mlmdb.herokuapp.com/api/get/or22');
-        setRm22(tttt.data);
-
-        const uuuu = await Axios.get('https://mlmdb.herokuapp.com/api/get/or23');
-        setRm23(uuuu.data);
-        const vvvv = await Axios.get('https://mlmdb.herokuapp.com/api/get/or24');
-        setRm24(vvvv.data);
-
-        const xxxx = await Axios.get('https://mlmdb.herokuapp.com/api/get/or25');
-        setRm25(xxxx.data);
-        const yyyy = await Axios.get('https://mlmdb.herokuapp.com/api/get/or26');
-        setRm26(yyyy.data);
-        const zzzz = await Axios.get('https://mlmdb.herokuapp.com/api/get/or27');
-        setRm27(zzzz.data);
-
-        const aaa = await Axios.get('https://mlmdb.herokuapp.com/api/get/or28');
-        setRm28(aaa.data);
-        const bbb = await Axios.get('https://mlmdb.herokuapp.com/api/get/or29');
-        setRm29(bbb.data);
-
-        const ccc = await Axios.get('https://mlmdb.herokuapp.com/api/get/or30');
-        setRm30(ccc.data);
-        const ddd = await Axios.get('https://mlmdb.herokuapp.com/api/get/or31');
-        setRm31(ddd.data);
-
-        const eee = await Axios.get('https://mlmdb.herokuapp.com/api/get/or32');
-        setRm32(eee.data);
-
-        const fff = await Axios.get('https://mlmdb.herokuapp.com/api/get/urgentTrays');
-        setUrgent(fff.data);
-        console.log('!');
+        //const response = await Axios.get('http://localhost:3001/api/get/traydata');
+        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
+        setRm1(response.data.or1);
+        setRm2(response.data.or2);
     }
 
 
@@ -178,7 +103,7 @@ function RoomCreator(props) {
 
         fetchData();
 
-    }, [lastadded]);
+    }, []);
     useEffect(() => {
         const interval = setInterval(() => {
             fetchData();
@@ -197,6 +122,7 @@ function RoomCreator(props) {
             return;
         }
         Axios.post('https://mlmdb.herokuapp.com/api/insert', {
+        //Axios.post('http://localhost:3001/api/insert', {
             ftrayname: otrayname,
             fcurrentlocation: '- -',
             fnotes: 'no notes',
@@ -312,12 +238,13 @@ function RoomCreator(props) {
         handleClose();
     };
 
-    
+
     const buttonHandler = {
         deleteAll: (selectedRoom) => {
             const room = eval(`rm${selectedRoom}`);
             room.forEach(element => {
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
+                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
+                //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
                     room.splice(element.indexOf, 1);
                     setlastadded((prevState) => !prevState);
                 });
@@ -328,7 +255,8 @@ function RoomCreator(props) {
             console.log("urg " + isurgent);
             if (isurgent === 1) {
 
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+                //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
                     console.log('Deleting ' + tname + ' ' + selectedRoom);
 
                     let ccc = urgent.find(x => x.id === tname);
@@ -344,6 +272,7 @@ function RoomCreator(props) {
                 });
             } else {
                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+                //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
                     console.log('Deleting ' + tname + ' ' + selectedRoom);
 
                     const room = eval(`rm${selectedRoom}`);
@@ -364,6 +293,7 @@ function RoomCreator(props) {
         },
         UpdateLocation: (newLocation, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+            //Axios.put('http://localhost:3001/api/update/location', {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
@@ -371,6 +301,7 @@ function RoomCreator(props) {
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+            //Axios.put('http://localhost:3001/api/update/casecart', {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
@@ -415,7 +346,7 @@ function RoomCreator(props) {
     ];
     return (
         <>
-            
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
