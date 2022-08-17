@@ -58,126 +58,158 @@ function Viewer() {
     const [counter, setCounter] = useState(0);
     async function fetchData() {
 
-        for (let i = 1; i <= 32; i++) {
-            try {
-                const room = eval(`or${i}`);
+        // for (let i = 1; i <= 32; i++) {
+        //     try {
+        //         const room = eval(`or${i}`);
 
-                const addTray = (add) => {
-                    switch (room) {
-                        case or1:
-                            setOr1(add);
-                            break;
-                        case or2:
-                            setOr2(add);
-                            break;
-                        case or3:
-                            setOr3(add);
-                            break;
-                        case or4:
-                            setOr4(add);
-                            break;
-                        case or5:
-                            setOr5(add);
-                            break;
-                        case or6:
-                            setOr6(add);
-                            break;
-                        case or7:
-                            setOr7(add);
-                            break;
-                        case or8:
-                            setOr8(add);
-                            break;
-                        case or9:
-                            setOr9(add);
-                            break;
-                        case or10:
-                            setOr10(add);
-                            break;
-                        case or11:
-                            setOr11(add);
-                            break;
-                        case or12:
-                            setOr12(add);
-                            break;
-                        case or13:
-                            setOr13(add);
-                            break;
-                        case or14:
-                            setOr14(add);
-                            break;
-                        case or15:
-                            setOr15(add);
-                            break;
-                        case or16:
-                            setOr16(add);
-                            break;
-                        case or17:
-                            setOr17(add);
-                            break;
-                        case or18:
-                            setOr18(add);
-                            break;
-                        case or19:
-                            setOr19(add);
-                            break;
-                        case or20:
-                            setOr20(add);
-                            break;
-                        case or21:
-                            setOr21(add);
-                            break;
-                        case or22:
-                            setOr22(add);
-                            break;
-                        case or2:
-                            setOr23(add);
-                            break;
-                        case or24:
-                            setOr24(add);
-                            break;
-                        case or25:
-                            setOr25(add);
-                            break;
-                        case or26:
-                            setOr26(add);
-                            break;
-                        case or27:
-                            setOr27(add);
-                            break;
-                        case or28:
-                            setOr28(add);
-                            break;
-                        case or29:
-                            setOr29(add);
-                            break;
-                        case or30:
-                            setOr30(add);
-                            break;
-                        case or31:
-                            setOr31(add);
-                            break;
-                        case or32:
-                            setOr32(add);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-
-                const resp = await Axios.get(`https://mlmdb.herokuapp.com/api/get/or${i}`);
-                addTray(resp.data);
-
-                const urg = await Axios.get(`https://mlmdb.herokuapp.com/api/get/urgentTrays`);
-                setUrgent(urg.data);
+        //         const addTray = (add) => {
+        //             switch (room) {
+        //                 case or1:
+        //                     setOr1(add);
+        //                     break;
+        //                 case or2:
+        //                     setOr2(add);
+        //                     break;
+        //                 case or3:
+        //                     setOr3(add);
+        //                     break;
+        //                 case or4:
+        //                     setOr4(add);
+        //                     break;
+        //                 case or5:
+        //                     setOr5(add);
+        //                     break;
+        //                 case or6:
+        //                     setOr6(add);
+        //                     break;
+        //                 case or7:
+        //                     setOr7(add);
+        //                     break;
+        //                 case or8:
+        //                     setOr8(add);
+        //                     break;
+        //                 case or9:
+        //                     setOr9(add);
+        //                     break;
+        //                 case or10:
+        //                     setOr10(add);
+        //                     break;
+        //                 case or11:
+        //                     setOr11(add);
+        //                     break;
+        //                 case or12:
+        //                     setOr12(add);
+        //                     break;
+        //                 case or13:
+        //                     setOr13(add);
+        //                     break;
+        //                 case or14:
+        //                     setOr14(add);
+        //                     break;
+        //                 case or15:
+        //                     setOr15(add);
+        //                     break;
+        //                 case or16:
+        //                     setOr16(add);
+        //                     break;
+        //                 case or17:
+        //                     setOr17(add);
+        //                     break;
+        //                 case or18:
+        //                     setOr18(add);
+        //                     break;
+        //                 case or19:
+        //                     setOr19(add);
+        //                     break;
+        //                 case or20:
+        //                     setOr20(add);
+        //                     break;
+        //                 case or21:
+        //                     setOr21(add);
+        //                     break;
+        //                 case or22:
+        //                     setOr22(add);
+        //                     break;
+        //                 case or2:
+        //                     setOr23(add);
+        //                     break;
+        //                 case or24:
+        //                     setOr24(add);
+        //                     break;
+        //                 case or25:
+        //                     setOr25(add);
+        //                     break;
+        //                 case or26:
+        //                     setOr26(add);
+        //                     break;
+        //                 case or27:
+        //                     setOr27(add);
+        //                     break;
+        //                 case or28:
+        //                     setOr28(add);
+        //                     break;
+        //                 case or29:
+        //                     setOr29(add);
+        //                     break;
+        //                 case or30:
+        //                     setOr30(add);
+        //                     break;
+        //                 case or31:
+        //                     setOr31(add);
+        //                     break;
+        //                 case or32:
+        //                     setOr32(add);
+        //                     break;
+        //                 default:
+        //                     break;
+        //             }
+        //         }
 
 
-            } catch (e) {
-                console.log(e);
-            }
+        //         const resp = await Axios.get(`https://mlmdb.herokuapp.com/api/get/or${i}`);
+        //         addTray(resp.data);
 
-            console.log('running');
+        //         const urg = await Axios.get(`https://mlmdb.herokuapp.com/api/get/urgentTrays`);
+        //         setUrgent(urg.data);
+
+
+        //     } catch (e) {
+        //         console.log(e);
+        //     }
+            const respond = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
+            setOr1(respond.data.or1);
+            setOr2(respond.data.or2);
+            setOr3(respond.data.or3);
+            setOr4(respond.data.or4);
+            setOr5(respond.data.or5);
+            setOr6(respond.data.or6);
+            setOr7(respond.data.or7);
+            setOr8(respond.data.or8);
+            setOr9(respond.data.or9);
+            setOr10(respond.data.or10);
+            setOr11(respond.data.or11);
+            setOr12(respond.data.or12);
+            setOr13(respond.data.or13);
+            setOr14(respond.data.or14);
+            setOr15(respond.data.or15);
+            setOr16(respond.data.or16);
+            setOr17(respond.data.or17);
+            setOr18(respond.data.or18);
+            setOr19(respond.data.or19);
+            setOr20(respond.data.or20);
+            setOr21(respond.data.or21);
+            setOr22(respond.data.or22);
+            setOr23(respond.data.or23);
+            setOr24(respond.data.or24);
+            setOr25(respond.data.or25);
+            setOr26(respond.data.or26);
+            setOr27(respond.data.or27);
+            setOr28(respond.data.or28);
+            setOr29(respond.data.or29);
+            setOr30(respond.data.or30);
+            setOr31(respond.data.or31);
+            setOr32(respond.data.or32);
+  
 
         }
     }
