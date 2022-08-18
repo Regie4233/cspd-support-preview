@@ -17,8 +17,8 @@ function App() {
 
 
   const [loginstatus, setLoginstatus] = useState('');
-{/* switched from object arrow function to func*/}
-  function authenticate(user){
+  {/* switched from object arrow function to func*/ }
+  function authenticate(user) {
     setLoginstatus(user);
     console.log(user + ' ' + loginstatus);
   }
@@ -60,25 +60,37 @@ function App() {
       </div>
 
       <div> {/* show logoff button and name of user */}
+        {/* <Routes> */}
+        <Switch>
+          <Route exact path='/reporter'>
+            <PrivateRoute status={loginstatus} auth={authenticate}>
+              <RoomCreator />
+            </PrivateRoute>
+          </Route>
+          <Route exact path='/viewer'>
+            <PrivateRoute status={loginstatus} auth={authenticate}>
+              <Viewer />
+            </PrivateRoute>
+          </Route>
+          <Route exact path='/'> <HomePage /> </Route>
+          <Route exact path='/login'><AuthenticationPage auth={authenticate} /></Route>
+        </Switch>
+        {/* <Route exact path='/reporter'
+            element={
+              <PrivateRoute status={loginstatus} auth={authenticate}>
+                <RoomCreator />
+              </PrivateRoute>
+            } ></Route>
+          <Route exact path='/viewer'
+            element={
+              <PrivateRoute status={loginstatus} auth={authenticate}>
+                <Viewer />
+              </PrivateRoute>
+            } ></Route> */}
+        {/* <Route exact path='/' element={<HomePage />} />
+          <Route exact path='/login' element={<AuthenticationPage auth={authenticate} />} /> */}
 
-        <HashRouter>
-          <Routes>
-            <Route exact path='/reporter'
-              element={
-                <PrivateRoute status={loginstatus} auth={authenticate}>
-                  <RoomCreator />
-                </PrivateRoute>
-              } ></Route>
-            <Route exact path='/viewer'
-              element={
-                <PrivateRoute status={loginstatus} auth={authenticate}>
-                  <Viewer />
-                </PrivateRoute>
-              } ></Route>
-            <Route exact path='/' element={<HomePage />} />
-            <Route exact path='/login' element={<AuthenticationPage auth={authenticate} />} />
-          </Routes>
-        </HashRouter>
+        {/* </Routes> */}
       </div>
     </>
   );
