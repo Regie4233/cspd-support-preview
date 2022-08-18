@@ -60,37 +60,22 @@ function App() {
       </div>
 
       <div> {/* show logoff button and name of user */}
-        {/* <Routes> */}
         <Routes>
-          <Route path='/reporter'>
-            <PrivateRoute status={loginstatus} auth={authenticate}>
-              <RoomCreator />
-            </PrivateRoute>
-          </Route>
-          <Route path='/viewer'>
-            <PrivateRoute status={loginstatus} auth={authenticate}>
-              <Viewer />
-            </PrivateRoute>
-          </Route>
-          <Route path='/'> <HomePage /> </Route>
-          <Route path='/login'><AuthenticationPage auth={authenticate} /></Route>
-        </Routes>
-        {/* <Route exact path='/reporter'
+          <Route exact path='/reporter'
             element={
               <PrivateRoute status={loginstatus} auth={authenticate}>
                 <RoomCreator />
               </PrivateRoute>
-            } ></Route>
+            } />
           <Route exact path='/viewer'
             element={
               <PrivateRoute status={loginstatus} auth={authenticate}>
                 <Viewer />
               </PrivateRoute>
-            } ></Route> */}
-        {/* <Route exact path='/' element={<HomePage />} />
-          <Route exact path='/login' element={<AuthenticationPage auth={authenticate} />} /> */}
-
-        {/* </Routes> */}
+            } />
+          <Route exact path='/' element={<HomePage />} />
+          <Route exact path='/login' element={<AuthenticationPage auth={authenticate} />} />
+        </Routes>
       </div>
     </>
   );
