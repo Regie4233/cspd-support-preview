@@ -60,7 +60,7 @@ function App() {
       </div>
 
       <div> {/* show logoff button and name of user */}
-        <Routes>
+        <Routes basename={process.env.PUBLIC_URL}>
           <Route path='/reporter'
             element={
               <PrivateRoute status={loginstatus} auth={authenticate}>
