@@ -1,6 +1,6 @@
 import './App.css';
 import RoomCreator from './Component/RoomCreator';
-import { BrowserRouter as Router, Routes, Route, HashRouter } from 'react-router-dom';
+import { Router, Routes, Route, Switch } from 'react-router-dom';
 import Viewer from './Component/Viewer';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
