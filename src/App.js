@@ -63,19 +63,18 @@ function App() {
 
         <Router>
           <Routes>
-
             <Route exact path='/reporter'
               element={
                 <PrivateRoute status={loginstatus} auth={authenticate}>
                   <RoomCreator />
                 </PrivateRoute>
-              } />
+              } ></Route>
             <Route exact path='/viewer'
               element={
                 <PrivateRoute status={loginstatus} auth={authenticate}>
                   <Viewer />
                 </PrivateRoute>
-              } />
+              } ></Route>
             <Route exact path='/' element={<HomePage />} />
             <Route exact path='/login' element={<AuthenticationPage auth={authenticate} />} />
           </Routes>
