@@ -7,7 +7,7 @@ function HomePage(){
         <>
             
            <h2 className='mainForm trayLocation'>This page is under developement</h2>
-           <h1 className='check'> deployed 0.2</h1>
+           <h1 className='check'> deployed 0.3</h1>
 
         </>
     );
