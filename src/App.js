@@ -44,12 +44,12 @@ function App() {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="https://superb-churros-56b022.netlify.app">MLM</Navbar.Brand>
+            <Navbar.Brand href="https://regie4233.github.io/cspd-support">MLM</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="https://superb-churros-56b022.netlify.app">Home</Nav.Link>
-              <Nav.Link href="https://superb-churros-56b022.netlify.app/reporter">Reporter</Nav.Link>
-              <Nav.Link href="https://superb-churros-56b022.netlify.app/viewer">Viewer</Nav.Link>
-              <Nav.Link href="https://superb-churros-56b022.netlify.app/login">
+              <Nav.Link href="https://regie4233.github.io/cspd-support">Home</Nav.Link>
+              <Nav.Link href="https://regie4233.github.io/cspd-support/reporter">Reporter</Nav.Link>
+              <Nav.Link href="https://regie4233.github.io/cspd-support/viewer">Viewer</Nav.Link>
+              <Nav.Link href="https://regie4233.github.io/cspd-support/login">
                 {loginstatus === '' ? <p>You are not Logged In Click To Login</p> : <p> Logged as: {loginstatus}</p>}
               </Nav.Link>
               <NavItem className='justify-content-end'> {loginstatus === '' ? null : <button onClick={logOff}>LOG OFF</button>}</NavItem>
