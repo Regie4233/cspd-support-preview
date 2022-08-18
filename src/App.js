@@ -64,20 +64,20 @@ function App() {
         <Router>
           <Routes>
 
-            <Route path='/reporter'
+            <Route exact path='/reporter'
               element={
                 <PrivateRoute status={loginstatus} auth={authenticate}>
                   <RoomCreator />
                 </PrivateRoute>
               } />
-            <Route path='/viewer'
+            <Route exact path='/viewer'
               element={
                 <PrivateRoute status={loginstatus} auth={authenticate}>
                   <Viewer />
                 </PrivateRoute>
               } />
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<AuthenticationPage auth={authenticate} />} />
+            <Route exact path='/' element={<HomePage />} />
+            <Route exact path='/login' element={<AuthenticationPage auth={authenticate} />} />
           </Routes>
         </Router>
       </div>
