@@ -1,6 +1,6 @@
 import './App.css';
 import RoomCreator from './Component/RoomCreator';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Viewer from './Component/Viewer';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -60,7 +60,6 @@ function App() {
       </div>
 
       <div> {/* show logoff button and name of user */}
-        <Router >
           <Routes>
             <Route path='/reporter'
               element={
@@ -77,7 +76,6 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<AuthenticationPage auth={authenticate} />} />
           </Routes>
-        </Router>
       </div>
     </>
   );
