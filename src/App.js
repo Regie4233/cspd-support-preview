@@ -1,6 +1,6 @@
 import './App.css';
 import RoomCreator from './Component/RoomCreator';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Viewer from './Component/Viewer';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -61,20 +61,20 @@ function App() {
 
       <div> {/* show logoff button and name of user */}
         {/* <Routes> */}
-        <Switch>
-          <Route exact path='/reporter'>
+        <Routes>
+          <Route path='/reporter'>
             <PrivateRoute status={loginstatus} auth={authenticate}>
               <RoomCreator />
             </PrivateRoute>
           </Route>
-          <Route exact path='/viewer'>
+          <Route path='/viewer'>
             <PrivateRoute status={loginstatus} auth={authenticate}>
               <Viewer />
             </PrivateRoute>
           </Route>
-          <Route exact path='/'> <HomePage /> </Route>
-          <Route exact path='/login'><AuthenticationPage auth={authenticate} /></Route>
-        </Switch>
+          <Route path='/'> <HomePage /> </Route>
+          <Route path='/login'><AuthenticationPage auth={authenticate} /></Route>
+        </Routes>
         {/* <Route exact path='/reporter'
             element={
               <PrivateRoute status={loginstatus} auth={authenticate}>
