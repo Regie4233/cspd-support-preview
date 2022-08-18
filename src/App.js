@@ -1,7 +1,7 @@
 import './App.css';
 import RoomCreator from './Component/RoomCreator';
 import { Route, Routes, Link } from 'react-router-dom';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Viewer from './Component/Viewer';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -61,7 +61,7 @@ function App() {
       </div>
 
       <div> {/* show logoff button and name of user */}
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path='/reporter'
               element={
