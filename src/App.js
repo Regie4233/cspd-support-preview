@@ -45,7 +45,7 @@ function App() {
 
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="https://regie4233.github.io/cspd-support">MLM</Navbar.Brand>
+            {/* <Navbar.Brand href="https://regie4233.github.io/cspd-support">CSPD</Navbar.Brand> */}
             <Nav className="me-auto">
               <Nav.Link href="https://regie4233.github.io/cspd-support">Home</Nav.Link>
               <Nav.Link href="https://regie4233.github.io/cspd-support/reporter">Reporter</Nav.Link>
