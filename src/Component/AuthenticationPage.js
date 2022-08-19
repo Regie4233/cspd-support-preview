@@ -21,6 +21,7 @@ function AuthenticationPage(props) {
       fusername: username,
       fpassword: password
     }).then((resp) => {
+      
       if (resp.data.message) {
         //setLoginstatus(resp.data.message);
         props.auth(resp.data.message);
@@ -49,8 +50,8 @@ function AuthenticationPage(props) {
   // }, []);
   return (
     <>
-      {
-        props.auth !== '' ?
+      {/* {
+        props.auth !== '' ? */}
           <>
           <div className='headerL check'>
           Missing List Manager
@@ -75,9 +76,9 @@ function AuthenticationPage(props) {
             </Form>
             </div>
           </>
-          :
+          {/* :
           null
-      }
+      } */}
       
     </>
   );
