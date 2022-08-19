@@ -8,20 +8,21 @@ function AuthenticationPage(props) {
 
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
+  const [allowForms, setForms] = useState(true);
   //const [loginstatus, setLoginstatus] = useState('');
-   
+
   Axios.defaults.withCredentials = true;
-  
+
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+
     Axios.post('https://mlmdb.herokuapp.com/api/login', {
       //Axios.post('http://localhost:3001/api/login', {
       fusername: username,
       fpassword: password
     }).then((resp) => {
-      
+
       if (resp.data.message) {
         //setLoginstatus(resp.data.message);
         props.auth(resp.data.message);
@@ -31,32 +32,16 @@ function AuthenticationPage(props) {
       }
     });
   };
-
-  // const logOff = () => {
-  //   Axios.post('http://localhost:3001/api/logoff').then((resp) => {
-  //     //setLoginstatus('');
-  //     props.auth('');
-  //     console.log(resp);
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   Axios.get('https://mlmdb.herokuapp.com/api/loginstatus').then((response) => {
-  //     if (response.data.loggedIn) {
-        
-  //       console.log(response.data);
-  //     }
-  //   });
-  // }, []);
   return (
     <>
       {/* {
         props.auth !== '' ? */}
-          <>
-          <div className='headerL check'>
+      <>
+        <div className='headerL check'>
           Missing List Manager
-          </div>
-          <div className='check'>
+        </div>
+        <div className='check'>
+          <fieldset disabled>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3">
                 <Form.Label>Enter Username</Form.Label>
@@ -74,12 +59,13 @@ function AuthenticationPage(props) {
                 Submit
               </Button>
             </Form>
-            </div>
-          </>
-          {/* :
+          </fieldset>
+        </div>
+      </>
+      {/* :
           null
       } */}
-      
+
     </>
   );
 }
