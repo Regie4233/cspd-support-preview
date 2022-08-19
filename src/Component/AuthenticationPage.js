@@ -41,7 +41,7 @@ function AuthenticationPage(props) {
       <div>
         {hasLogin === false ? 
 
-        <h1> incorret username of password</h1>
+        <h1 className='check'> incorrect username of password</h1>
         :
         null
         }
@@ -74,7 +74,7 @@ function AuthenticationPage(props) {
             </div>
           </>
           :
-          <h1 className='HeaderL'>You Are Logged In</h1>
+          <h1 className='check'>You Are Logged In</h1>
       }
 
     </>
