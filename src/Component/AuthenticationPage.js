@@ -22,8 +22,9 @@ function AuthenticationPage(props) {
       fusername: username,
       fpassword: password
     }).then((resp) => {
-
+      allowForms = false;
       if (resp.data.message) {
+        allowForms = true;
         //setLoginstatus(resp.data.message);
         props.auth(resp.data.message);
       } else {
@@ -41,7 +42,7 @@ function AuthenticationPage(props) {
           Missing List Manager
         </div>
         <div className='check'>
-          <fieldset disabled>
+          <fieldset enabled={allowForms}>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3">
                 <Form.Label>Enter Username</Form.Label>
