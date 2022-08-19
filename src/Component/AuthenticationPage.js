@@ -22,9 +22,9 @@ function AuthenticationPage(props) {
       fusername: username,
       fpassword: password
     }).then((resp) => {
-      allowForms = false;
+      setForms(false);
       if (resp.data.message) {
-        allowForms = true;
+        setForms(true);
         //setLoginstatus(resp.data.message);
         props.auth(resp.data.message);
       } else {
