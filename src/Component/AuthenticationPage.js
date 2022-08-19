@@ -8,7 +8,7 @@ function AuthenticationPage(props) {
 
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
-  const [allowForms, setForms] = useState(false);
+  const [allowForms, setForms] = useState(true);
   //const [loginstatus, setLoginstatus] = useState('');
 
   Axios.defaults.withCredentials = true;
@@ -44,7 +44,7 @@ function AuthenticationPage(props) {
         <div className='check'>
           {
             allowForms === true ? 
-            
+
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3">
                 <Form.Label>Enter Username</Form.Label>
