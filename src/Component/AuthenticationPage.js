@@ -48,7 +48,7 @@ function AuthenticationPage(props) {
       </div>
 
       {
-        props.auth !== '' ?
+        hasLogin === false ?
           <>
             <div className='headerL check'>
               Missing List Manager
@@ -74,7 +74,7 @@ function AuthenticationPage(props) {
             </div>
           </>
           :
-          null
+          <h1 className='HeaderL'>You Are Logged In</h1>
       }
 
     </>
