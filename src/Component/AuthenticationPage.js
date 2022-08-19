@@ -35,17 +35,20 @@ function AuthenticationPage(props) {
       }
     });
   };
+  // useEffect(()=> {
+
+  // });
   return (
     <>
 
-      <div>
+      {/* <div>
         {hasLogin === false ? 
 
         <h1 className='check'> incorrect username of password</h1>
         :
         null
         }
-      </div>
+      </div> */}
 
       {
         hasLogin === false ?
@@ -74,7 +77,9 @@ function AuthenticationPage(props) {
             </div>
           </>
           :
-          <h1 className='check'>You Are Logged In</h1>
+          <div>
+            <h1 className='check'>You Are Logged In</h1>
+          </div>
       }
 
     </>
