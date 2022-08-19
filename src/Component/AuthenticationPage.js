@@ -8,8 +8,9 @@ function AuthenticationPage(props) {
 
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
-  const [allowForms, setForms] = useState(true);
   //const [loginstatus, setLoginstatus] = useState('');
+
+  const [hasLogin, sethaslogin] = useState(false);
 
   Axios.defaults.withCredentials = true;
 
@@ -22,54 +23,59 @@ function AuthenticationPage(props) {
       fusername: username,
       fpassword: password
     }).then((resp) => {
-      setForms(true);
-      if (resp.data.message) {
-        setForms(false);
+      if (resp.data === false) {
         //setLoginstatus(resp.data.message);
-        props.auth(resp.data.message);
+        //props.auth(resp.data.message);
+        sethaslogin(false);
+
       } else {
         //setLoginstatus(resp.data[0].username);
         props.auth(resp.data[0].username);
+        sethaslogin(true);
       }
     });
   };
   return (
     <>
-      {/* {
-        props.auth !== '' ? */}
-      <>
-        <div className='headerL check'>
-          Missing List Manager
-        </div>
-        <div className='check'>
-          {
-            allowForms === true ? 
 
-            <Form onSubmit={submitHandler}>
-              <Form.Group className="mb-3">
-                <Form.Label>Enter Username</Form.Label>
-                <Form.Control placeholder="Username" onChange={(event) => setusername(event.target.value)} />
-              </Form.Group>
+      <div>
+        {hasLogin === false ? 
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={(event) => setpassword(event.target.value)} />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Remember me" />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-            :
-            <h1 className='HeaderL'> Checking credentials</h1>
-          }
-        </div>
-      </>
-      {/* :
+        <h1> incorret username of password</h1>
+        :
+        null
+        }
+      </div>
+
+      {
+        props.auth !== '' ?
+          <>
+            <div className='headerL check'>
+              Missing List Manager
+            </div>
+            <div className='check'>
+              <Form onSubmit={submitHandler}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Enter Username</Form.Label>
+                  <Form.Control placeholder="Username" onChange={(event) => setusername(event.target.value)} />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Password" onChange={(event) => setpassword(event.target.value)} />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" label="Remember me" />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </div>
+          </>
+          :
           null
-      } */}
+      }
 
     </>
   );

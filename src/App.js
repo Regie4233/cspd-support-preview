@@ -76,7 +76,7 @@ function App() {
                 </PrivateRoute>
               } />
             <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<AuthenticationPage auth={authenticate} />} />
+            <Route path='/login' element={<AuthenticationPage auth={authenticate} status={loginstatus}/>} />
           </Routes>
         </Router>
       </div>
