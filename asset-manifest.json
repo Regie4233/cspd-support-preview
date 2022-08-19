@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/cspd-support/static/css/main.a9d73643.css",
-    "main.js": "/cspd-support/static/js/main.d938644c.js",
+    "main.js": "/cspd-support/static/js/main.88210d7f.js",
     "index.html": "/cspd-support/index.html",
     "main.a9d73643.css.map": "/cspd-support/static/css/main.a9d73643.css.map",
-    "main.d938644c.js.map": "/cspd-support/static/js/main.d938644c.js.map"
+    "main.88210d7f.js.map": "/cspd-support/static/js/main.88210d7f.js.map"
   },
   "entrypoints": [
     "static/css/main.a9d73643.css",
-    "static/js/main.d938644c.js"
+    "static/js/main.88210d7f.js"
   ]
 }
