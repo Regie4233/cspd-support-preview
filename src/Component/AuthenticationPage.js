@@ -42,7 +42,9 @@ function AuthenticationPage(props) {
           Missing List Manager
         </div>
         <div className='check'>
-          <fieldset disabled={allowForms}>
+          {
+            allowForms === true ? 
+            
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3">
                 <Form.Label>Enter Username</Form.Label>
@@ -60,7 +62,9 @@ function AuthenticationPage(props) {
                 Submit
               </Button>
             </Form>
-          </fieldset>
+            :
+            <h1 className='HeaderL'> Checking credentials</h1>
+          }
         </div>
       </>
       {/* :
