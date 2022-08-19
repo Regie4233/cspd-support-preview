@@ -12,6 +12,8 @@ function AuthenticationPage(props) {
 
   const [hasLogin, sethaslogin] = useState(false);
 
+  const [loginmessage, setmessage] = useState('Please Login');
+
   Axios.defaults.withCredentials = true;
 
 
@@ -27,6 +29,7 @@ function AuthenticationPage(props) {
         //setLoginstatus(resp.data.message);
         //props.auth(resp.data.message);
         sethaslogin(false);
+        setmessage('Incorrect username or password!')
 
       } else {
         //setLoginstatus(resp.data[0].username);
@@ -40,21 +43,11 @@ function AuthenticationPage(props) {
   // });
   return (
     <>
-
-      {/* <div>
-        {hasLogin === false ? 
-
-        <h1 className='check'> incorrect username of password</h1>
-        :
-        null
-        }
-      </div> */}
-
       {
         hasLogin === false ?
           <>
             <div className='headerL check'>
-              Missing List Manager
+              {loginmessage}
             </div>
             <div className='check'>
               <Form onSubmit={submitHandler}>
