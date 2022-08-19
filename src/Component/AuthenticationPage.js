@@ -38,9 +38,11 @@ function AuthenticationPage(props) {
       }
     });
   };
-  // useEffect(()=> {
-
-  // });
+  useEffect(()=> {
+    if(props.status === ''){
+      sethaslogin(false);
+    }
+  }, []);
   return (
     <>
       {
