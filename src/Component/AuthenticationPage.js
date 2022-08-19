@@ -8,7 +8,7 @@ function AuthenticationPage(props) {
 
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
-  const [allowForms, setForms] = useState(true);
+  const [allowForms, setForms] = useState(false);
   //const [loginstatus, setLoginstatus] = useState('');
 
   Axios.defaults.withCredentials = true;
@@ -22,9 +22,9 @@ function AuthenticationPage(props) {
       fusername: username,
       fpassword: password
     }).then((resp) => {
-      setForms(false);
+      setForms(true);
       if (resp.data.message) {
-        setForms(true);
+        setForms(false);
         //setLoginstatus(resp.data.message);
         props.auth(resp.data.message);
       } else {
@@ -42,7 +42,7 @@ function AuthenticationPage(props) {
           Missing List Manager
         </div>
         <div className='check'>
-          <fieldset enabled={allowForms}>
+          <fieldset disabled={allowForms}>
             <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3">
                 <Form.Label>Enter Username</Form.Label>
