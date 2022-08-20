@@ -99,7 +99,14 @@ class TabnList extends React.Component {
                   {this.props.room32.length > 0 ? <Col md='6'> {room32}</Col> : null} */}
                   <RoomTableItems rooms={[room1, room2, room3, room4, room5, room6, room7, room8, room9, room10,
                     room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
-                    room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32, urgenttrays]} />
+                    room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32, urgentTrays]} 
+                    roomsdata={[this.props.room1, this.props.room2, this.props.room3, this.props.room4, this.props.room5, 
+                      this.props.room6, this.props.room7, this.props.room8, this.props.room9, this.props.room10,
+                      this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, 
+                      this.props.room16, this.props.room17, this.props.room18, this.props.room19, this.props.room20,
+                      this.props.room21,this.props.room22, this.props.room23, this.props.this.props.room24, room25, 
+                      this.props.room26, this.props.room27, this.props.room28, this.props.room29, this.props.room30, 
+                      this.props.room31, this.props.room32, this.props.urgenttrays]} />
                 </Row>
 
               </Container>
@@ -129,42 +136,42 @@ function RoomTableItems(props) {
 
   return (
     <>
-      {props.rooms[34].length > 0 ? <Col md='6'> {rooms[34]}</Col> : null}
-      {props.rooms[0].length > 0 ? <Col md='6'> {rooms[0]}</Col> : null}
-      {props.rooms[1].length > 0 ? <Col md='6'> {rooms[1]}</Col> : null}
-      {props.rooms[2].length > 0 ? <Col md='6'> {rooms[2]}</Col> : null}
-      {props.rooms[3].length > 0 ? <Col md='6'> {rooms[3]}</Col> : null}
-      {props.rooms[4].length > 0 ? <Col md='6'> {rooms[4]}</Col> : null}
-      {props.rooms[7].length > 0 ? <Col md='6'> {rooms[7]}</Col> : null}
-      {props.rooms[8].length > 0 ? <Col md='6'> {rooms[8]}</Col> : null}
-      {props.rooms[9].length > 0 ? <Col md='6'> {rooms[9]}</Col> : null}
-      {props.rooms[10].length > 0 ? <Col md='6'> {rooms[10]}</Col> : null}
-      {props.rooms[11].length > 0 ? <Col md='6'> {rooms[11]}</Col> : null}
+      {props.roomsdata[34].length > 0 ? <Col md='6'> {props.rooms[34]}</Col> : null}
+      {props.roomsdata[0].length > 0 ? <Col md='6'> {props.rooms[0]}</Col> : null}
+      {props.roomsdata[1].length > 0 ? <Col md='6'> {props.rooms[1]}</Col> : null}
+      {props.roomsdata[2].length > 0 ? <Col md='6'> {props.rooms[2]}</Col> : null}
+      {props.roomsdata[3].length > 0 ? <Col md='6'> {props.rooms[3]}</Col> : null}
+      {props.roomsdata[4].length > 0 ? <Col md='6'> {props.rooms[4]}</Col> : null}
+      {props.roomsdata[7].length > 0 ? <Col md='6'> {props.rooms[7]}</Col> : null}
+      {props.roomsdata[8].length > 0 ? <Col md='6'> {props.rooms[8]}</Col> : null}
+      {props.roomsdata[9].length > 0 ? <Col md='6'> {props.rooms[9]}</Col> : null}
+      {props.roomsdata[10].length > 0 ? <Col md='6'> {props.rooms[10]}</Col> : null}
+      {props.roomsdata[11].length > 0 ? <Col md='6'> {props.rooms[11]}</Col> : null}
 
-      {props.rooms[12].length > 0 ? <Col md='6'> {rooms[12]}</Col> : null}
-      {props.rooms[13].length > 0 ? <Col md='6'> {rooms[13]}</Col> : null}
-      {props.rooms[14].length > 0 ? <Col md='6'> {rooms[14]}</Col> : null}
-      {props.rooms[15].length > 0 ? <Col md='6'> {rooms[15]}</Col> : null}
-      {props.rooms[16].length > 0 ? <Col md='6'> {rooms[16]}</Col> : null}
-      {props.rooms[17].length > 0 ? <Col md='6'> {rooms[17]}</Col> : null}
-      {props.rooms[18].length > 0 ? <Col md='6'> {rooms[18]}</Col> : null}
-      {props.rooms[19].length > 0 ? <Col md='6'> {rooms[19]}</Col> : null}
-      {props.rooms[20].length > 0 ? <Col md='6'> {rooms[20]}</Col> : null}
-      {props.rooms[21].length > 0 ? <Col md='6'> {roomrooms[21]}</Col> : null}
+      {props.roomsdata[12].length > 0 ? <Col md='6'> {props.rooms[12]}</Col> : null}
+      {props.roomsdata[13].length > 0 ? <Col md='6'> {props.rooms[13]}</Col> : null}
+      {props.roomsdata[14].length > 0 ? <Col md='6'> {props.rooms[14]}</Col> : null}
+      {props.roomsdata[15].length > 0 ? <Col md='6'> {props.rooms[15]}</Col> : null}
+      {props.roomsdata[16].length > 0 ? <Col md='6'> {props.rooms[16]}</Col> : null}
+      {props.roomsdata[17].length > 0 ? <Col md='6'> {props.rooms[17]}</Col> : null}
+      {props.roomsdata[18].length > 0 ? <Col md='6'> {props.rooms[18]}</Col> : null}
+      {props.roomsdata[19].length > 0 ? <Col md='6'> {props.rooms[19]}</Col> : null}
+      {props.roomsdata[20].length > 0 ? <Col md='6'> {props.rooms[20]}</Col> : null}
+      {props.roomsdata[21].length > 0 ? <Col md='6'> {props.rooms[21]}</Col> : null}
 
-      {props.rooms[22].length > 0 ? <Col md='6'> {rooms[22]}</Col> : null}
-      {props.rooms[23].length > 0 ? <Col md='6'> {rooms[23]}</Col> : null}
-      {props.rooms[24].length > 0 ? <Col md='6'> {rooms[24]}</Col> : null}
-      {props.rooms[25].length > 0 ? <Col md='6'> {rooms[25]}</Col> : null}
-      {props.rooms[26].length > 0 ? <Col md='6'> {rooms[26]}</Col> : null}
-      {props.rooms[27].length > 0 ? <Col md='6'> {rooms[27]}</Col> : null}
-      {props.rooms[28].length > 0 ? <Col md='6'> {rooms[28]}</Col> : null}
-      {props.rooms[29].length > 0 ? <Col md='6'> {rooms[29]}</Col> : null}
-      {props.rooms[30].length > 0 ? <Col md='6'> {rooms[30]}</Col> : null}
-      {props.rooms[31].length > 0 ? <Col md='6'> {rooms[31]}</Col> : null}
+      {props.roomsdata[22].length > 0 ? <Col md='6'> {props.rooms[22]}</Col> : null}
+      {props.roomsdata[23].length > 0 ? <Col md='6'> {props.rooms[23]}</Col> : null}
+      {props.roomsdata[24].length > 0 ? <Col md='6'> {props.rooms[24]}</Col> : null}
+      {props.roomsdata[25].length > 0 ? <Col md='6'> {props.rooms[25]}</Col> : null}
+      {props.roomsdata[26].length > 0 ? <Col md='6'> {props.rooms[26]}</Col> : null}
+      {props.roomsdata[27].length > 0 ? <Col md='6'> {props.rooms[27]}</Col> : null}
+      {props.roomsdata[28].length > 0 ? <Col md='6'> {props.rooms[28]}</Col> : null}
+      {props.roomsdata[29].length > 0 ? <Col md='6'> {props.rooms[29]}</Col> : null}
+      {props.roomsdata[30].length > 0 ? <Col md='6'> {props.rooms[30]}</Col> : null}
+      {props.roomsdata[31].length > 0 ? <Col md='6'> {props.rooms[31]}</Col> : null}
 
-      {props.rooms[32].length > 0 ? <Col md='6'> {rooms[32]}</Col> : null}
-      {props.rooms[33].length > 0 ? <Col md='6'> {rooms[33]}</Col> : null}
+      {props.roomsdata[32].length > 0 ? <Col md='6'> {props.rooms[32]}</Col> : null}
+      {props.roomsdata[33].length > 0 ? <Col md='6'> {props.rooms[33]}</Col> : null}
     </>
   );
 }
