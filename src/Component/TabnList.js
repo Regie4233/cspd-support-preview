@@ -11,42 +11,42 @@ class TabnList extends React.Component {
 
 
   render() {
-    const urgentTrays = <RoomCard key={this.props.urgenttrays.id} roomNum={'Urgent Trays'} trayList={this.props.urgenttrays} buttonhandler={this.props.buttonhandler} />;
-    const room1 = <RoomCard key={this.props.room1.id} roomNum={'OR 1'} trayList={this.props.room1} buttonhandler={this.props.buttonhandler} />;
-    const room2 = <RoomCard key={this.props.room2.id} roomNum={'OR 2'} trayList={this.props.room2} buttonhandler={this.props.buttonhandler} />;
-    const room3 = <RoomCard key={this.props.room3.id} roomNum={'OR 3'} trayList={this.props.room3} buttonhandler={this.props.buttonhandler} />;
-    const room4 = <RoomCard key={this.props.room4.id} roomNum={'OR 4'} trayList={this.props.room4} buttonhandler={this.props.buttonhandler} />;
-    const room5 = <RoomCard key={this.props.room5.id} roomNum={'OR 5'} trayList={this.props.room5} buttonhandler={this.props.buttonhandler} />;
-    const room6 = <RoomCard key={this.props.room6.id} roomNum={'OR 6'} trayList={this.props.room6} buttonhandler={this.props.buttonhandler} />;
-    const room7 = <RoomCard key={this.props.room7.id} roomNum={'OR 7'} trayList={this.props.room7} buttonhandler={this.props.buttonhandler} />;
-    const room8 = <RoomCard key={this.props.room8.id} roomNum={'OR 8'} trayList={this.props.room8} buttonhandler={this.props.buttonhandler} />;
-    const room9 = <RoomCard key={this.props.room9.id} roomNum={'OR 9'} trayList={this.props.room9} buttonhandler={this.props.buttonhandler} />;
-    const room10 = <RoomCard key={this.props.room10.id} roomNum={'OR 10'} trayList={this.props.room10} buttonhandler={this.props.buttonhandler} />;
+    // const urgentTrays = <RoomCard key={this.props.urgenttrays.id} roomNum={'Urgent Trays'} trayList={this.props.urgenttrays} buttonhandler={this.props.buttonhandler} />;
+    // const room1 = <RoomCard key={this.props.room1.id} roomNum={'OR 1'} trayList={this.props.room1} buttonhandler={this.props.buttonhandler} />;
+    // const room2 = <RoomCard key={this.props.room2.id} roomNum={'OR 2'} trayList={this.props.room2} buttonhandler={this.props.buttonhandler} />;
+    // const room3 = <RoomCard key={this.props.room3.id} roomNum={'OR 3'} trayList={this.props.room3} buttonhandler={this.props.buttonhandler} />;
+    // const room4 = <RoomCard key={this.props.room4.id} roomNum={'OR 4'} trayList={this.props.room4} buttonhandler={this.props.buttonhandler} />;
+    // const room5 = <RoomCard key={this.props.room5.id} roomNum={'OR 5'} trayList={this.props.room5} buttonhandler={this.props.buttonhandler} />;
+    // const room6 = <RoomCard key={this.props.room6.id} roomNum={'OR 6'} trayList={this.props.room6} buttonhandler={this.props.buttonhandler} />;
+    // const room7 = <RoomCard key={this.props.room7.id} roomNum={'OR 7'} trayList={this.props.room7} buttonhandler={this.props.buttonhandler} />;
+    // const room8 = <RoomCard key={this.props.room8.id} roomNum={'OR 8'} trayList={this.props.room8} buttonhandler={this.props.buttonhandler} />;
+    // const room9 = <RoomCard key={this.props.room9.id} roomNum={'OR 9'} trayList={this.props.room9} buttonhandler={this.props.buttonhandler} />;
+    // const room10 = <RoomCard key={this.props.room10.id} roomNum={'OR 10'} trayList={this.props.room10} buttonhandler={this.props.buttonhandler} />;
 
-    const room11 = <RoomCard key={this.props.room11.id} roomNum={'OR 11'} trayList={this.props.room11} buttonhandler={this.props.buttonhandler} />;
-    const room12 = <RoomCard key={this.props.room12.id} roomNum={'OR 12'} trayList={this.props.room12} buttonhandler={this.props.buttonhandler} />;
-    const room13 = <RoomCard key={this.props.room13.id} roomNum={'OR 13'} trayList={this.props.room13} buttonhandler={this.props.buttonhandler} />;
-    const room14 = <RoomCard key={this.props.room14.id} roomNum={'OR 14'} trayList={this.props.room14} buttonhandler={this.props.buttonhandler} />;
-    const room15 = <RoomCard key={this.props.room15.id} roomNum={'OR 15'} trayList={this.props.room15} buttonhandler={this.props.buttonhandler} />;
-    const room16 = <RoomCard key={this.props.room16.id} roomNum={'OR 16'} trayList={this.props.room16} buttonhandler={this.props.buttonhandler} />;
-    const room17 = <RoomCard key={this.props.room17.id} roomNum={'OR 17'} trayList={this.props.room17} buttonhandler={this.props.buttonhandler} />;
-    const room18 = <RoomCard key={this.props.room18.id} roomNum={'OR 18'} trayList={this.props.room18} buttonhandler={this.props.buttonhandler} />;
-    const room19 = <RoomCard key={this.props.room19.id} roomNum={'OR 19'} trayList={this.props.room19} buttonhandler={this.props.buttonhandler} />;
-    const room20 = <RoomCard key={this.props.room20.id} roomNum={'OR 20'} trayList={this.props.room20} buttonhandler={this.props.buttonhandler} />;
+    // const room11 = <RoomCard key={this.props.room11.id} roomNum={'OR 11'} trayList={this.props.room11} buttonhandler={this.props.buttonhandler} />;
+    // const room12 = <RoomCard key={this.props.room12.id} roomNum={'OR 12'} trayList={this.props.room12} buttonhandler={this.props.buttonhandler} />;
+    // const room13 = <RoomCard key={this.props.room13.id} roomNum={'OR 13'} trayList={this.props.room13} buttonhandler={this.props.buttonhandler} />;
+    // const room14 = <RoomCard key={this.props.room14.id} roomNum={'OR 14'} trayList={this.props.room14} buttonhandler={this.props.buttonhandler} />;
+    // const room15 = <RoomCard key={this.props.room15.id} roomNum={'OR 15'} trayList={this.props.room15} buttonhandler={this.props.buttonhandler} />;
+    // const room16 = <RoomCard key={this.props.room16.id} roomNum={'OR 16'} trayList={this.props.room16} buttonhandler={this.props.buttonhandler} />;
+    // const room17 = <RoomCard key={this.props.room17.id} roomNum={'OR 17'} trayList={this.props.room17} buttonhandler={this.props.buttonhandler} />;
+    // const room18 = <RoomCard key={this.props.room18.id} roomNum={'OR 18'} trayList={this.props.room18} buttonhandler={this.props.buttonhandler} />;
+    // const room19 = <RoomCard key={this.props.room19.id} roomNum={'OR 19'} trayList={this.props.room19} buttonhandler={this.props.buttonhandler} />;
+    // const room20 = <RoomCard key={this.props.room20.id} roomNum={'OR 20'} trayList={this.props.room20} buttonhandler={this.props.buttonhandler} />;
 
-    const room21 = <RoomCard key={this.props.room21.id} roomNum={'OR 21'} trayList={this.props.room21} buttonhandler={this.props.buttonhandler} />;
-    const room22 = <RoomCard key={this.props.room22.id} roomNum={'OR 22'} trayList={this.props.room22} buttonhandler={this.props.buttonhandler} />;
-    const room23 = <RoomCard key={this.props.room23.id} roomNum={'OR 23'} trayList={this.props.room23} buttonhandler={this.props.buttonhandler} />;
-    const room24 = <RoomCard key={this.props.room24.id} roomNum={'OR 24'} trayList={this.props.room24} buttonhandler={this.props.buttonhandler} />;
-    const room25 = <RoomCard key={this.props.room25.id} roomNum={'OR 25'} trayList={this.props.room25} buttonhandler={this.props.buttonhandler} />;
-    const room26 = <RoomCard key={this.props.room26.id} roomNum={'OR 26'} trayList={this.props.room26} buttonhandler={this.props.buttonhandler} />;
-    const room27 = <RoomCard key={this.props.room27.id} roomNum={'OR 27'} trayList={this.props.room27} buttonhandler={this.props.buttonhandler} />;
-    const room28 = <RoomCard key={this.props.room28.id} roomNum={'OR 28'} trayList={this.props.room28} buttonhandler={this.props.buttonhandler} />;
-    const room29 = <RoomCard key={this.props.room29.id} roomNum={'OR 29'} trayList={this.props.room29} buttonhandler={this.props.buttonhandler} />;
-    const room30 = <RoomCard key={this.props.room30.id} roomNum={'OR 30'} trayList={this.props.room30} buttonhandler={this.props.buttonhandler} />;
+    // const room21 = <RoomCard key={this.props.room21.id} roomNum={'OR 21'} trayList={this.props.room21} buttonhandler={this.props.buttonhandler} />;
+    // const room22 = <RoomCard key={this.props.room22.id} roomNum={'OR 22'} trayList={this.props.room22} buttonhandler={this.props.buttonhandler} />;
+    // const room23 = <RoomCard key={this.props.room23.id} roomNum={'OR 23'} trayList={this.props.room23} buttonhandler={this.props.buttonhandler} />;
+    // const room24 = <RoomCard key={this.props.room24.id} roomNum={'OR 24'} trayList={this.props.room24} buttonhandler={this.props.buttonhandler} />;
+    // const room25 = <RoomCard key={this.props.room25.id} roomNum={'OR 25'} trayList={this.props.room25} buttonhandler={this.props.buttonhandler} />;
+    // const room26 = <RoomCard key={this.props.room26.id} roomNum={'OR 26'} trayList={this.props.room26} buttonhandler={this.props.buttonhandler} />;
+    // const room27 = <RoomCard key={this.props.room27.id} roomNum={'OR 27'} trayList={this.props.room27} buttonhandler={this.props.buttonhandler} />;
+    // const room28 = <RoomCard key={this.props.room28.id} roomNum={'OR 28'} trayList={this.props.room28} buttonhandler={this.props.buttonhandler} />;
+    // const room29 = <RoomCard key={this.props.room29.id} roomNum={'OR 29'} trayList={this.props.room29} buttonhandler={this.props.buttonhandler} />;
+    // const room30 = <RoomCard key={this.props.room30.id} roomNum={'OR 30'} trayList={this.props.room30} buttonhandler={this.props.buttonhandler} />;
 
-    const room31 = <RoomCard key={this.props.room31.id} roomNum={'OR 31'} trayList={this.props.room31} buttonhandler={this.props.buttonhandler} />;
-    const room32 = <RoomCard key={this.props.room32.id} roomNum={'OR 32'} trayList={this.props.room32} buttonhandler={this.props.buttonhandler} />;
+    // const room31 = <RoomCard key={this.props.room31.id} roomNum={'OR 31'} trayList={this.props.room31} buttonhandler={this.props.buttonhandler} />;
+    // const room32 = <RoomCard key={this.props.room32.id} roomNum={'OR 32'} trayList={this.props.room32} buttonhandler={this.props.buttonhandler} />;
 
 
     return (
@@ -97,9 +97,7 @@ class TabnList extends React.Component {
 
                   {this.props.room31.length > 0 ? <Col md='6'> {room31}</Col> : null}
                   {this.props.room32.length > 0 ? <Col md='6'> {room32}</Col> : null} */}
-                  <RoomTableItems rooms={[room1, room2, room3, room4, room5, room6, room7, room8, room9, room10,
-                    room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
-                    room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32, urgentTrays]} 
+                  <RoomTableItems 
                     roomsdata={[this.props.room1, this.props.room2, this.props.room3, this.props.room4, this.props.room5, 
                       this.props.room6, this.props.room7, this.props.room8, this.props.room9, this.props.room10,
                       this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, 
@@ -134,9 +132,51 @@ class TabnList extends React.Component {
 
 function RoomTableItems(props) {
 
+  
+    const room1 = <RoomCard key={props.room1.id} roomNum={'OR 1'} trayList={props.room1} buttonhandler={this.props.buttonhandler} />;
+    const room2 = <RoomCard key={props.room2.id} roomNum={'OR 2'} trayList={props.room2} buttonhandler={this.props.buttonhandler} />;
+    const room3 = <RoomCard key={props.room3.id} roomNum={'OR 3'} trayList={props.room3} buttonhandler={this.props.buttonhandler} />;
+    const room4 = <RoomCard key={props.room4.id} roomNum={'OR 4'} trayList={props.room4} buttonhandler={this.props.buttonhandler} />;
+    const room5 = <RoomCard key={props.room5.id} roomNum={'OR 5'} trayList={props.room5} buttonhandler={this.props.buttonhandler} />;
+    const room6 = <RoomCard key={props.room6.id} roomNum={'OR 6'} trayList={props.room6} buttonhandler={this.props.buttonhandler} />;
+    const room7 = <RoomCard key={props.room7.id} roomNum={'OR 7'} trayList={props.room7} buttonhandler={this.props.buttonhandler} />;
+    const room8 = <RoomCard key={props.room8.id} roomNum={'OR 8'} trayList={props.room8} buttonhandler={this.props.buttonhandler} />;
+    const room9 = <RoomCard key={props.room9.id} roomNum={'OR 9'} trayList={props.room9} buttonhandler={this.props.buttonhandler} />;
+    const room10 = <RoomCard key={props.room10.id} roomNum={'OR 10'} trayList={props.room10} buttonhandler={this.props.buttonhandler} />;
+
+    const room11 = <RoomCard key={props.room11.id} roomNum={'OR 11'} trayList={props.room11} buttonhandler={this.props.buttonhandler} />;
+    const room12 = <RoomCard key={props.room12.id} roomNum={'OR 12'} trayList={props.room12} buttonhandler={this.props.buttonhandler} />;
+    const room13 = <RoomCard key={props.room13.id} roomNum={'OR 13'} trayList={props.room13} buttonhandler={this.props.buttonhandler} />;
+    const room14 = <RoomCard key={props.room14.id} roomNum={'OR 14'} trayList={props.room14} buttonhandler={this.props.buttonhandler} />;
+    const room15 = <RoomCard key={props.room15.id} roomNum={'OR 15'} trayList={props.room15} buttonhandler={this.props.buttonhandler} />;
+    const room16 = <RoomCard key={props.room16.id} roomNum={'OR 16'} trayList={props.room16} buttonhandler={this.props.buttonhandler} />;
+    const room17 = <RoomCard key={props.room17.id} roomNum={'OR 17'} trayList={props.room17} buttonhandler={this.props.buttonhandler} />;
+    const room18 = <RoomCard key={props.room18.id} roomNum={'OR 18'} trayList={props.room18} buttonhandler={this.props.buttonhandler} />;
+    const room19 = <RoomCard key={props.room19.id} roomNum={'OR 19'} trayList={props.room19} buttonhandler={this.props.buttonhandler} />;
+    const room20 = <RoomCard key={props.room20.id} roomNum={'OR 20'} trayList={props.room20} buttonhandler={this.props.buttonhandler} />;
+
+    const room21 = <RoomCard key={props.room21.id} roomNum={'OR 21'} trayList={props.room21} buttonhandler={this.props.buttonhandler} />;
+    const room22 = <RoomCard key={props.room22.id} roomNum={'OR 22'} trayList={props.room22} buttonhandler={this.props.buttonhandler} />;
+    const room23 = <RoomCard key={props.room23.id} roomNum={'OR 23'} trayList={props.room23} buttonhandler={this.props.buttonhandler} />;
+    const room24 = <RoomCard key={props.room24.id} roomNum={'OR 24'} trayList={props.room24} buttonhandler={this.props.buttonhandler} />;
+    const room25 = <RoomCard key={props.room25.id} roomNum={'OR 25'} trayList={props.room25} buttonhandler={this.props.buttonhandler} />;
+    const room26 = <RoomCard key={props.room26.id} roomNum={'OR 26'} trayList={props.room26} buttonhandler={this.props.buttonhandler} />;
+    const room27 = <RoomCard key={props.room27.id} roomNum={'OR 27'} trayList={props.room27} buttonhandler={this.props.buttonhandler} />;
+    const room28 = <RoomCard key={props.room28.id} roomNum={'OR 28'} trayList={props.room28} buttonhandler={this.props.buttonhandler} />;
+    const room29 = <RoomCard key={props.room29.id} roomNum={'OR 29'} trayList={props.room29} buttonhandler={this.props.buttonhandler} />;
+    const room30 = <RoomCard key={props.room30.id} roomNum={'OR 30'} trayList={props.room30} buttonhandler={this.props.buttonhandler} />;
+
+    const room31 = <RoomCard key={props.room31.id} roomNum={'OR 31'} trayList={props.room31} buttonhandler={this.props.buttonhandler} />;
+    const room32 = <RoomCard key={props.room32.id} roomNum={'OR 32'} trayList={props.room32} buttonhandler={this.props.buttonhandler} />;
+    const urgentTrays = <RoomCard key={props.urgenttrays.id} roomNum={'Urgent Trays'} trayList={props.urgenttrays} buttonhandler={this.props.buttonhandler} />;
+    const arr_rooms = [room1, room2, room3, room4, room5, room6, room7 ,room8, room9, room10,
+    room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
+  room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32];
   return (
+    
     <>
-      {props.roomsdata[34].length > 0 ? <Col md='6'> {props.rooms[34]}</Col> : null}
+     {arr_rooms.map((val, index) => props.roomsdata[index].length > 0 ? <Col md='6'> {val}</Col> : null)}
+      {/* {props.roomsdata[34].length > 0 ? <Col md='6'> {props.rooms[34]}</Col> : null}
       {props.roomsdata[0].length > 0 ? <Col md='6'> {props.rooms[0]}</Col> : null}
       {props.roomsdata[1].length > 0 ? <Col md='6'> {props.rooms[1]}</Col> : null}
       {props.roomsdata[2].length > 0 ? <Col md='6'> {props.rooms[2]}</Col> : null}
@@ -171,7 +211,7 @@ function RoomTableItems(props) {
       {props.roomsdata[31].length > 0 ? <Col md='6'> {props.rooms[31]}</Col> : null}
 
       {props.roomsdata[32].length > 0 ? <Col md='6'> {props.rooms[32]}</Col> : null}
-      {props.roomsdata[33].length > 0 ? <Col md='6'> {props.rooms[33]}</Col> : null}
+      {props.roomsdata[33].length > 0 ? <Col md='6'> {props.rooms[33]}</Col> : null} */}
     </>
   );
 }
