@@ -38,11 +38,11 @@ function AuthenticationPage(props) {
       }
     });
   };
-  useEffect(()=> {
-    if(props.status === ''){
-      sethaslogin(false);
-    }
-  }, []);
+  // useEffect(()=> {
+  //   if(props.status === ''){
+  //     sethaslogin(false);
+  //   }
+  // }, []);
   return (
     <>
       {

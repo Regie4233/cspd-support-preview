@@ -56,7 +56,7 @@ class TabnList extends React.Component {
         onSelect={(k) => this.setState({ key: k })}
         className="mb-3 tabs"
       >
-        <Tab eventKey="home" title="First Cases">
+        <Tab eventKey="first" title="First Cases">
           {
             <>
               <Container>
@@ -107,10 +107,13 @@ class TabnList extends React.Component {
 
           }
         </Tab>
-        <Tab eventKey="profile" title="Second Cases">
+        <Tab eventKey="second" title="Second Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey="contact" title="Third, Fourth+ Cases">
+        <Tab eventKey="third" title="Third Cases">
+        <h2 className='trayLocation'>This feature is coming soon..</h2>
+        </Tab>
+        <Tab eventKey="fourth" title="Fourth++ Cases">
         <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
       </Tabs>
