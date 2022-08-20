@@ -175,7 +175,7 @@ function RoomTableItems(props) {
   return (
     
     <>
-     {arr_rooms.map((val, index) => {props.roomsdata[index].length > 0 ? <Col md='6'> {val}</Col> : null})}
+     {arr_rooms.map((val, index) => <Col md='6'> {val}</Col>)}
       {/* {props.roomsdata[34].length > 0 ? <Col md='6'> {props.rooms[34]}</Col> : null}
       {props.roomsdata[0].length > 0 ? <Col md='6'> {props.rooms[0]}</Col> : null}
       {props.roomsdata[1].length > 0 ? <Col md='6'> {props.rooms[1]}</Col> : null}
