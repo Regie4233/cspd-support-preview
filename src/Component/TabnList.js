@@ -53,6 +53,7 @@ class TabnList extends React.Component {
 
       <Tabs
         activeKey={this.state.key}
+        defaultActiveKey="first"
         onSelect={(k) => this.setState({ key: k })}
         className="mb-3 tabs"
       >
