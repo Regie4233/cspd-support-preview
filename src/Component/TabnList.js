@@ -61,7 +61,7 @@ class TabnList extends React.Component {
             <>
               <Container>
                 <Row>
-                  {this.props.urgenttrays.length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
+                  {/* {this.props.urgenttrays.length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
                   {this.props.room1.length > 0 ? <Col md='6'> {room1}</Col> : null}
                   {this.props.room2.length > 0 ? <Col md='6'> {room2}</Col> : null}
                   {this.props.room3.length > 0 ? <Col md='6'> {room3}</Col> : null}
@@ -96,8 +96,10 @@ class TabnList extends React.Component {
                   {this.props.room30.length > 0 ? <Col md='6'> {room30}</Col> : null}
 
                   {this.props.room31.length > 0 ? <Col md='6'> {room31}</Col> : null}
-                  {this.props.room32.length > 0 ? <Col md='6'> {room32}</Col> : null}
-
+                  {this.props.room32.length > 0 ? <Col md='6'> {room32}</Col> : null} */}
+                  <RoomTableItems rooms={[room1, room2, room3, room4, room5, room6, room7, room8, room9, room10,
+                    room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
+                    room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32, urgenttrays]} />
                 </Row>
 
               </Container>
@@ -111,10 +113,10 @@ class TabnList extends React.Component {
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
         <Tab eventKey="third" title="Third Cases">
-        <h2 className='trayLocation'>This feature is coming soon..</h2>
+          <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
         <Tab eventKey="fourth" title="Fourth++ Cases">
-        <h2 className='trayLocation'>This feature is coming soon..</h2>
+          <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
       </Tabs>
     );
@@ -122,4 +124,49 @@ class TabnList extends React.Component {
   }
 
 }
+
+function RoomTableItems(props) {
+
+  return (
+    <>
+      {props.rooms[34].length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
+      {props.rooms[0].length > 0 ? <Col md='6'> {room1}</Col> : null}
+      {props.rooms[1].length > 0 ? <Col md='6'> {room2}</Col> : null}
+      {props.rooms[2].length > 0 ? <Col md='6'> {room3}</Col> : null}
+      {props.rooms[3].length > 0 ? <Col md='6'> {room4}</Col> : null}
+      {props.rooms[4].length > 0 ? <Col md='6'> {room5}</Col> : null}
+      {props.rooms[7].length > 0 ? <Col md='6'> {room6}</Col> : null}
+      {props.rooms[8].length > 0 ? <Col md='6'> {room7}</Col> : null}
+      {props.rooms[9].length > 0 ? <Col md='6'> {room8}</Col> : null}
+      {props.rooms[10].length > 0 ? <Col md='6'> {room9}</Col> : null}
+      {props.rooms[11].length > 0 ? <Col md='6'> {room10}</Col> : null}
+
+      {props.rooms[12].length > 0 ? <Col md='6'> {room11}</Col> : null}
+      {props.rooms[13].length > 0 ? <Col md='6'> {room12}</Col> : null}
+      {props.rooms[14].length > 0 ? <Col md='6'> {room13}</Col> : null}
+      {props.rooms[15].length > 0 ? <Col md='6'> {room14}</Col> : null}
+      {props.rooms[16].length > 0 ? <Col md='6'> {room15}</Col> : null}
+      {props.rooms[17].length > 0 ? <Col md='6'> {room16}</Col> : null}
+      {props.rooms[18].length > 0 ? <Col md='6'> {room17}</Col> : null}
+      {props.rooms[19].length > 0 ? <Col md='6'> {room18}</Col> : null}
+      {props.rooms[20].length > 0 ? <Col md='6'> {room19}</Col> : null}
+      {props.rooms[21].length > 0 ? <Col md='6'> {room20}</Col> : null}
+
+      {props.rooms[22].length > 0 ? <Col md='6'> {room21}</Col> : null}
+      {props.rooms[23].length > 0 ? <Col md='6'> {room22}</Col> : null}
+      {props.rooms[24].length > 0 ? <Col md='6'> {room23}</Col> : null}
+      {props.rooms[25].length > 0 ? <Col md='6'> {room24}</Col> : null}
+      {props.rooms[26].length > 0 ? <Col md='6'> {room25}</Col> : null}
+      {props.rooms[27].length > 0 ? <Col md='6'> {room26}</Col> : null}
+      {props.rooms[28].length > 0 ? <Col md='6'> {room27}</Col> : null}
+      {props.rooms[29].length > 0 ? <Col md='6'> {room28}</Col> : null}
+      {props.rooms[30].length > 0 ? <Col md='6'> {room29}</Col> : null}
+      {props.rooms[31].length > 0 ? <Col md='6'> {room30}</Col> : null}
+
+      {props.rooms[32].length > 0 ? <Col md='6'> {room31}</Col> : null}
+      {props.rooms[33].length > 0 ? <Col md='6'> {room32}</Col> : null}
+    </>
+  );
+}
+
 export default TabnList;
