@@ -129,42 +129,42 @@ function RoomTableItems(props) {
 
   return (
     <>
-      {props.rooms[34].length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
-      {props.rooms[0].length > 0 ? <Col md='6'> {room1}</Col> : null}
-      {props.rooms[1].length > 0 ? <Col md='6'> {room2}</Col> : null}
-      {props.rooms[2].length > 0 ? <Col md='6'> {room3}</Col> : null}
-      {props.rooms[3].length > 0 ? <Col md='6'> {room4}</Col> : null}
-      {props.rooms[4].length > 0 ? <Col md='6'> {room5}</Col> : null}
-      {props.rooms[7].length > 0 ? <Col md='6'> {room6}</Col> : null}
-      {props.rooms[8].length > 0 ? <Col md='6'> {room7}</Col> : null}
-      {props.rooms[9].length > 0 ? <Col md='6'> {room8}</Col> : null}
-      {props.rooms[10].length > 0 ? <Col md='6'> {room9}</Col> : null}
-      {props.rooms[11].length > 0 ? <Col md='6'> {room10}</Col> : null}
+      {props.rooms[34].length > 0 ? <Col md='6'> {rooms[34]}</Col> : null}
+      {props.rooms[0].length > 0 ? <Col md='6'> {rooms[0]}</Col> : null}
+      {props.rooms[1].length > 0 ? <Col md='6'> {rooms[1]}</Col> : null}
+      {props.rooms[2].length > 0 ? <Col md='6'> {rooms[2]}</Col> : null}
+      {props.rooms[3].length > 0 ? <Col md='6'> {rooms[3]}</Col> : null}
+      {props.rooms[4].length > 0 ? <Col md='6'> {rooms[4]}</Col> : null}
+      {props.rooms[7].length > 0 ? <Col md='6'> {rooms[7]}</Col> : null}
+      {props.rooms[8].length > 0 ? <Col md='6'> {rooms[8]}</Col> : null}
+      {props.rooms[9].length > 0 ? <Col md='6'> {rooms[9]}</Col> : null}
+      {props.rooms[10].length > 0 ? <Col md='6'> {rooms[10]}</Col> : null}
+      {props.rooms[11].length > 0 ? <Col md='6'> {rooms[11]}</Col> : null}
 
-      {props.rooms[12].length > 0 ? <Col md='6'> {room11}</Col> : null}
-      {props.rooms[13].length > 0 ? <Col md='6'> {room12}</Col> : null}
-      {props.rooms[14].length > 0 ? <Col md='6'> {room13}</Col> : null}
-      {props.rooms[15].length > 0 ? <Col md='6'> {room14}</Col> : null}
-      {props.rooms[16].length > 0 ? <Col md='6'> {room15}</Col> : null}
-      {props.rooms[17].length > 0 ? <Col md='6'> {room16}</Col> : null}
-      {props.rooms[18].length > 0 ? <Col md='6'> {room17}</Col> : null}
-      {props.rooms[19].length > 0 ? <Col md='6'> {room18}</Col> : null}
-      {props.rooms[20].length > 0 ? <Col md='6'> {room19}</Col> : null}
-      {props.rooms[21].length > 0 ? <Col md='6'> {room20}</Col> : null}
+      {props.rooms[12].length > 0 ? <Col md='6'> {rooms[12]}</Col> : null}
+      {props.rooms[13].length > 0 ? <Col md='6'> {rooms[13]}</Col> : null}
+      {props.rooms[14].length > 0 ? <Col md='6'> {rooms[14]}</Col> : null}
+      {props.rooms[15].length > 0 ? <Col md='6'> {rooms[15]}</Col> : null}
+      {props.rooms[16].length > 0 ? <Col md='6'> {rooms[16]}</Col> : null}
+      {props.rooms[17].length > 0 ? <Col md='6'> {rooms[17]}</Col> : null}
+      {props.rooms[18].length > 0 ? <Col md='6'> {rooms[18]}</Col> : null}
+      {props.rooms[19].length > 0 ? <Col md='6'> {rooms[19]}</Col> : null}
+      {props.rooms[20].length > 0 ? <Col md='6'> {rooms[20]}</Col> : null}
+      {props.rooms[21].length > 0 ? <Col md='6'> {roomrooms[21]}</Col> : null}
 
-      {props.rooms[22].length > 0 ? <Col md='6'> {room21}</Col> : null}
-      {props.rooms[23].length > 0 ? <Col md='6'> {room22}</Col> : null}
-      {props.rooms[24].length > 0 ? <Col md='6'> {room23}</Col> : null}
-      {props.rooms[25].length > 0 ? <Col md='6'> {room24}</Col> : null}
-      {props.rooms[26].length > 0 ? <Col md='6'> {room25}</Col> : null}
-      {props.rooms[27].length > 0 ? <Col md='6'> {room26}</Col> : null}
-      {props.rooms[28].length > 0 ? <Col md='6'> {room27}</Col> : null}
-      {props.rooms[29].length > 0 ? <Col md='6'> {room28}</Col> : null}
-      {props.rooms[30].length > 0 ? <Col md='6'> {room29}</Col> : null}
-      {props.rooms[31].length > 0 ? <Col md='6'> {room30}</Col> : null}
+      {props.rooms[22].length > 0 ? <Col md='6'> {rooms[22]}</Col> : null}
+      {props.rooms[23].length > 0 ? <Col md='6'> {rooms[23]}</Col> : null}
+      {props.rooms[24].length > 0 ? <Col md='6'> {rooms[24]}</Col> : null}
+      {props.rooms[25].length > 0 ? <Col md='6'> {rooms[25]}</Col> : null}
+      {props.rooms[26].length > 0 ? <Col md='6'> {rooms[26]}</Col> : null}
+      {props.rooms[27].length > 0 ? <Col md='6'> {rooms[27]}</Col> : null}
+      {props.rooms[28].length > 0 ? <Col md='6'> {rooms[28]}</Col> : null}
+      {props.rooms[29].length > 0 ? <Col md='6'> {rooms[29]}</Col> : null}
+      {props.rooms[30].length > 0 ? <Col md='6'> {rooms[30]}</Col> : null}
+      {props.rooms[31].length > 0 ? <Col md='6'> {rooms[31]}</Col> : null}
 
-      {props.rooms[32].length > 0 ? <Col md='6'> {room31}</Col> : null}
-      {props.rooms[33].length > 0 ? <Col md='6'> {room32}</Col> : null}
+      {props.rooms[32].length > 0 ? <Col md='6'> {rooms[32]}</Col> : null}
+      {props.rooms[33].length > 0 ? <Col md='6'> {rooms[33]}</Col> : null}
     </>
   );
 }
