@@ -102,7 +102,7 @@ class TabnList extends React.Component {
                       this.props.room6, this.props.room7, this.props.room8, this.props.room9, this.props.room10,
                       this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, 
                       this.props.room16, this.props.room17, this.props.room18, this.props.room19, this.props.room20,
-                      this.props.room21,this.props.room22, this.props.room23, this.props.this.props.room24, room25, 
+                      this.props.room21,this.props.room22, this.props.room23, this.props.room24, this.props.room25, 
                       this.props.room26, this.props.room27, this.props.room28, this.props.room29, this.props.room30, 
                       this.props.room31, this.props.room32, this.props.urgenttrays]} />
                 </Row>
