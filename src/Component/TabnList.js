@@ -6,7 +6,7 @@ import RoomCard from './RoomCard';
 
 
 class TabnList extends React.Component {
-  state = { key: 'first' };
+  state = { key: 1 };
 
 
 
@@ -48,9 +48,6 @@ class TabnList extends React.Component {
     const room31 = <RoomCard key={this.props.room31.id} roomNum={'OR 31'} trayList={this.props.room31} buttonhandler={this.props.buttonhandler} />;
     const room32 = <RoomCard key={this.props.room32.id} roomNum={'OR 32'} trayList={this.props.room32} buttonhandler={this.props.buttonhandler} />;
 
-    const arr_rooms_data = [this.props.room1, this.props.room2, this.props.room3, this.props.room4, this.props.room5, this.props.room6, this.props.room7, this.props.room8, this.props.room9, this.props.room10,
-    this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, this.props.room16, this.props.room17, this.props.room18, this.props.room19, this.props.room20,
-    this.props.room21, this.props.room22, this.props.room23, this.props.room24, this.props.room25, this.props.room26, this.props.room27, this.props.room28, this.props.room29, this.props.room30, this.props.room31, this.props.room32];
     
     const arr_rooms = [{roomnumber: room1, data: this.props.room1}, {roomnumber: room2, data: this.props.room2}, {roomnumber: room3, data: this.props.room3},
       {roomnumber: room4, data: this.props.room4}, {roomnumber: room5, data: this.props.room5}, {roomnumber: room6, data: this.props.room6} ,
@@ -71,11 +68,12 @@ class TabnList extends React.Component {
 
       <Tabs
         //activeKey={this.state.key}
-        defaultActiveKey="first"
+        onSelect={(k) => this.props.changeCaseNumber(k)}
+        defaultActiveKey={1}
         // onSelect={(k) => this.setState({ key: k })}
         className="mb-3 tabs"
       >
-        <Tab eventKey="first" title="First Cases">
+        <Tab eventKey={1} title="First Cases">
           {
             <>
               <Container>
@@ -133,13 +131,13 @@ class TabnList extends React.Component {
 
           }
         </Tab>
-        <Tab eventKey="second" title="Second Cases">
+        <Tab eventKey={2} title="Second Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey="third" title="Third Cases">
+        <Tab eventKey={3} title="Third Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey="fourth" title="Fourth++ Cases">
+        <Tab eventKey={4} title="Fourth++ Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
       </Tabs>

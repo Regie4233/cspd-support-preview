@@ -85,15 +85,18 @@ function RoomCreator(props) {
 
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
-    // const arr_room = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
-    //     rm11, rm12, rm13, rm14, rm15, rm16, rm17, rm18, rm19, rm20,
-    //     rm21, rm22, rm23, rm24, rm25, rm26, rm27, rm28, rm29, rm30, rm31, rm32];
 
-   
+    const [caseNum, setcaseNum] = useState(0);
+
+
+    function changeCaseNumber(value){
+        setcaseNum(value);
+        console.log(caseNum);
+    }
 
     async function fetchData() {
         //const response = await Axios.get('http://localhost:3001/api/get/traydata');
-        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
+        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', { fcasenum: caseNum });
         setRm1(response.data.or1);
         setRm2(response.data.or2);
         setRm3(response.data.or3);
@@ -152,7 +155,7 @@ function RoomCreator(props) {
             return;
         }
         Axios.post('https://mlmdb.herokuapp.com/api/insert', {
-        //Axios.post('http://localhost:3001/api/insert', {
+            //Axios.post('http://localhost:3001/api/insert', {
             ftrayname: otrayname,
             fcurrentlocation: '- -',
             fnotes: 'no notes',
@@ -273,8 +276,8 @@ function RoomCreator(props) {
         deleteAll: (selectedRoom) => {
             const room = eval(`rm${selectedRoom}`);
             room.forEach(element => {
-                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
-                //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
+                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
+                    //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
                     room.splice(element.indexOf, 1);
                     setlastadded((prevState) => !prevState);
                 });
@@ -285,8 +288,8 @@ function RoomCreator(props) {
             console.log("urg " + isurgent);
             if (isurgent === 1) {
 
-                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
-                //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
+                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+                    //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
                     console.log('Deleting ' + tname + ' ' + selectedRoom);
 
                     let ccc = urgent.find(x => x.id === tname);
@@ -302,7 +305,7 @@ function RoomCreator(props) {
                 });
             } else {
                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
-                //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
+                    //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
                     console.log('Deleting ' + tname + ' ' + selectedRoom);
 
                     const room = eval(`rm${selectedRoom}`);
@@ -323,7 +326,7 @@ function RoomCreator(props) {
         },
         UpdateLocation: (newLocation, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
-            //Axios.put('http://localhost:3001/api/update/location', {
+                //Axios.put('http://localhost:3001/api/update/location', {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
@@ -331,7 +334,7 @@ function RoomCreator(props) {
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-            //Axios.put('http://localhost:3001/api/update/casecart', {
+                //Axios.put('http://localhost:3001/api/update/casecart', {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
@@ -467,7 +470,7 @@ function RoomCreator(props) {
                     room27={rm27} room28={rm28}
                     room29={rm29} room30={rm30}
                     room31={rm31} room32={rm32}
-                    urgenttrays={urgent} />
+                    urgenttrays={urgent} changevalue={changeCaseNumber}/>
             </div>
             <FloatingAddButton clickhandle={handleShow} />
         </>
