@@ -90,7 +90,7 @@ function RoomCreator(props) {
 
 
     function changeCaseNumber(value){
-        setcaseNum(newval);
+        setcaseNum(value);
         console.log(caseNum);
     }
 
