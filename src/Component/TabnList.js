@@ -69,11 +69,11 @@ class TabnList extends React.Component {
       <Tabs
         //activeKey={this.state.key}
         onSelect={(k) => this.props.changecasenumber(k)}
-        defaultActiveKey={1}
+        defaultActiveKey='1'
         // onSelect={(k) => this.setState({ key: k })}
         className="mb-3 tabs"
       >
-        <Tab eventKey={1} title="First Cases">
+        <Tab eventKey='1' title="First Cases">
           {
             <>
               <Container>
@@ -131,13 +131,13 @@ class TabnList extends React.Component {
 
           }
         </Tab>
-        <Tab eventKey={2} title="Second Cases">
+        <Tab eventKey='2' title="Second Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey={3} title="Third Cases">
+        <Tab eventKey='3' title="Third Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey={4} title="Fourth++ Cases">
+        <Tab eventKey='4' title="Fourth++ Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
       </Tabs>
