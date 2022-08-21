@@ -6,7 +6,7 @@ import RoomCard from './RoomCard';
 
 
 class TabnList extends React.Component {
- state = { key: '1' };
+ state = { key: 'first' };
 
 
 
@@ -70,10 +70,10 @@ class TabnList extends React.Component {
         activeKey={this.state.key}
         //onSelect={((k) =>console.log(k))}
         //defaultActiveKey='first'
-        onSelect={(k) => this.setState({ key: k }, this.props.changecasenumber(this.state.key))}
+        onSelect={(k) => this.setState({ key: k }, this.props.changecasenumber(k))}
         className="mb-3 tabs"
       >
-        <Tab eventKey='1' title="First Cases">
+        <Tab eventKey='first' title="First Cases">
           {
             <>
               <Container>
@@ -131,14 +131,14 @@ class TabnList extends React.Component {
 
           }
         </Tab>
-        <Tab eventKey='2' title="Second Cases">
-          <h2 className='trayLocation'>This feature is coming soon..</h2>
+        <Tab eventKey='second' title="Second Cases">
+          <h2 className='trayLocation'>This feature is coming soon..2</h2>
         </Tab>
-        <Tab eventKey='3' title="Third Cases">
-          <h2 className='trayLocation'>This feature is coming soon..</h2>
+        <Tab eventKey='third' title="Third Cases">
+          <h2 className='trayLocation'>This feature is coming soon..3</h2>
         </Tab>
-        <Tab eventKey='4' title="Fourth++ Cases">
-          <h2 className='trayLocation'>This feature is coming soon..</h2>
+        <Tab eventKey='fourth' title="Fourth++ Cases">
+          <h2 className='trayLocation'>This feature is coming soon..4</h2>
         </Tab>
       </Tabs>
     );

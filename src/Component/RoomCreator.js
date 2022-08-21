@@ -86,11 +86,11 @@ function RoomCreator(props) {
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
 
-    const [caseNum, setcaseNum] = useState('');
+    // const [caseNum, setcaseNum] = useState('');
 
 
     function changeCaseNumber(value){
-        setcaseNum(value);
+        // setcaseNum(value);
         console.log(value);
     }
 
