@@ -11,7 +11,7 @@ class TabnList extends React.Component {
 
 
   render() {
-    console.log(this.state.key);
+    //console.log(this.state.key);
     const urgentTrays = <RoomCard key={this.props.urgenttrays.id} roomNum={'Urgent Trays'} trayList={this.props.urgenttrays} buttonhandler={this.props.buttonhandler} />;
     const room1 = <RoomCard key={this.props.room1.id} roomNum={'OR 1'} trayList={this.props.room1} buttonhandler={this.props.buttonhandler} />;
     const room2 = <RoomCard key={this.props.room2.id} roomNum={'OR 2'} trayList={this.props.room2} buttonhandler={this.props.buttonhandler} />;
@@ -71,7 +71,7 @@ class TabnList extends React.Component {
         activeKey={this.state.key}
         //onSelect={((k) =>console.log(k))}
         //defaultActiveKey='first'
-        onSelect={(k) => this.setState({ key: k })}
+        onSelect={(k) => this.setState({ key: k }, this.props.changecasenumber(this.state.key))}
         className="mb-3 tabs"
       >
         <Tab eventKey='first' title="First Cases">
