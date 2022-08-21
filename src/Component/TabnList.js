@@ -71,7 +71,7 @@ class TabnList extends React.Component {
               <Container>
                 <Row>
                   {
-                    arr_rooms.map((value, index) => this.arr_rooms_data[index].length > 0 ? <Col md='6'> {value}</Col> : null)
+                    arr_rooms.map((value, index) => arr_rooms_data[index].length > 0 ? <Col md='6'> {value}</Col> : null)
 
                   }
 
