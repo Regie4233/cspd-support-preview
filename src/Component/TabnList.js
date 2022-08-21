@@ -68,7 +68,15 @@ class TabnList extends React.Component {
             <>
               <Container>
                 <Row>
-                  {arr_rooms.map((val, index) => this.props.arr_rooms_data[index].length > 0 ? <Col md='6'> {val}</Col> : null)}
+                  {
+                    arr_rooms.forEach((element, index) => {
+                      arr_rooms_data[index].length > 0 ? <Col md='6'> {element}</Col> : null
+                    })
+
+                  }
+
+                  
+                  }
                   {/* {this.props.urgenttrays.length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
                   {this.props.room1.length > 0 ? <Col md='6'> {room1}</Col> : null}
                   {this.props.room2.length > 0 ? <Col md='6'> {room2}</Col> : null}
