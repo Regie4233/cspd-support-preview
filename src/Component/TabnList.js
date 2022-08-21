@@ -55,6 +55,12 @@ class TabnList extends React.Component {
       room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
     room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32];
 
+      function xxx(){
+        arr_rooms.forEach((element, index) => {
+          arr_rooms_data[index].length > 0 ? <Col md='6'> {element}</Col> : null
+        });
+      }
+
     return (
 
       <Tabs
@@ -69,9 +75,7 @@ class TabnList extends React.Component {
               <Container>
                 <Row>
                   {
-                    arr_rooms.forEach((element, index) => {
-                      arr_rooms_data[index].length > 0 ? <Col md='6'> {element}</Col> : null
-                    })
+                   xxx()
 
                   }
 
