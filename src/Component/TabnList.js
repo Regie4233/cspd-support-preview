@@ -75,7 +75,7 @@ class TabnList extends React.Component {
               <Container>
                 <Row>
                   {
-                   xxx()
+                   xxx
 
                   }
 
