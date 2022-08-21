@@ -76,7 +76,7 @@ class TabnList extends React.Component {
                   }
 
                   
-                  }
+                  
                   {/* {this.props.urgenttrays.length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
                   {this.props.room1.length > 0 ? <Col md='6'> {room1}</Col> : null}
                   {this.props.room2.length > 0 ? <Col md='6'> {room2}</Col> : null}
