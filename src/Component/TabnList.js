@@ -6,7 +6,7 @@ import RoomCard from './RoomCard';
 
 
 class TabnList extends React.Component {
- state = { key: 'first' };
+ state = { key: '1' };
 
 
 
@@ -73,7 +73,7 @@ class TabnList extends React.Component {
         onSelect={(k) => this.setState({ key: k }, this.props.changecasenumber(k))}
         className="mb-3 tabs"
       >
-        <Tab eventKey='first' title="First Cases">
+        <Tab eventKey='1' title="First Cases">
           {
             <>
               <Container>
@@ -131,13 +131,13 @@ class TabnList extends React.Component {
 
           }
         </Tab>
-        <Tab eventKey='second' title="Second Cases">
+        <Tab eventKey='2' title="Second Cases">
           <h2 className='trayLocation'>This feature is coming soon..2</h2>
         </Tab>
-        <Tab eventKey='third' title="Third Cases">
+        <Tab eventKey='3' title="Third Cases">
           <h2 className='trayLocation'>This feature is coming soon..3</h2>
         </Tab>
-        <Tab eventKey='fourth' title="Fourth++ Cases">
+        <Tab eventKey='4' title="Fourth++ Cases">
           <h2 className='trayLocation'>This feature is coming soon..4</h2>
         </Tab>
       </Tabs>
