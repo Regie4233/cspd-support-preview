@@ -51,9 +51,19 @@ class TabnList extends React.Component {
     const arr_rooms_data = [this.props.room1, this.props.room2, this.props.room3, this.props.room4, this.props.room5, this.props.room6, this.props.room7, this.props.room8, this.props.room9, this.props.room10,
     this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, this.props.room16, this.props.room17, this.props.room18, this.props.room19, this.props.room20,
     this.props.room21, this.props.room22, this.props.room23, this.props.room24, this.props.room25, this.props.room26, this.props.room27, this.props.room28, this.props.room29, this.props.room30, this.props.room31, this.props.room32];
-    const arr_rooms = [room1, room2, room3, room4, room5, room6, room7, room8, room9, room10,
-      room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
-      room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32];
+    
+    const arr_rooms = [{roomnumber: room1, data: this.props.room1}, {roomnumber: room2, data: this.props.room2}, {roomnumber: room3, data: this.props.room3},
+      {roomnumber: room4, data: this.props.room4}, {roomnumber: room5, data: this.props.room5}, {roomnumber: room6, data: this.props.room6} ,
+      {roomnumber: room7, data: this.props.room7}, 
+      {roomnumber: room8, data: this.props.room8}, {roomnumber: room9, data: this.props.room9}, {roomnumber: room10, data: this.props.room10},
+      {roomnumber: room11, data: this.props.room11}, {roomnumber: room12, data: this.props.room12}, {roomnumber: room13, data: this.props.room13}, 
+      {roomnumber: room14, data: this.props.room14}, {roomnumber: room15, data: this.props.room15}, {roomnumber: room16, data: this.props.room16},
+       {roomnumber: room17, data: this.props.room17}, {roomnumber: room18, data: this.props.room18}, {roomnumber: room19, data: this.props.room19}, 
+       {roomnumber: room20, data: this.props.room20},
+      {roomnumber: room21, data: this.props.room21}, {roomnumber: room22, data: this.props.room22}, {roomnumber: room23, data: this.props.room23}, 
+      {roomnumber: room24, data: this.props.room24}, {roomnumber: room25, data: this.props.room25}, {roomnumber: room26, data: this.props.room26}, 
+      {roomnumber: room27, data: this.props.room27}, {roomnumber: room28, data: this.props.room28}, {roomnumber: room29, data: this.props.room29}, 
+      {roomnumber: room30, data: this.props.room30}, {roomnumber: room31, data: this.props.room31}, {roomnumber: room32, data: this.props.room32}];
 
 
 
@@ -71,7 +81,7 @@ class TabnList extends React.Component {
               <Container>
                 <Row>
                   {
-                    arr_rooms.map((value, index) => arr_rooms_data[index].length > 0 ? <Col md='6'> {value}</Col> : null)
+                    arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
 
                   }
 
