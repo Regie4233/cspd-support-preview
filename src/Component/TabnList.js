@@ -48,6 +48,12 @@ class TabnList extends React.Component {
     const room31 = <RoomCard key={this.props.room31.id} roomNum={'OR 31'} trayList={this.props.room31} buttonhandler={this.props.buttonhandler} />;
     const room32 = <RoomCard key={this.props.room32.id} roomNum={'OR 32'} trayList={this.props.room32} buttonhandler={this.props.buttonhandler} />;
 
+    const arr_rooms_data = [this.props.room1, this.props.room2, this.props.room3, this.props.room4, this.props.room5, this.props.room6, this.props.room7 ,this.props.room8, this.props.room9, this.props.room10,
+      this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, this.props.room16, this.props.room17, this.props.room18, this.props.room19, this.props.room20,
+    this.props.room21, this.props.room22, this.props.room23, this.props.room24, this.props.room25, this.props.room26, this.props.room27, this.props.room28, this.props.room29, this.props.room30, this.props.room31, this.props.room32];
+    const arr_rooms = [room1, room2, room3, room4, room5, room6, room7 ,room8, room9, room10,
+      room11, room12, room13, room14, room15, room16, room17, room18, room19, room20,
+    room21, room22, room23, room24, room25, room26, room27, room28, room29, room30, room31, room32];
 
     return (
 
@@ -62,7 +68,8 @@ class TabnList extends React.Component {
             <>
               <Container>
                 <Row>
-                  {this.props.urgenttrays.length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
+                  {arr_rooms.map((val, index) => this.props.arr_rooms_data[index].length > 0 ? <Col md='6'> {val}</Col> : null)}
+                  {/* {this.props.urgenttrays.length > 0 ? <Col md='6'> {urgentTrays}</Col> : null}
                   {this.props.room1.length > 0 ? <Col md='6'> {room1}</Col> : null}
                   {this.props.room2.length > 0 ? <Col md='6'> {room2}</Col> : null}
                   {this.props.room3.length > 0 ? <Col md='6'> {room3}</Col> : null}
@@ -97,15 +104,8 @@ class TabnList extends React.Component {
                   {this.props.room30.length > 0 ? <Col md='6'> {room30}</Col> : null}
 
                   {this.props.room31.length > 0 ? <Col md='6'> {room31}</Col> : null}
-                  {this.props.room32.length > 0 ? <Col md='6'> {room32}</Col> : null}
-                  {/* <RoomTableItems 
-                    roomsdata={[this.props.room1, this.props.room2, this.props.room3, this.props.room4, this.props.room5, 
-                      this.props.room6, this.props.room7, this.props.room8, this.props.room9, this.props.room10,
-                      this.props.room11, this.props.room12, this.props.room13, this.props.room14, this.props.room15, 
-                      this.props.room16, this.props.room17, this.props.room18, this.props.room19, this.props.room20,
-                      this.props.room21,this.props.room22, this.props.room23, this.props.room24, this.props.room25, 
-                      this.props.room26, this.props.room27, this.props.room28, this.props.room29, this.props.room30, 
-                      this.props.room31, this.props.room32, this.props.urgenttrays]} buttonhandler={this.props.buttonhandler}/> */}
+                  {this.props.room32.length > 0 ? <Col md='6'> {room32}</Col> : null} */}
+                 
                 </Row>
 
               </Container>
