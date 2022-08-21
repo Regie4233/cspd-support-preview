@@ -89,8 +89,7 @@ function RoomCreator(props) {
     const [caseNum, setcaseNum] = useState('');
 
 
-    async function changeCaseNumber(value){
-        const newval = await value;
+    function changeCaseNumber(value){
         setcaseNum(newval);
         console.log(caseNum);
     }
