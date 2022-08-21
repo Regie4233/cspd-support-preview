@@ -470,7 +470,7 @@ function RoomCreator(props) {
                     room27={rm27} room28={rm28}
                     room29={rm29} room30={rm30}
                     room31={rm31} room32={rm32}
-                    urgenttrays={urgent} changevalue={changeCaseNumber}/>
+                    urgenttrays={urgent} changevalue={changeCaseNumber()}/>
             </div>
             <FloatingAddButton clickhandle={handleShow} />
         </>
