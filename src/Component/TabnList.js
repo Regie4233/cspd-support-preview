@@ -6,7 +6,7 @@ import RoomCard from './RoomCard';
 
 
 class TabnList extends React.Component {
- // state = { key: 1 };
+ state = { key: 'first' };
 
 
 
@@ -67,10 +67,10 @@ class TabnList extends React.Component {
     return (
 
       <Tabs
-        //activeKey={this.state.key}
-        onSelect={((k) =>console.log(k))}
-        defaultActiveKey='first'
-        // onSelect={(k) => this.setState({ key: k })}
+        activeKey={this.state.key}
+        //onSelect={((k) =>console.log(k))}
+        //defaultActiveKey='first'
+        onSelect={(k) => this.setState({ key: k })}
         className="mb-3 tabs"
       >
         <Tab eventKey='first' title="First Cases">
