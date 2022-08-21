@@ -86,16 +86,18 @@ function RoomCreator(props) {
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
 
-    const [caseNum, setcaseNum] = useState(0);
+    const [caseNum, setcaseNum] = useState('');
 
 
-    function changeCaseNumber(value){
-        setcaseNum(value);
+    async function changeCaseNumber(value){
+        const newval = await value;
+        setcaseNum(newval);
         console.log(caseNum);
     }
 
     async function fetchData() {
         //const response = await Axios.get('http://localhost:3001/api/get/traydata');
+        if(caseNum === ''){return;}
         const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', { fcasenum: caseNum });
         setRm1(response.data.or1);
         setRm2(response.data.or2);
