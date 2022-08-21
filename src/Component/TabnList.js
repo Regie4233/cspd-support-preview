@@ -6,12 +6,11 @@ import RoomCard from './RoomCard';
 
 
 class TabnList extends React.Component {
- state = { key: 'first' };
+ state = { key: '1' };
 
 
 
   render() {
-    //console.log(this.state.key);
     const urgentTrays = <RoomCard key={this.props.urgenttrays.id} roomNum={'Urgent Trays'} trayList={this.props.urgenttrays} buttonhandler={this.props.buttonhandler} />;
     const room1 = <RoomCard key={this.props.room1.id} roomNum={'OR 1'} trayList={this.props.room1} buttonhandler={this.props.buttonhandler} />;
     const room2 = <RoomCard key={this.props.room2.id} roomNum={'OR 2'} trayList={this.props.room2} buttonhandler={this.props.buttonhandler} />;
@@ -74,7 +73,7 @@ class TabnList extends React.Component {
         onSelect={(k) => this.setState({ key: k }, this.props.changecasenumber(this.state.key))}
         className="mb-3 tabs"
       >
-        <Tab eventKey='first' title="First Cases">
+        <Tab eventKey='1' title="First Cases">
           {
             <>
               <Container>
@@ -132,13 +131,13 @@ class TabnList extends React.Component {
 
           }
         </Tab>
-        <Tab eventKey='second' title="Second Cases">
+        <Tab eventKey='2' title="Second Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey='third' title="Third Cases">
+        <Tab eventKey='3' title="Third Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
-        <Tab eventKey='fourth' title="Fourth++ Cases">
+        <Tab eventKey='4' title="Fourth++ Cases">
           <h2 className='trayLocation'>This feature is coming soon..</h2>
         </Tab>
       </Tabs>
