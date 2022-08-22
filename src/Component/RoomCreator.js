@@ -91,10 +91,10 @@ function RoomCreator(props) {
 
     function changeCaseNumber(value){
         setcaseNum(value).then(() => {
-            console.log(caseNum);
-        });
+            console.log("thestate " + caseNum);
+            
         fetchData();
-        console.log(value);
+        });
     }
 
     async function fetchData() {
