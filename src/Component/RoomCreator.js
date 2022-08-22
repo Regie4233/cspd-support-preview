@@ -89,11 +89,13 @@ function RoomCreator(props) {
     const [caseNum, setcaseNum] = useState('');
 
 
-    // function changeCaseNumber(value){
-    //     setcaseNum(value);
-    //     console.log(caseNum);
-    //     console.log(value);
-    // }
+    async function changeCaseNumber(value){
+        const newval = await value;
+        setcaseNum(newval);
+        fetchData();
+        console.log(caseNum);
+        console.log(value);
+    }
 
     async function fetchData() {
         const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', {fcasenum: caseNum});
@@ -470,7 +472,7 @@ function RoomCreator(props) {
                     room27={rm27} room28={rm28}
                     room29={rm29} room30={rm30}
                     room31={rm31} room32={rm32}
-                    urgenttrays={urgent} changecasenumber={setcaseNum}/>
+                    urgenttrays={urgent} changecasenumber={changeCaseNumber}/>
             </div>
             <FloatingAddButton clickhandle={handleShow} />
         </>
