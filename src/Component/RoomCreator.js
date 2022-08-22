@@ -96,7 +96,7 @@ function RoomCreator(props) {
     // }
 
     async function fetchData() {
-        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
+        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', {fcasenum: caseNum});
         setRm1(response.data.or1);
         setRm2(response.data.or2);
         setRm3(response.data.or3);
