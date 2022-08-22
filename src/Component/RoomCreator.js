@@ -135,7 +135,6 @@ function RoomCreator(props) {
 
 
     useEffect(() => {
-        console.log(caseNum);
         fetchData();
 
     }, []);
