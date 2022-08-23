@@ -165,109 +165,110 @@ function RoomCreator(props) {
             fdate: timeStamp,
             fcasecart: caseCart
 
-        }).then(() => {
-            setlastadded((prevState) => !prevState);
-            if (checked === true) {
-                setUrgent([...urgent, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue, isUrgent: checked }]);
-            } else {
-                if (radioValue === '1') {
-                    setRm1([...rm1, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '2') {
-                    setRm2([...rm2, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '3') {
-                    setRm3([...rm3, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '4') {
-                    setRm4([...rm4, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '5') {
-                    setRm5([...rm5, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '6') {
-                    setRm6([...rm6, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '7') {
-                    setRm7([...rm7, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '8') {
-                    setRm8([...rm8, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '9') {
-                    setRm9([...rm9, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '10') {
-                    setRm10([...rm10, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '11') {
-                    setRm11([...rm11, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '12') {
-                    setRm12([...rm12, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '13') {
-                    setRm13([...rm13, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '14') {
-                    setRm14([...rm14, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '15') {
-                    setRm15([...rm15, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '16') {
-                    setRm16([...rm16, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '17') {
-                    setRm17([...rm17, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '18') {
-                    setRm18([...rm18, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '19') {
-                    setRm19([...rm19, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '20') {
-                    setRm20([...rm20, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '21') {
-                    setRm21([...rm21, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '22') {
-                    setRm22([...rm22, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '23') {
-                    setRm23([...rm23, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '24') {
-                    setRm24([...rm24, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '25') {
-                    setRm25([...rm25, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '26') {
-                    setRm26([...rm26, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '27') {
-                    setRm27([...rm27, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '28') {
-                    setRm28([...rm28, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '29') {
-                    setRm29([...rm29, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '30') {
-                    setRm30([...rm30, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '31') {
-                    setRm31([...rm31, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-                else if (radioValue === '32') {
-                    setRm32([...rm32, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
-                }
-            }
         });
+    //     .then(() => {
+    //         setlastadded((prevState) => !prevState);
+    //         if (checked === true) {
+    //             setUrgent([...urgent, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue, isUrgent: checked }]);
+    //         } else {
+    //             if (radioValue === '1') {
+    //                 setRm1([...rm1, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '2') {
+    //                 setRm2([...rm2, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '3') {
+    //                 setRm3([...rm3, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '4') {
+    //                 setRm4([...rm4, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '5') {
+    //                 setRm5([...rm5, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '6') {
+    //                 setRm6([...rm6, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '7') {
+    //                 setRm7([...rm7, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '8') {
+    //                 setRm8([...rm8, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '9') {
+    //                 setRm9([...rm9, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '10') {
+    //                 setRm10([...rm10, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '11') {
+    //                 setRm11([...rm11, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '12') {
+    //                 setRm12([...rm12, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '13') {
+    //                 setRm13([...rm13, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '14') {
+    //                 setRm14([...rm14, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '15') {
+    //                 setRm15([...rm15, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '16') {
+    //                 setRm16([...rm16, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '17') {
+    //                 setRm17([...rm17, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '18') {
+    //                 setRm18([...rm18, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '19') {
+    //                 setRm19([...rm19, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '20') {
+    //                 setRm20([...rm20, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '21') {
+    //                 setRm21([...rm21, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '22') {
+    //                 setRm22([...rm22, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '23') {
+    //                 setRm23([...rm23, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '24') {
+    //                 setRm24([...rm24, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '25') {
+    //                 setRm25([...rm25, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '26') {
+    //                 setRm26([...rm26, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '27') {
+    //                 setRm27([...rm27, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '28') {
+    //                 setRm28([...rm28, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '29') {
+    //                 setRm29([...rm29, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '30') {
+    //                 setRm30([...rm30, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '31') {
+    //                 setRm31([...rm31, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //             else if (radioValue === '32') {
+    //                 setRm32([...rm32, { trayname: otrayname, currentLocation: 'nocal', notes: 'nonots', roomnum: radioValue }]);
+    //             }
+    //         }
+    //     });
         setCaseCart('- -');
         handleClose();
     };
