@@ -1,7 +1,7 @@
 import React, {createContext, useContext, useState } from 'react';
 
 
-const RoomCOntext = React.createContext();
+const RoomContext = React.createContext();
 
 export function RoomProvider({children}){
     const [rm1, setRm1] = useState([]);
