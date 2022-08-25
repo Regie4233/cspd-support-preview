@@ -476,7 +476,7 @@ function RoomCreator(props) {
                     urgenttrays={urgent} changecasenumber={changeCaseNumber}/> */}
                     <SelectedCaseContent />
             </div>
-            <FloatingAddButton clickhandle={handleShow} />
+            <FloatingAddButton clickhandle={handleShow buttonhandler={buttonHandler}} />
         </>
     );
 }

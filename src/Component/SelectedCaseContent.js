@@ -62,42 +62,42 @@ function SelectedCaseContent(props) {
 
     const [counter, setCounter] = useState(0);
 
-    const urgentTrays = <RoomCard key={urgent.id} roomNum={'Urgent Trays'} trayList={this.state.urgenttrays} buttonhandler={this.state.buttonhandler} />;
-    const roomComp1 = <RoomCard key={rm1.id} roomNum={'OR 1'} trayList={rm1} buttonhandler={this.state.buttonhandler} />;
-    const roomComp2 = <RoomCard key={rm2.id} roomNum={'OR 2'} trayList={rm2} buttonhandler={this.state.buttonhandler} />;
-    const roomComp3 = <RoomCard key={rm3.id} roomNum={'OR 3'} trayList={rm3} buttonhandler={this.state.buttonhandler} />;
-    const roomComp4 = <RoomCard key={rm4.id} roomNum={'OR 4'} trayList={rm4} buttonhandler={this.state.buttonhandler} />;
-    const roomComp5 = <RoomCard key={rm5.id} roomNum={'OR 5'} trayList={rm5} buttonhandler={this.state.buttonhandler} />;
-    const roomComp6 = <RoomCard key={rm6.id} roomNum={'OR 6'} trayList={rm6} buttonhandler={this.state.buttonhandler} />;
-    const roomComp7 = <RoomCard key={rm7.id} roomNum={'OR 7'} trayList={rm7} buttonhandler={this.state.buttonhandler} />;
-    const roomComp8 = <RoomCard key={rm8.id} roomNum={'OR 8'} trayList={rm8} buttonhandler={this.state.buttonhandler} />;
-    const roomComp9 = <RoomCard key={rm9.id} roomNum={'OR 9'} trayList={rm9} buttonhandler={this.state.buttonhandler} />;
-    const roomComp10 = <RoomCard key={rm10.id} roomNum={'OR 10'} trayList={rm10} buttonhandler={this.state.buttonhandler} />;
+    //const urgentTrays = <RoomCard key={urgent.id} roomNum={'Urgent Trays'} trayList={props.urgenttrays} buttonhandler={props.buttonhandler} />;
+    const roomComp1 = <RoomCard key={rm1.id} roomNum={'OR 1'} trayList={rm1} buttonhandler={props.buttonhandler} />;
+    const roomComp2 = <RoomCard key={rm2.id} roomNum={'OR 2'} trayList={rm2} buttonhandler={props.buttonhandler} />;
+    const roomComp3 = <RoomCard key={rm3.id} roomNum={'OR 3'} trayList={rm3} buttonhandler={props.buttonhandler} />;
+    const roomComp4 = <RoomCard key={rm4.id} roomNum={'OR 4'} trayList={rm4} buttonhandler={props.buttonhandler} />;
+    const roomComp5 = <RoomCard key={rm5.id} roomNum={'OR 5'} trayList={rm5} buttonhandler={props.buttonhandler} />;
+    const roomComp6 = <RoomCard key={rm6.id} roomNum={'OR 6'} trayList={rm6} buttonhandler={props.buttonhandler} />;
+    const roomComp7 = <RoomCard key={rm7.id} roomNum={'OR 7'} trayList={rm7} buttonhandler={props.buttonhandler} />;
+    const roomComp8 = <RoomCard key={rm8.id} roomNum={'OR 8'} trayList={rm8} buttonhandler={props.buttonhandler} />;
+    const roomComp9 = <RoomCard key={rm9.id} roomNum={'OR 9'} trayList={rm9} buttonhandler={props.buttonhandler} />;
+    const roomComp10 = <RoomCard key={rm10.id} roomNum={'OR 10'} trayList={rm10} buttonhandler={props.buttonhandler} />;
 
-    const roomComp11 = <RoomCard key={rm11.id} roomNum={'OR 11'} trayList={rm11} buttonhandler={this.state.buttonhandler} />;
-    const roomComp12 = <RoomCard key={rm12.id} roomNum={'OR 12'} trayList={rm12} buttonhandler={this.state.buttonhandler} />;
-    const roomComp13 = <RoomCard key={rm13.id} roomNum={'OR 13'} trayList={rm13} buttonhandler={this.state.buttonhandler} />;
-    const roomComp14 = <RoomCard key={rm14.id} roomNum={'OR 14'} trayList={rm14} buttonhandler={this.state.buttonhandler} />;
-    const roomComp15 = <RoomCard key={rm15.id} roomNum={'OR 15'} trayList={rm15} buttonhandler={this.state.buttonhandler} />;
-    const roomComp16 = <RoomCard key={rm16.id} roomNum={'OR 16'} trayList={rm16} buttonhandler={this.state.buttonhandler} />;
-    const roomComp17 = <RoomCard key={rm17.id} roomNum={'OR 17'} trayList={rm17} buttonhandler={this.state.buttonhandler} />;
-    const roomComp18 = <RoomCard key={rm18.id} roomNum={'OR 18'} trayList={rm18} buttonhandler={this.state.buttonhandler} />;
-    const roomComp19 = <RoomCard key={rm19.id} roomNum={'OR 19'} trayList={rm19} buttonhandler={this.state.buttonhandler} />;
-    const roomComp20 = <RoomCard key={rm20.id} roomNum={'OR 20'} trayList={rm20} buttonhandler={this.state.buttonhandler} />;
+    const roomComp11 = <RoomCard key={rm11.id} roomNum={'OR 11'} trayList={rm11} buttonhandler={props.buttonhandler} />;
+    const roomComp12 = <RoomCard key={rm12.id} roomNum={'OR 12'} trayList={rm12} buttonhandler={props.buttonhandler} />;
+    const roomComp13 = <RoomCard key={rm13.id} roomNum={'OR 13'} trayList={rm13} buttonhandler={props.buttonhandler} />;
+    const roomComp14 = <RoomCard key={rm14.id} roomNum={'OR 14'} trayList={rm14} buttonhandler={props.buttonhandler} />;
+    const roomComp15 = <RoomCard key={rm15.id} roomNum={'OR 15'} trayList={rm15} buttonhandler={props.buttonhandler} />;
+    const roomComp16 = <RoomCard key={rm16.id} roomNum={'OR 16'} trayList={rm16} buttonhandler={props.buttonhandler} />;
+    const roomComp17 = <RoomCard key={rm17.id} roomNum={'OR 17'} trayList={rm17} buttonhandler={props.buttonhandler} />;
+    const roomComp18 = <RoomCard key={rm18.id} roomNum={'OR 18'} trayList={rm18} buttonhandler={props.buttonhandler} />;
+    const roomComp19 = <RoomCard key={rm19.id} roomNum={'OR 19'} trayList={rm19} buttonhandler={props.buttonhandler} />;
+    const roomComp20 = <RoomCard key={rm20.id} roomNum={'OR 20'} trayList={rm20} buttonhandler={props.buttonhandler} />;
 
-    const roomComp21 = <RoomCard key={rm21.id} roomNum={'OR 21'} trayList={rm21} buttonhandler={this.state.buttonhandler} />;
-    const roomComp22 = <RoomCard key={rm22.id} roomNum={'OR 22'} trayList={rm22} buttonhandler={this.state.buttonhandler} />;
-    const roomComp23 = <RoomCard key={rm23.id} roomNum={'OR 23'} trayList={rm23} buttonhandler={this.state.buttonhandler} />;
-    const roomComp24 = <RoomCard key={rm24.id} roomNum={'OR 24'} trayList={rm24} buttonhandler={this.state.buttonhandler} />;
-    const roomComp25 = <RoomCard key={rm25.id} roomNum={'OR 25'} trayList={rm25} buttonhandler={this.state.buttonhandler} />;
-    const roomComp26 = <RoomCard key={rm26.id} roomNum={'OR 26'} trayList={rm26} buttonhandler={this.state.buttonhandler} />;
-    const roomComp27 = <RoomCard key={rm27.id} roomNum={'OR 27'} trayList={rm27} buttonhandler={this.state.buttonhandler} />;
-    const roomComp28 = <RoomCard key={rm28.id} roomNum={'OR 28'} trayList={rm28} buttonhandler={this.state.buttonhandler} />;
-    const roomComp29 = <RoomCard key={rm29.id} roomNum={'OR 29'} trayList={rm29} buttonhandler={this.state.buttonhandler} />;
-    const roomComp30 = <RoomCard key={rm30.id} roomNum={'OR 30'} trayList={rm30} buttonhandler={this.state.buttonhandler} />;
+    const roomComp21 = <RoomCard key={rm21.id} roomNum={'OR 21'} trayList={rm21} buttonhandler={props.buttonhandler} />;
+    const roomComp22 = <RoomCard key={rm22.id} roomNum={'OR 22'} trayList={rm22} buttonhandler={props.buttonhandler} />;
+    const roomComp23 = <RoomCard key={rm23.id} roomNum={'OR 23'} trayList={rm23} buttonhandler={props.buttonhandler} />;
+    const roomComp24 = <RoomCard key={rm24.id} roomNum={'OR 24'} trayList={rm24} buttonhandler={props.buttonhandler} />;
+    const roomComp25 = <RoomCard key={rm25.id} roomNum={'OR 25'} trayList={rm25} buttonhandler={props.buttonhandler} />;
+    const roomComp26 = <RoomCard key={rm26.id} roomNum={'OR 26'} trayList={rm26} buttonhandler={props.buttonhandler} />;
+    const roomComp27 = <RoomCard key={rm27.id} roomNum={'OR 27'} trayList={rm27} buttonhandler={props.buttonhandler} />;
+    const roomComp28 = <RoomCard key={rm28.id} roomNum={'OR 28'} trayList={rm28} buttonhandler={props.buttonhandler} />;
+    const roomComp29 = <RoomCard key={rm29.id} roomNum={'OR 29'} trayList={rm29} buttonhandler={props.buttonhandler} />;
+    const roomComp30 = <RoomCard key={rm30.id} roomNum={'OR 30'} trayList={rm30} buttonhandler={props.buttonhandler} />;
 
-    const roomComp31 = <RoomCard key={rm31.id} roomNum={'OR 31'} trayList={rm31} buttonhandler={this.state.buttonhandler} />;
-    const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={this.state.buttonhandler} />;
+    const roomComp31 = <RoomCard key={rm31.id} roomNum={'OR 31'} trayList={rm31} buttonhandler={props.buttonhandler} />;
+    const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={props.buttonhandler} />;
 
     async function fetchData() {
         const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', {fcasenum: caseNum});
@@ -166,10 +166,10 @@ function SelectedCaseContent(props) {
     return (
         <>
         <Tabs
-        activeKey={this.state.key}
+        activeKey={props.key}
         //onSelect={((k) =>console.log(k))}
         //defaultActiveKey='first'
-        onSelect={(k) => this.setState({ key: k }, this.state.changecasenumber(k))}
+        onSelect={(k) => setcaseNum(k)}
         className="mb-3 tabs"
       >
         <Tab eventKey='1' title="First Cases">
