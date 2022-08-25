@@ -6,6 +6,7 @@ import TabnList from './TabnList';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FloatingAddButton from './FloatingAddButton';
+import SelectedCaseContent from './SelectedCaseContent';
 
 function RoomCreator(props) {
 
@@ -454,7 +455,7 @@ function RoomCreator(props) {
                 </Modal.Footer>
             </Modal>
             <div className='mainForm'>
-                <TabnList
+                {/* <TabnList
                     buttonhandler={buttonHandler}
                     room1={rm1} room2={rm2}
                     room3={rm3} room4={rm4}
@@ -472,7 +473,8 @@ function RoomCreator(props) {
                     room27={rm27} room28={rm28}
                     room29={rm29} room30={rm30}
                     room31={rm31} room32={rm32}
-                    urgenttrays={urgent} changecasenumber={changeCaseNumber}/>
+                    urgenttrays={urgent} changecasenumber={changeCaseNumber}/> */}
+                    <SelectedCaseContent />
             </div>
             <FloatingAddButton clickhandle={handleShow} />
         </>
