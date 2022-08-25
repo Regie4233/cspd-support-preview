@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Col, Row, Tab, Tabs } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomCard from './RoomCard';
+import Axios from 'axios';
 
 
 
@@ -54,7 +55,7 @@ class TabnList extends React.Component {
     const room32 = <RoomCard key={this.state.room32.id} roomNum={'OR 32'} trayList={this.state.room32} buttonhandler={this.state.buttonhandler} />;
 
     async function fetchData() {
-      const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', { fcasenum: caseNum });
+      const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
       this.setState({room1: response.data.or1, room2: response.data.or2, room3: response.data.or3, room4: response.data.or4, room5: response.data.or5,
         room6: response.data.or6, room7: response.data.or7, room8: response.data.or8, room9: response.data.or9, room10: response.data.or10, 
         room11: response.data.or11, room12: response.data.or12, room13: response.data.or13, room14: response.data.or14, room15: response.data.or15,
