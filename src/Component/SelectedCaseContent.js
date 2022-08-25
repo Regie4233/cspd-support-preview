@@ -69,7 +69,7 @@ function SelectedCaseContent(props) {
                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
                     //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
                     room.splice(element.indexOf, 1);
-                    setlastadded((prevState) => !prevState);
+                    //setlastadded((prevState) => !prevState);
                 });
 
             });
@@ -87,7 +87,7 @@ function SelectedCaseContent(props) {
                         const aaa = urgent.indexOf(ccc.id)
                         urgent.splice(aaa, 1);
                         console.log('deleting from ' + urgent + ' tray name ' + tname);
-                        setlastadded((prevState) => !prevState);
+                        //setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
 
@@ -122,7 +122,7 @@ function SelectedCaseContent(props) {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
-            setlastadded((prevState) => !prevState);
+           // setlastadded((prevState) => !prevState);
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
@@ -130,7 +130,7 @@ function SelectedCaseContent(props) {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
-            setlastadded((prevState) => !prevState);
+           // setlastadded((prevState) => !prevState);
         }
 
     }
@@ -245,7 +245,7 @@ function SelectedCaseContent(props) {
     return (
         <>
         <Tabs
-        activeKey={key}
+        activeKey={caseNum}
         //onSelect={((k) =>console.log(k))}
         //defaultActiveKey='first'
         onSelect={(k) => setcaseNum(k)}
