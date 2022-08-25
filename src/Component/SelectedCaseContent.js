@@ -106,7 +106,7 @@ function SelectedCaseContent(props) {
                         const aaa = room.indexOf(ccc.id)
                         room.splice(aaa, 1);
                         console.log('deleting from ' + room + ' tray name ' + tname);
-                        setlastadded((prevState) => !prevState);
+                       // setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
 
