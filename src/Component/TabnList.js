@@ -59,7 +59,7 @@ class TabnList extends React.Component {
     //   this.setState({room1: response.data.or1});
     //   console.log("fetch");
     // }
-     fetchData = async () => {
+     const fetchData = async () => {
       const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata');
       this.setState({room1: response.data.or1});
       console.log("fetch");
