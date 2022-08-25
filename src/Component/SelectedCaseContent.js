@@ -133,6 +133,7 @@ function SelectedCaseContent(props) {
         setRm30(response.data.or30);
         setRm31(response.data.or31);
         setRm32(response.data.or32);
+        console.log('run fetch');
     }
 
 
