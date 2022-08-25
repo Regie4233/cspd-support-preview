@@ -97,50 +97,50 @@ function RoomCreator(props) {
         });
     }
 
-    async function fetchData() {
-        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', {fcasenum: caseNum});
-        setRm1(response.data.or1);
-        setRm2(response.data.or2);
-        setRm3(response.data.or3);
-        setRm4(response.data.or4);
-        setRm5(response.data.or5);
-        setRm6(response.data.or6);
-        setRm7(response.data.or7);
-        setRm8(response.data.or8);
-        setRm9(response.data.or9);
-        setRm10(response.data.or10);
-        setRm11(response.data.or11);
-        setRm12(response.data.or12);
-        setRm13(response.data.or13);
-        setRm14(response.data.or14);
-        setRm15(response.data.or15);
-        setRm16(response.data.or16);
-        setRm17(response.data.or17);
-        setRm18(response.data.or18);
-        setRm19(response.data.or19);
-        setRm20(response.data.or20);
-        setRm21(response.data.or21);
-        setRm22(response.data.or22);
-        setRm23(response.data.or23);
-        setRm24(response.data.or24);
-        setRm25(response.data.or25);
-        setRm26(response.data.or26);
-        setRm27(response.data.or27);
-        setRm28(response.data.or28);
-        setRm29(response.data.or29);
-        setRm30(response.data.or30);
-        setRm31(response.data.or31);
-        setRm32(response.data.or32);
-    }
+    // async function fetchData() {
+    //     const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', {fcasenum: caseNum});
+    //     setRm1(response.data.or1);
+    //     setRm2(response.data.or2);
+    //     setRm3(response.data.or3);
+    //     setRm4(response.data.or4);
+    //     setRm5(response.data.or5);
+    //     setRm6(response.data.or6);
+    //     setRm7(response.data.or7);
+    //     setRm8(response.data.or8);
+    //     setRm9(response.data.or9);
+    //     setRm10(response.data.or10);
+    //     setRm11(response.data.or11);
+    //     setRm12(response.data.or12);
+    //     setRm13(response.data.or13);
+    //     setRm14(response.data.or14);
+    //     setRm15(response.data.or15);
+    //     setRm16(response.data.or16);
+    //     setRm17(response.data.or17);
+    //     setRm18(response.data.or18);
+    //     setRm19(response.data.or19);
+    //     setRm20(response.data.or20);
+    //     setRm21(response.data.or21);
+    //     setRm22(response.data.or22);
+    //     setRm23(response.data.or23);
+    //     setRm24(response.data.or24);
+    //     setRm25(response.data.or25);
+    //     setRm26(response.data.or26);
+    //     setRm27(response.data.or27);
+    //     setRm28(response.data.or28);
+    //     setRm29(response.data.or29);
+    //     setRm30(response.data.or30);
+    //     setRm31(response.data.or31);
+    //     setRm32(response.data.or32);
+    // }
 
 
     useEffect(() => {
-        fetchData();
+       // fetchData();
 
     }, []);
     useEffect(() => {
         const interval = setInterval(() => {
-            fetchData();
+            //fetchData();
             setCounter((prevCounter) => prevCounter + 1);
         }, 8000);
 
