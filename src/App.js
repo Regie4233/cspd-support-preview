@@ -47,10 +47,10 @@ function App() {
           <Container>
             {/* <Navbar.Brand href="https://regie4233.github.io/cspd-support">CSPD</Navbar.Brand> */}
             <Nav className="me-auto">
-              <Nav.Link href="https://regie4233.github.io/cspd-support">Home</Nav.Link>
-              <Nav.Link href="https://regie4233.github.io/cspd-support/reporter">Reporter</Nav.Link>
-              <Nav.Link href="https://regie4233.github.io/cspd-support/viewer">Viewer</Nav.Link>
-              <Nav.Link href="https://regie4233.github.io/cspd-support/login">
+              <Nav.Link href="https://regie4233.github.io/cspd-support-preview">Home</Nav.Link>
+              <Nav.Link href="https://regie4233.github.io/cspd-support-preview/reporter">Reporter</Nav.Link>
+              <Nav.Link href="https://regie4233.github.io/cspd-support-preview/viewer">Viewer</Nav.Link>
+              <Nav.Link href="https://regie4233.github.io/cspd-support-preview/login">
                 {loginstatus === '' ? <p>You are not Logged In Click To Login</p> : <p> Logged as: {loginstatus}</p>}
               </Nav.Link>
               <NavItem className='justify-content-end'> {loginstatus === '' ? null : <button onClick={logOff}>LOG OFF</button>}</NavItem>
