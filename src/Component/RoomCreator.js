@@ -275,76 +275,76 @@ function RoomCreator(props) {
     };
 
 
-    const buttonHandler = {
-        deleteAll: (selectedRoom) => {
-            const room = eval(`rm${selectedRoom}`);
-            room.forEach(element => {
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
-                    //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
-                    room.splice(element.indexOf, 1);
-                    setlastadded((prevState) => !prevState);
-                });
+    // const buttonHandler = {
+    //     deleteAll: (selectedRoom) => {
+    //         const room = eval(`rm${selectedRoom}`);
+    //         room.forEach(element => {
+    //             Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
+    //                 //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
+    //                 room.splice(element.indexOf, 1);
+    //                 setlastadded((prevState) => !prevState);
+    //             });
 
-            });
-        },
-        deleteHandler: (tname, selectedRoom, isurgent) => {
-            console.log("urg " + isurgent);
-            if (isurgent === 1) {
+    //         });
+    //     },
+    //     deleteHandler: (tname, selectedRoom, isurgent) => {
+    //         console.log("urg " + isurgent);
+    //         if (isurgent === 1) {
 
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
-                    //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
-                    console.log('Deleting ' + tname + ' ' + selectedRoom);
+    //             Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+    //                 //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
+    //                 console.log('Deleting ' + tname + ' ' + selectedRoom);
 
-                    let ccc = urgent.find(x => x.id === tname);
-                    if (ccc) {
-                        const aaa = urgent.indexOf(ccc.id)
-                        urgent.splice(aaa, 1);
-                        console.log('deleting from ' + urgent + ' tray name ' + tname);
-                        setlastadded((prevState) => !prevState);
-                    } else {
-                        console.log('Tray not found');
+    //                 let ccc = urgent.find(x => x.id === tname);
+    //                 if (ccc) {
+    //                     const aaa = urgent.indexOf(ccc.id)
+    //                     urgent.splice(aaa, 1);
+    //                     console.log('deleting from ' + urgent + ' tray name ' + tname);
+    //                     setlastadded((prevState) => !prevState);
+    //                 } else {
+    //                     console.log('Tray not found');
 
-                    }
-                });
-            } else {
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
-                    //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
-                    console.log('Deleting ' + tname + ' ' + selectedRoom);
+    //                 }
+    //             });
+    //         } else {
+    //             Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+    //                 //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
+    //                 console.log('Deleting ' + tname + ' ' + selectedRoom);
 
-                    const room = eval(`rm${selectedRoom}`);
-                    let ccc = room.find(x => x.id === tname);
-                    if (ccc) {
-                        const aaa = room.indexOf(ccc.id)
-                        room.splice(aaa, 1);
-                        console.log('deleting from ' + room + ' tray name ' + tname);
-                        setlastadded((prevState) => !prevState);
-                    } else {
-                        console.log('Tray not found');
+    //                 const room = eval(`rm${selectedRoom}`); //the generated room number from roomcard minus 1 is the index of the array
+    //                 let ccc = room.find(x => x.id === tname);
+    //                 if (ccc) {
+    //                     const aaa = room.indexOf(ccc.id)
+    //                     room.splice(aaa, 1);
+    //                     console.log('deleting from ' + room + ' tray name ' + tname);
+    //                     setlastadded((prevState) => !prevState);
+    //                 } else {
+    //                     console.log('Tray not found');
 
-                    }
-                });
-            }
+    //                 }
+    //             });
+    //         }
 
 
-        },
-        UpdateLocation: (newLocation, entryId) => {
-            Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
-                //Axios.put('http://localhost:3001/api/update/location', {
-                fid: entryId,
-                fcurrentLocation: newLocation
-            });
-            setlastadded((prevState) => !prevState);
-        },
-        UpdateCaseCart: (newCaseCart, entryId) => {
-            Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-                //Axios.put('http://localhost:3001/api/update/casecart', {
-                fid: entryId,
-                fcasecart: newCaseCart
-            });
-            setlastadded((prevState) => !prevState);
-        }
+    //     },
+    //     UpdateLocation: (newLocation, entryId) => {
+    //         Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+    //             //Axios.put('http://localhost:3001/api/update/location', {
+    //             fid: entryId,
+    //             fcurrentLocation: newLocation
+    //         });
+    //         setlastadded((prevState) => !prevState);
+    //     },
+    //     UpdateCaseCart: (newCaseCart, entryId) => {
+    //         Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+    //             //Axios.put('http://localhost:3001/api/update/casecart', {
+    //             fid: entryId,
+    //             fcasecart: newCaseCart
+    //         });
+    //         setlastadded((prevState) => !prevState);
+    //     }
 
-    }
+    // }
 
     const radios = [
         { name: 'OR 1', value: '1' },
@@ -474,7 +474,7 @@ function RoomCreator(props) {
                     room29={rm29} room30={rm30}
                     room31={rm31} room32={rm32}
                     urgenttrays={urgent} changecasenumber={changeCaseNumber}/> */}
-                <SelectedCaseContent buttonhandler={buttonHandler} />
+                <SelectedCaseContent/>
             </div>
             <FloatingAddButton clickhandle={handleShow} />
         </>
