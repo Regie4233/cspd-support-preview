@@ -58,7 +58,7 @@ function SelectedCaseContent(props) {
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
 
-    const [caseNum, setcaseNum] = useState(1);
+    const [caseNum, setcaseNum] = useState(2);
 
     const [counter, setCounter] = useState(0);
 
@@ -249,7 +249,7 @@ function SelectedCaseContent(props) {
         <Tabs
         activeKey={caseNum}
         //onSelect={((k) =>console.log(k))}
-        //defaultActiveKey='first'
+        defaultActiveKey={1}
         onSelect={(k) => setcaseNum(k)}
         className="mb-3 tabs"
       >
