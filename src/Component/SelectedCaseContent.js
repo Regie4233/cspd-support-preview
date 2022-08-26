@@ -58,7 +58,7 @@ function SelectedCaseContent(props) {
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
 
-    const [caseNum, setcaseNum] = useState('1');
+    const [caseNum, setcaseNum] = useState(1);
 
     const [counter, setCounter] = useState(0);
 
@@ -253,7 +253,7 @@ function SelectedCaseContent(props) {
         onSelect={(k) => setcaseNum(k)}
         className="mb-3 tabs"
       >
-        <Tab eventKey='1' title="First Cases">
+        <Tab eventKey={1} title="First Cases">
               <Container>
                 <Row>
                   {
@@ -262,7 +262,7 @@ function SelectedCaseContent(props) {
                 </Row>
               </Container>
         </Tab>
-        <Tab eventKey='2' title="Second Cases">
+        <Tab eventKey={2} title="Second Cases">
           <Container>
                 <Row>
                   {
@@ -271,10 +271,10 @@ function SelectedCaseContent(props) {
                 </Row>
               </Container>
         </Tab>
-        <Tab eventKey='3' title="Third Cases">
+        <Tab eventKey={3} title="Third Cases">
           <h2 className='trayLocation'>This feature is coming soon..3</h2>
         </Tab>
-        <Tab eventKey='4' title="Fourth++ Cases">
+        <Tab eventKey={4} title="Fourth++ Cases">
           <h2 className='trayLocation'>This feature is coming soon..4</h2>
         </Tab>
       </Tabs>
