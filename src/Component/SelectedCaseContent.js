@@ -173,6 +173,7 @@ function SelectedCaseContent(props) {
     const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={buttonHandler} />;
 
     const fetchData = async () =>{
+        console.log(caseNum);
         const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
         setRm1(response.data.or1);
         setRm2(response.data.or2);
@@ -210,7 +211,8 @@ function SelectedCaseContent(props) {
     }
 
     useEffect(() => {
-        console.log(caseNum);
+        //console.log(caseNum);
+        fetchData();
     }, [caseNum])
     useEffect(() => {
         fetchData();
@@ -249,7 +251,7 @@ function SelectedCaseContent(props) {
         <Tabs
         activeKey={caseNum}
         //onSelect={((k) =>console.log(k))}
-        defaultActiveKey={1}
+        //defaultActiveKey={1}
         onSelect={(k) => setcaseNum(k)}
         className="mb-3 tabs"
       >
