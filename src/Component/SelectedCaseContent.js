@@ -173,7 +173,7 @@ function SelectedCaseContent(props) {
     const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={buttonHandler} />;
 
     const fetchData = async () =>{
-        const response = await Axios.get('https://mlmdb.herokuapp.com/api/get/traydata', {fcasenum: caseNum});
+        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
         setRm1(response.data.or1);
         setRm2(response.data.or2);
         setRm3(response.data.or3);
