@@ -263,7 +263,13 @@ function SelectedCaseContent(props) {
               </Container>
         </Tab>
         <Tab eventKey='2' title="Second Cases">
-          <h2 className='trayLocation'>This feature is coming soon..2</h2>
+          <Container>
+                <Row>
+                  {
+                    arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
+                  }
+                </Row>
+              </Container>
         </Tab>
         <Tab eventKey='3' title="Third Cases">
           <h2 className='trayLocation'>This feature is coming soon..3</h2>
