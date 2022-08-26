@@ -209,7 +209,9 @@ function SelectedCaseContent(props) {
         console.log('run fetch');
     }
 
-
+    useEffect(() => {
+        console.log(caseNum);
+    }, [caseNum])
     useEffect(() => {
         fetchData();
  
@@ -248,7 +250,7 @@ function SelectedCaseContent(props) {
         activeKey={caseNum}
         //onSelect={((k) =>console.log(k))}
         //defaultActiveKey='first'
-        onSelect={((k) => setcaseNum(k), console.log(caseNum))}
+        onSelect={(k) => setcaseNum(k)}
         className="mb-3 tabs"
       >
         <Tab eventKey='1' title="First Cases">
