@@ -58,13 +58,13 @@ function SelectedCaseContent(props) {
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
 
-    const [caseNum, setcaseNum] = useState('');
+    const [caseNum, setcaseNum] = useState('1');
 
     const [counter, setCounter] = useState(0);
 
     const buttonHandler = {
         deleteAll: (selectedRoom) => {
-            const room = eval(`rm${selectedRoom}`);
+            const room = arr_room_states[selectedRoom - 1];
             room.forEach(element => {
                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
                     //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
@@ -248,7 +248,7 @@ function SelectedCaseContent(props) {
         activeKey={caseNum}
         //onSelect={((k) =>console.log(k))}
         //defaultActiveKey='first'
-        onSelect={(k) => setcaseNum(k)}
+        onSelect={(k) => setcaseNum(k), console.log(caseNum)}
         className="mb-3 tabs"
       >
         <Tab eventKey='1' title="First Cases">
