@@ -248,7 +248,7 @@ function SelectedCaseContent(props) {
     return (
         <>
             <Tabs
-                id='caseTab'
+                id="controlled-tab-example"
                 activeKey={caseNum}
                 //onSelect={((k) =>console.log(k))}
                 //defaultActiveKey={1}
