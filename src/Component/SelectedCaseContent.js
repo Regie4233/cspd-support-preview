@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Col, Row, Tab, Tabs } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomCard from './RoomCard';
@@ -106,7 +106,7 @@ function SelectedCaseContent(props) {
                         const aaa = room.indexOf(ccc.id)
                         room.splice(aaa, 1);
                         console.log('deleting from ' + room + ' tray name ' + tname);
-                       // setlastadded((prevState) => !prevState);
+                        // setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
 
@@ -122,7 +122,7 @@ function SelectedCaseContent(props) {
                 fid: entryId,
                 fcurrentLocation: newLocation
             });
-           // setlastadded((prevState) => !prevState);
+            // setlastadded((prevState) => !prevState);
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
@@ -130,7 +130,7 @@ function SelectedCaseContent(props) {
                 fid: entryId,
                 fcasecart: newCaseCart
             });
-           // setlastadded((prevState) => !prevState);
+            // setlastadded((prevState) => !prevState);
         }
 
     }
@@ -172,9 +172,9 @@ function SelectedCaseContent(props) {
     const roomComp31 = <RoomCard key={rm31.id} roomNum={'OR 31'} trayList={rm31} buttonhandler={buttonHandler} />;
     const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={buttonHandler} />;
 
-    const fetchData = async (val) =>{
+    const fetchData = async () => {
         console.log(caseNum);
-        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${val}`);
+        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
         setRm1(response.data.or1);
         setRm2(response.data.or2);
         setRm3(response.data.or3);
@@ -212,21 +212,21 @@ function SelectedCaseContent(props) {
 
     useEffect(() => {
         //console.log(caseNum);
-        fetchData(caseNum);
+        fetchData();
     }, [caseNum])
     useEffect(() => {
-        fetchData(caseNum);
-     }, []);
-     useEffect(() => {
-         const interval = setInterval(() => {
-             fetchData(caseNum);
-             setCounter((prevCounter) => prevCounter + 1);
-         }, 8000);
- 
-         return () => clearInterval(interval);
-     }, []);
-  
-     const arr_room_states = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
+        fetchData();
+    }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            fetchData();
+            setCounter((prevCounter) => prevCounter + 1);
+        }, 8000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const arr_room_states = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
         rm11, rm12, rm13, rm14, rm15, rm16, rm17, rm18, rm19, rm20,
         rm21, rm22, rm23, rm24, rm25, rm26, rm27, rm28, rm29, rm30,
         rm31, rm32]
@@ -243,42 +243,43 @@ function SelectedCaseContent(props) {
     { roomnumber: roomComp27, data: rm27 }, { roomnumber: roomComp28, data: rm28 }, { roomnumber: roomComp29, data: rm29 },
     { roomnumber: roomComp30, data: rm30 }, { roomnumber: roomComp31, data: rm31 }, { roomnumber: roomComp32, data: rm32 }];
 
-    
+
 
     return (
         <>
-        <Tabs
-        activeKey={caseNum}
-        //onSelect={((k) =>console.log(k))}
-        //defaultActiveKey={1}
-        onSelect={(k) => setcaseNum(k)}
-        className="mb-3 tabs"
-      >
-        <Tab eventKey={1} title="First Cases">
-              <Container>
-                <Row>
-                  {
-                    arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
-                  }
-                </Row>
-              </Container>
-        </Tab>
-        <Tab eventKey={2} title="Second Cases">
-          <Container>
-                <Row>
-                  {
-                    arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
-                  }
-                </Row>
-              </Container>
-        </Tab>
-        <Tab eventKey={3} title="Third Cases">
-          <h2 className='trayLocation'>This feature is coming soon..3</h2>
-        </Tab>
-        <Tab eventKey={4} title="Fourth++ Cases">
-          <h2 className='trayLocation'>This feature is coming soon..4</h2>
-        </Tab>
-      </Tabs>
+            <Tabs
+                id='caseTab'
+                activeKey={caseNum}
+                //onSelect={((k) =>console.log(k))}
+                //defaultActiveKey={1}
+                onSelect={(k) => setcaseNum(k)}
+                className="mb-3 tabs"
+            >
+                <Tab eventKey={1} title="First Cases">
+                    <Container>
+                        <Row>
+                            {
+                                arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
+                            }
+                        </Row>
+                    </Container>
+                </Tab>
+                <Tab eventKey={2} title="Second Cases">
+                    <Container>
+                        <Row>
+                            {
+                                arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
+                            }
+                        </Row>
+                    </Container>
+                </Tab>
+                <Tab eventKey={3} title="Third Cases">
+                    <h2 className='trayLocation'>This feature is coming soon..3</h2>
+                </Tab>
+                <Tab eventKey={4} title="Fourth++ Cases">
+                    <h2 className='trayLocation'>This feature is coming soon..4</h2>
+                </Tab>
+            </Tabs>
         </>
     );
 }
