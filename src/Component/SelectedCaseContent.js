@@ -174,7 +174,7 @@ function SelectedCaseContent(props) {
 
     const fetchData = async () =>{
         console.log(caseNum);
-        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
+        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${val}`);
         setRm1(response.data.or1);
         setRm2(response.data.or2);
         setRm3(response.data.or3);
@@ -216,7 +216,6 @@ function SelectedCaseContent(props) {
     }, [caseNum])
     useEffect(() => {
         fetchData();
- 
      }, []);
      useEffect(() => {
          const interval = setInterval(() => {

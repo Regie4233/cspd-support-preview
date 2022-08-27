@@ -135,18 +135,18 @@ function RoomCreator(props) {
     // }
 
 
-    useEffect(() => {
-        // fetchData();
+    // useEffect(() => {
+    //     // fetchData();
 
-    }, []);
-    useEffect(() => {
-        const interval = setInterval(() => {
-            //fetchData();
-            setCounter((prevCounter) => prevCounter + 1);
-        }, 8000);
+    // }, []);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         //fetchData();
+    //         setCounter((prevCounter) => prevCounter + 1);
+    //     }, 8000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
