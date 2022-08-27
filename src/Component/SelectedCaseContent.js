@@ -174,7 +174,7 @@ function SelectedCaseContent(props) {
 
     const fetchData = async () =>{
         console.log(caseNum);
-        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${val}`);
+        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
         setRm1(response.data.or1);
         setRm2(response.data.or2);
         setRm3(response.data.or3);
