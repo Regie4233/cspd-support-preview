@@ -71,13 +71,13 @@ function App() {
                   </PrivateRoute>
                 } />
 
-              <Route path='/'
+              {/* <Route path='/'
                 element={
                   <PrivateRoute status={loginstatus} auth={authenticate}>
                     <HomePage />
                   </PrivateRoute>
-                } />
-              {/* <Route path='/' element={<HomePage />} /> */}
+                } /> */}
+              <Route path='/' element={<HomePage />} />
               <Route path='/login' element={<AuthenticationPage auth={authenticate} status={loginstatus} />} />
             </Routes>
           </Router>
