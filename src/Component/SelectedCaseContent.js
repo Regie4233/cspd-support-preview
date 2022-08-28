@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Col, Row, Tab, Tabs } from 'react-bootstrap';
+import { Container, Col, Row, Tab, Tabs, ButtonGroup, ToggleButton, Form, InputGroup, Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomCard from './RoomCard';
 import Axios from 'axios';
+import FloatingAddButton from './FloatingAddButton';
+import SelectedCaseTabs from './SelectedCaseTabs';
 
 
 function SelectedCaseContent(props) {
@@ -58,9 +60,79 @@ function SelectedCaseContent(props) {
     const [urgent, setUrgent] = useState([]);
     const [traydata, settraydata] = useState([]);
 
-    const [caseNum, setcaseNum] = useState(2);
+    const [caseNum, setcaseNum] = useState(1);
+
+    const [newtraycaseNum, setnewtraycaseNum] = useState(1);
 
     const [counter, setCounter] = useState(0);
+
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => setShow(true);
+
+    const [otrayname, setTrayname] = useState('');
+
+    const [checked, setChecked] = useState(false);
+    const [radioValue, setRadioValue] = useState(0);
+
+    const [caseCart, setCaseCart] = useState('');
+
+    const radios = [
+        { name: 'OR 1', value: '1' },
+        { name: 'OR 2', value: '2' },
+        { name: 'OR 3', value: '3' },
+        { name: 'OR 4', value: '4' },
+        { name: 'OR 5', value: '5' },
+        { name: 'OR 6', value: '6' },
+        { name: 'OR 7', value: '7' },
+        { name: 'OR 8', value: '8' },
+        { name: 'OR 9', value: '9' },
+        { name: 'OR 10', value: '10' },
+        { name: 'OR 11', value: '11' },
+        { name: 'OR 12', value: '12' },
+        { name: 'OR 12A', value: '13' },
+        { name: 'OR 14', value: '14' },
+        { name: 'OR 15', value: '15' },
+        { name: 'OR 16', value: '16' },
+        { name: 'OR 17', value: '17' },
+        { name: 'OR 18', value: '18' },
+        { name: 'OR 19', value: '19' },
+        { name: 'OR 20', value: '20' },
+        { name: 'OR 21', value: '21' },
+        { name: 'OR 22', value: '22' },
+        { name: 'OR 23', value: '23' },
+        { name: 'OR 24', value: '24' },
+        { name: 'OR 25', value: '25' },
+        { name: 'OR 26', value: '26' },
+        { name: 'OR 27', value: '27' },
+        { name: 'OR 28', value: '28' },
+        { name: 'OR 29', value: '29' },
+        { name: 'OR 30', value: '30' },
+        { name: 'OR 31', value: '31' },
+        { name: 'OR 32', value: '32' },
+    ];
+
+    const casenumber_radio = [
+        { name: 'First Case', value: '1' },
+        { name: 'Second Case', value: '2' },
+        { name: 'Third Case', value: '3' },
+        { name: 'Fourth Case', value: '4' }
+    ]
+
+    const handleClose = () => {
+        setShow(false);
+        setTrayname('');
+        setRadioValue(0);
+        setChecked(false);
+
+    }
+
+    const changeCase = (val) => {
+        console.log('change to ' + val + ' ' + caseNum);
+
+        setcaseNum(val);
+        console.log('changed ' + caseNum);
+    }
 
     const buttonHandler = {
         deleteAll: (selectedRoom) => {
@@ -94,7 +166,7 @@ function SelectedCaseContent(props) {
                     }
                 });
             } else {
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
+                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}${caseNum}`).then(() => {
                     //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
                     console.log('Deleting ' + tname + ' ' + selectedRoom);
 
@@ -120,19 +192,44 @@ function SelectedCaseContent(props) {
             Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
                 //Axios.put('http://localhost:3001/api/update/location', {
                 fid: entryId,
-                fcurrentLocation: newLocation
+                fcurrentLocation: newLocation,
+                fcasenum: caseNum
             });
             // setlastadded((prevState) => !prevState);
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-                //Axios.put('http://localhost:3001/api/update/casecart', {
                 fid: entryId,
-                fcasecart: newCaseCart
+                fcasecart: newCaseCart,
+                fcasenum: caseNum
             });
             // setlastadded((prevState) => !prevState);
         }
 
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const dt = new Date();
+        const timeStamp = `${dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours()}:${dt.getMinutes()} ${dt.getHours() > 12 ? 'pm' : 'am'}`;
+        const date = new Date();
+        if (radioValue === 0) {
+            alert('Please Select a Room!');
+            return;
+        }
+        Axios.post('https://mlmdb.herokuapp.com/api/insert', {
+            ftrayname: otrayname,
+            fcurrentlocation: '- -',
+            fnotes: 'no notes',
+            fradioVal: radioValue,
+            fisUrgent: checked,
+            ftime: timeStamp,
+            fcasecart: caseCart,
+            fcasenum: newtraycaseNum,
+            fdate: date
+
+        });
+        //setCaseCart('- -');
+        handleClose();
     }
 
     //const urgentTrays = <RoomCard key={urgent.id} roomNum={'Urgent Trays'} trayList={urgenttrays} buttonhandler={buttonHandler} />;
@@ -172,59 +269,108 @@ function SelectedCaseContent(props) {
     const roomComp31 = <RoomCard key={rm31.id} roomNum={'OR 31'} trayList={rm31} buttonhandler={buttonHandler} />;
     const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={buttonHandler} />;
 
-    const fetchData = async () => {
-        console.log(caseNum);
-        const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
-        setRm1(response.data.or1);
-        setRm2(response.data.or2);
-        setRm3(response.data.or3);
-        setRm4(response.data.or4);
-        setRm5(response.data.or5);
-        setRm6(response.data.or6);
-        setRm7(response.data.or7);
-        setRm8(response.data.or8);
-        setRm9(response.data.or9);
-        setRm10(response.data.or10);
-        setRm11(response.data.or11);
-        setRm12(response.data.or12);
-        setRm13(response.data.or13);
-        setRm14(response.data.or14);
-        setRm15(response.data.or15);
-        setRm16(response.data.or16);
-        setRm17(response.data.or17);
-        setRm18(response.data.or18);
-        setRm19(response.data.or19);
-        setRm20(response.data.or20);
-        setRm21(response.data.or21);
-        setRm22(response.data.or22);
-        setRm23(response.data.or23);
-        setRm24(response.data.or24);
-        setRm25(response.data.or25);
-        setRm26(response.data.or26);
-        setRm27(response.data.or27);
-        setRm28(response.data.or28);
-        setRm29(response.data.or29);
-        setRm30(response.data.or30);
-        setRm31(response.data.or31);
-        setRm32(response.data.or32);
-        console.log('run fetch');
-    }
-
     useEffect(() => {
-        //console.log(caseNum);
+        const fetchData = async () => {
+            if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
+            //console.log(caseNum);
+            const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
+            setRm1(response.data.or1);
+            setRm2(response.data.or2);
+            setRm3(response.data.or3);
+            setRm4(response.data.or4);
+            setRm5(response.data.or5);
+            setRm6(response.data.or6);
+            setRm7(response.data.or7);
+            setRm8(response.data.or8);
+            setRm9(response.data.or9);
+            setRm10(response.data.or10);
+            setRm11(response.data.or11);
+            setRm12(response.data.or12);
+            setRm13(response.data.or13);
+            setRm14(response.data.or14);
+            setRm15(response.data.or15);
+            setRm16(response.data.or16);
+            setRm17(response.data.or17);
+            setRm18(response.data.or18);
+            setRm19(response.data.or19);
+            setRm20(response.data.or20);
+            setRm21(response.data.or21);
+            setRm22(response.data.or22);
+            setRm23(response.data.or23);
+            setRm24(response.data.or24);
+            setRm25(response.data.or25);
+            setRm26(response.data.or26);
+            setRm27(response.data.or27);
+            setRm28(response.data.or28);
+            setRm29(response.data.or29);
+            setRm30(response.data.or30);
+            setRm31(response.data.or31);
+            setRm32(response.data.or32);
+            //console.log('run fetch');
+        }
         fetchData();
+        console.log('from useff ' + caseNum);
     }, [caseNum])
     useEffect(() => {
-        fetchData();
-    }, []);
+
+        // function dateFormatter() {
+        //     const date = new Date();
+        //     let month = date.getMonth() + 1;
+        //     let day = date.getDate();
+        //     if(month.toString().length === 1){
+        //         month = '0'+ month;
+        //     }
+        //     return `${month}-${day}`;
+        // }
+        // console.log(dateFormatter());
+    }, [newtraycaseNum]);
     useEffect(() => {
         const interval = setInterval(() => {
+
+            const fetchData = async () => {
+                if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
+                //console.log(caseNum);
+                const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
+                setRm1(response.data.or1);
+                setRm2(response.data.or2);
+                setRm3(response.data.or3);
+                setRm4(response.data.or4);
+                setRm5(response.data.or5);
+                setRm6(response.data.or6);
+                setRm7(response.data.or7);
+                setRm8(response.data.or8);
+                setRm9(response.data.or9);
+                setRm10(response.data.or10);
+                setRm11(response.data.or11);
+                setRm12(response.data.or12);
+                setRm13(response.data.or13);
+                setRm14(response.data.or14);
+                setRm15(response.data.or15);
+                setRm16(response.data.or16);
+                setRm17(response.data.or17);
+                setRm18(response.data.or18);
+                setRm19(response.data.or19);
+                setRm20(response.data.or20);
+                setRm21(response.data.or21);
+                setRm22(response.data.or22);
+                setRm23(response.data.or23);
+                setRm24(response.data.or24);
+                setRm25(response.data.or25);
+                setRm26(response.data.or26);
+                setRm27(response.data.or27);
+                setRm28(response.data.or28);
+                setRm29(response.data.or29);
+                setRm30(response.data.or30);
+                setRm31(response.data.or31);
+                setRm32(response.data.or32);
+                //console.log('run fetch');
+            }
             fetchData();
             setCounter((prevCounter) => prevCounter + 1);
         }, 8000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [caseNum]);
 
     const arr_room_states = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
         rm11, rm12, rm13, rm14, rm15, rm16, rm17, rm18, rm19, rm20,
@@ -245,41 +391,96 @@ function SelectedCaseContent(props) {
 
 
 
+
     return (
         <>
-            <Tabs
-                id="controlled-tab-example"
-                activeKey={caseNum}
-                //onSelect={((k) =>console.log(k))}
-                //defaultActiveKey={1}
-                onSelect={(k) => setcaseNum(k)}
-                className="mb-3 tabs"
-            >
-                <Tab eventKey={1} title="First Cases">
-                    <Container>
-                        <Row>
-                            {
-                                arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
-                            }
-                        </Row>
-                    </Container>
-                </Tab>
-                <Tab eventKey={2} title="Second Cases">
-                    <Container>
-                        <Row>
-                            {
-                                arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
-                            }
-                        </Row>
-                    </Container>
-                </Tab>
-                <Tab eventKey={3} title="Third Cases">
-                    <h2 className='trayLocation'>This feature is coming soon..3</h2>
-                </Tab>
-                <Tab eventKey={4} title="Fourth++ Cases">
-                    <h2 className='trayLocation'>This feature is coming soon..4</h2>
-                </Tab>
-            </Tabs>
+            <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} />
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add New Tray</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text id="basic-addon1">Tray Name</InputGroup.Text>
+                        <Form.Control
+                            autoFocus
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            onChange={event => setTrayname(event.target.value)}
+                        />
+                    </InputGroup>
+                    <InputGroup size='sm'>
+                        <InputGroup.Text id="basic-addon1">Case Cart #</InputGroup.Text>
+                        <Form.Control
+                            aria-describedby="basic-addon1"
+                            onChange={event => setCaseCart(event.target.value)}
+                        />
+                    </InputGroup>
+                    <br />
+
+                    <div>
+                        <ButtonGroup>
+                            {casenumber_radio.map((radio, y) => (
+                                <ToggleButton
+                                    key={y}
+                                    id={`case-${y}`}
+                                    type="radio"
+                                    variant='outline-danger'
+                                    name="Case"
+                                    value={radio.value}
+                                    checked={newtraycaseNum === radio.value}
+                                    onChange={e => setnewtraycaseNum(e.currentTarget.value)}
+                                >
+                                    {radio.name}
+                                </ToggleButton>
+                            ))}
+                        </ButtonGroup>
+                    </div>
+                    <div>
+                        <ButtonGroup>
+                            <Container>
+                                <Row>
+                                    {radios.map((radio, idx) => (
+                                        <Col>
+                                            <ToggleButton
+                                                key={idx}
+                                                id={`radio-${idx}`}
+                                                type="radio"
+                                                variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                                                name="radio"
+                                                value={radio.value}
+                                                checked={radioValue === radio.value}
+                                                onChange={e => setRadioValue(e.currentTarget.value)}
+                                            >
+                                                {radio.name}
+                                            </ToggleButton>
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </Container>
+                        </ButtonGroup>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <ToggleButton
+                        className="mb-2"
+                        id="toggle-check"
+                        type="checkbox"
+                        variant="outline-danger"
+                        checked={checked}
+                        value="1"
+                        onChange={e => setChecked(e.currentTarget.checked)}
+                    >
+                        Mark as Urgent Tray
+                    </ToggleButton>
+
+                    <Button variant='secondary' onClick={handleClose}>Close</Button>
+                    <Button variant='primary' onClick={handleSubmit}>Submit</Button>
+                </Modal.Footer>
+            </Modal>
+            <FloatingAddButton clickhandle={handleShow} />
         </>
     );
 }
