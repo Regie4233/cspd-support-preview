@@ -311,19 +311,19 @@ function SelectedCaseContent(props) {
         fetchData();
         console.log('from useff ' + caseNum);
     }, [caseNum])
-    useEffect(() => {
+    // useEffect(() => {
 
-        // function dateFormatter() {
-        //     const date = new Date();
-        //     let month = date.getMonth() + 1;
-        //     let day = date.getDate();
-        //     if(month.toString().length === 1){
-        //         month = '0'+ month;
-        //     }
-        //     return `${month}-${day}`;
-        // }
-        // console.log(dateFormatter());
-    }, [newtraycaseNum]);
+    //     // function dateFormatter() {
+    //     //     const date = new Date();
+    //     //     let month = date.getMonth() + 1;
+    //     //     let day = date.getDate();
+    //     //     if(month.toString().length === 1){
+    //     //         month = '0'+ month;
+    //     //     }
+    //     //     return `${month}-${day}`;
+    //     // }
+    //     // console.log(dateFormatter());
+    // }, [newtraycaseNum]);
     useEffect(() => {
         const interval = setInterval(() => {
 
