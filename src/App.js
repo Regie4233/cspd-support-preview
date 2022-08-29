@@ -54,8 +54,7 @@ function App() {
         </div>
 
         <div> {/* show logoff button and name of user */}
-          {/* <Router basename={process.env.PUBLIC_URL}> */}
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <Routes>
               <Route path='/reporter'
                 element={
