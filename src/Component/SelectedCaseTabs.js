@@ -1,6 +1,6 @@
 import react from 'react';
 import { Container, Col, Row, Tab, Tabs, Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
-// import { AiOutlineMenuFold } from 'react-icons/ai';
+import { AiOutlineMenuFold } from 'react-icons/ai';
 class SelectedCaseTabs extends react.Component {
 
 
@@ -19,8 +19,7 @@ class SelectedCaseTabs extends react.Component {
                         >
                             <Dropdown.Toggle 
                             variant='outline-dark'>
-                                {/* <AiOutlineMenuFold className='iconsize' /> */}
-                                ----
+                                <AiOutlineMenuFold className='iconsize' />
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item eventKey={1}>First Cases</Dropdown.Item>
