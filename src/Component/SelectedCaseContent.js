@@ -394,7 +394,7 @@ function SelectedCaseContent(props) {
 
     return (
         <>
-            <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} />
+            <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} showModal={handleShow}/>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -480,7 +480,7 @@ function SelectedCaseContent(props) {
                     <Button variant='primary' onClick={handleSubmit}>Submit</Button>
                 </Modal.Footer>
             </Modal>
-            <FloatingAddButton clickhandle={handleShow} />
+            {/* <FloatingAddButton clickhandle={handleShow} /> */}
         </>
     );
 }

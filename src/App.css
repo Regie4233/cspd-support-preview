@@ -49,14 +49,14 @@
   width: 300px;
 }
 
-.newButton {
+.desktopButton {
   height: 80px;
   width: 80px;
   pointer-events: all;
 }
 .buttonMobile{
-  height: 55px;
-  width: 55px;
+  height: 5vw;
+  width: 15vw;
   pointer-events: all;
 }
 
@@ -67,7 +67,11 @@
 
 .mainForm {
   /* padding-top: 8%; */
-  margin-top: 25%;
+  margin-top: 10vw;
+}
+
+.navbarbuttons{
+  padding-left: 50px;
 }
 
 
