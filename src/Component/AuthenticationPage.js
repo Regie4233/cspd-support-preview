@@ -45,13 +45,14 @@ function AuthenticationPage(props) {
   // }, []);
   return (
     <>
+      <style>{'body {background-color: darkslategray;}'}</style>
       {
         hasLogin === false ?
           <>
-            <div className='headerL check'>
+            <div className='headerL authCenter' style={{backgroundColor:'linen', color: 'maroon'}}>
               {loginmessage}
             </div>
-            <div className='check'>
+            <div className='authCenter' style={{backgroundColor:'linen'}}>
               <Form onSubmit={submitHandler}>
                 <Form.Group className="mb-3">
                   <Form.Label>Enter Username</Form.Label>

@@ -42,8 +42,8 @@ function App() {
                 <Nav.Link href="https://regie4233.github.io/cspd-support-preview/reporter">Reporter</Nav.Link>
                 <Nav.Link href="https://regie4233.github.io/cspd-support-preview/viewer">Viewer</Nav.Link>
                 {/* <Nav.Link href="http://localhost:3000">Home</Nav.Link>
-                <Nav.Link href="http://localhost:3000/reporter">Reporter</Nav.Link> */}
-                
+                <Nav.Link href="http://localhost:3000/reporter">Reporter</Nav.Link>
+                <Nav.Link href="http://localhost:3000/viewer">Viewer</Nav.Link> */}
                 {/* <Nav.Link href="https://regie4233.github.io/cspd-support-preview/login">
                   {loginstatus === '' ? <p>You are not Logged In Click To Login</p> : <p> Logged as: {loginstatus}</p>}
                 </Nav.Link> */}

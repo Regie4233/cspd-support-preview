@@ -77,6 +77,9 @@ function SelectedCaseContent(props) {
 
     const [caseCart, setCaseCart] = useState('');
 
+    //force rerender
+    const [lastadded, setlastadded] = useState(false);
+
     const radios = [
         { name: 'OR 1', value: '1' },
         { name: 'OR 2', value: '2' },
@@ -141,7 +144,7 @@ function SelectedCaseContent(props) {
                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
                     //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
                     room.splice(element.indexOf, 1);
-                    //setlastadded((prevState) => !prevState);
+                    setlastadded((prevState) => !prevState);
                 });
 
             });
@@ -159,7 +162,7 @@ function SelectedCaseContent(props) {
                         const aaa = urgent.indexOf(ccc.id)
                         urgent.splice(aaa, 1);
                         console.log('deleting from ' + urgent + ' tray name ' + tname);
-                        //setlastadded((prevState) => !prevState);
+                        setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
 
@@ -178,7 +181,7 @@ function SelectedCaseContent(props) {
                         const aaa = room.indexOf(ccc.id)
                         room.splice(aaa, 1);
                         console.log('deleting from ' + room + ' tray name ' + tname);
-                        // setlastadded((prevState) => !prevState);
+                        setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
 
@@ -195,7 +198,7 @@ function SelectedCaseContent(props) {
                 fcurrentLocation: newLocation,
                 fcasenum: caseNum
             });
-            // setlastadded((prevState) => !prevState);
+            setlastadded((prevState) => !prevState);
         },
         UpdateCaseCart: (newCaseCart, entryId) => {
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
@@ -203,7 +206,15 @@ function SelectedCaseContent(props) {
                 fcasecart: newCaseCart,
                 fcasenum: caseNum
             });
-            // setlastadded((prevState) => !prevState);
+            setlastadded((prevState) => !prevState);
+        },
+        UpdateNotes: (newNotes, entryId) => {
+            Axios.put('https://mlmdb.herokuapp.com/api/update/notes', {
+                fid: entryId,
+                fnotes: newNotes,
+                fcasenum: caseNum
+            });
+            setlastadded((prevState) => !prevState);
         }
 
     }
@@ -229,6 +240,7 @@ function SelectedCaseContent(props) {
 
         });
         //setCaseCart('- -');
+        setlastadded((prevState) => !prevState);
         handleClose();
     }
 
@@ -325,6 +337,47 @@ function SelectedCaseContent(props) {
     //     // console.log(dateFormatter());
     // }, [newtraycaseNum]);
     useEffect(() => {
+        const fetchData = async () => {
+            if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
+            //console.log(caseNum);
+            const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
+            setRm1(response.data.or1);
+            setRm2(response.data.or2);
+            setRm3(response.data.or3);
+            setRm4(response.data.or4);
+            setRm5(response.data.or5);
+            setRm6(response.data.or6);
+            setRm7(response.data.or7);
+            setRm8(response.data.or8);
+            setRm9(response.data.or9);
+            setRm10(response.data.or10);
+            setRm11(response.data.or11);
+            setRm12(response.data.or12);
+            setRm13(response.data.or13);
+            setRm14(response.data.or14);
+            setRm15(response.data.or15);
+            setRm16(response.data.or16);
+            setRm17(response.data.or17);
+            setRm18(response.data.or18);
+            setRm19(response.data.or19);
+            setRm20(response.data.or20);
+            setRm21(response.data.or21);
+            setRm22(response.data.or22);
+            setRm23(response.data.or23);
+            setRm24(response.data.or24);
+            setRm25(response.data.or25);
+            setRm26(response.data.or26);
+            setRm27(response.data.or27);
+            setRm28(response.data.or28);
+            setRm29(response.data.or29);
+            setRm30(response.data.or30);
+            setRm31(response.data.or31);
+            setRm32(response.data.or32);
+            //console.log('run fetch');
+        }
+        fetchData();
+    }, [lastadded])
+    useEffect(() => {
         const interval = setInterval(() => {
 
             const fetchData = async () => {
@@ -394,7 +447,7 @@ function SelectedCaseContent(props) {
 
     return (
         <>
-            <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} showModal={handleShow}/>
+            <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} showModal={handleShow} />
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

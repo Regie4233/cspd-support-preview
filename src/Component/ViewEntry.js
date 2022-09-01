@@ -26,7 +26,7 @@ class ViewEntry extends react.Component {
                         <td>{this.props.room.trayname}</td>
                         <td>{this.props.room.currentLocation}</td>
                         <td>{this.props.room.casecartnum}</td>
-                        <td>- -</td>
+                        <td>{this.props.room.notes}</td>
                     </tr>
 
 

@@ -67,7 +67,7 @@
 
 .mainForm {
   /* padding-top: 8%; */
-  margin-top: 10vw;
+  margin-top: 12vw;
 }
 
 .navbarbuttons{
@@ -89,6 +89,10 @@
 
 .urgentAlert {
   background-color: firebrick;
+  color: wheat;
+}
+.tableHead {
+  background-color:cadetblue;
   color: wheat;
 }
 
@@ -135,17 +139,20 @@
   justify-content: center
 }
 
-.check {
+.authCenter {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  padding-bottom: 10px;
 }
 
 .headerL {
   font-size: 30px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: black;
+  padding: 10vw;
+  color:papayawhip;
+  background-color: maroon;
+  height: 200px;
 }
 
 #pageheader {

@@ -1,5 +1,5 @@
 import react from 'react';
-import { Container, Col, Row, Tab, Tabs, Button, ButtonGroup, DropdownButton, Dropdown, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Col, Row, Tab, Tabs, Button, Dropdown, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import FloatingAddButton from './FloatingAddButton';
 import {HiOutlineViewGridAdd} from 'react-icons/hi';
 
@@ -56,8 +56,6 @@ class SelectedCaseTabs extends react.Component {
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={this.props.caseNum}
-                        //onSelect={((k) =>console.log(k))}
-                        //defaultActiveKey='2'
                         onSelect={(k) => this.props.changeCase(k)} //setcaseNum(k)
                         className="mb-3 tabs"
                     >
