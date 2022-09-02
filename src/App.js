@@ -19,7 +19,7 @@ function App() {
 
   function authenticate(user) {
     setLoginstatus(user);
-    console.log(user + ' ' + loginstatus);
+    // console.log(user + ' ' + loginstatus);
   }
   const logOff = () => {
     Axios.post('https://mlmdb.herokuapp.com/api/logoff').then((resp) => {
@@ -56,6 +56,7 @@ function App() {
 
         <div> {/* show logoff button and name of user */}
           <Router basename={process.env.PUBLIC_URL}>
+          {/* <Router> */}
             <Routes>
               <Route path='/reporter'
                 element={

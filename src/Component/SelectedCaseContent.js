@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container, Col, Row, Tab, Tabs, ButtonGroup, ToggleButton, Form, InputGroup, Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomCard from './RoomCard';
 import Axios from 'axios';
-import FloatingAddButton from './FloatingAddButton';
 import SelectedCaseTabs from './SelectedCaseTabs';
+import Placeholder from 'react-bootstrap/Placeholder';
 
 
 function SelectedCaseContent(props) {
@@ -80,6 +80,16 @@ function SelectedCaseContent(props) {
     //force rerender
     const [lastadded, setlastadded] = useState(false);
 
+    //array of rooms
+    const arr_room_states = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
+        rm11, rm12, rm13, rm14, rm15, rm16, rm17, rm18, rm19, rm20,
+        rm21, rm22, rm23, rm24, rm25, rm26, rm27, rm28, rm29, rm30,
+        rm31, rm32];
+    const arr_setters = [setRm1, setRm2, setRm3, setRm4, setRm5, setRm6, setRm7, setRm8, setRm9, setRm10,
+        setRm11, setRm12, setRm13, setRm14, setRm15, setRm16, setRm17, setRm18, setRm19, setRm20,
+        setRm21, setRm22, setRm23, setRm24, setRm25, setRm26, setRm27, setRm28, setRm29, setRm30,
+        setRm31, setRm32];
+
     const radios = [
         { name: 'OR 1', value: '1' },
         { name: 'OR 2', value: '2' },
@@ -131,17 +141,14 @@ function SelectedCaseContent(props) {
     }
 
     const changeCase = (val) => {
-        console.log('change to ' + val + ' ' + caseNum);
-
         setcaseNum(val);
-        console.log('changed ' + caseNum);
     }
 
     const buttonHandler = {
         deleteAll: (selectedRoom) => {
             const room = arr_room_states[selectedRoom - 1];
             room.forEach(element => {
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}`).then(() => {
+                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}${caseNum}`).then(() => {
                     //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
                     room.splice(element.indexOf, 1);
                     setlastadded((prevState) => !prevState);
@@ -238,10 +245,19 @@ function SelectedCaseContent(props) {
             fcasenum: newtraycaseNum,
             fdate: date
 
+        }).then(() => {
+            changeCase(newtraycaseNum);
+            createPlaceHolder(radioValue, otrayname, newtraycaseNum);
         });
-        //setCaseCart('- -');
         setlastadded((prevState) => !prevState);
         handleClose();
+    }
+
+    function createPlaceHolder(newRoomnum, newTrayname) { //dynamic set state 
+        const selectedSetter = arr_setters[newRoomnum - 1];
+        selectedSetter([...arr_room_states[newRoomnum - 1], { trayname: newTrayname, currentLocation: <PlaceHolderAnimation/>, notes: <PlaceHolderAnimation/>}]);
+
+
     }
 
     //const urgentTrays = <RoomCard key={urgent.id} roomNum={'Urgent Trays'} trayList={urgenttrays} buttonhandler={buttonHandler} />;
@@ -336,47 +352,7 @@ function SelectedCaseContent(props) {
     //     // }
     //     // console.log(dateFormatter());
     // }, [newtraycaseNum]);
-    useEffect(() => {
-        const fetchData = async () => {
-            if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
-            //console.log(caseNum);
-            const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
-            setRm1(response.data.or1);
-            setRm2(response.data.or2);
-            setRm3(response.data.or3);
-            setRm4(response.data.or4);
-            setRm5(response.data.or5);
-            setRm6(response.data.or6);
-            setRm7(response.data.or7);
-            setRm8(response.data.or8);
-            setRm9(response.data.or9);
-            setRm10(response.data.or10);
-            setRm11(response.data.or11);
-            setRm12(response.data.or12);
-            setRm13(response.data.or13);
-            setRm14(response.data.or14);
-            setRm15(response.data.or15);
-            setRm16(response.data.or16);
-            setRm17(response.data.or17);
-            setRm18(response.data.or18);
-            setRm19(response.data.or19);
-            setRm20(response.data.or20);
-            setRm21(response.data.or21);
-            setRm22(response.data.or22);
-            setRm23(response.data.or23);
-            setRm24(response.data.or24);
-            setRm25(response.data.or25);
-            setRm26(response.data.or26);
-            setRm27(response.data.or27);
-            setRm28(response.data.or28);
-            setRm29(response.data.or29);
-            setRm30(response.data.or30);
-            setRm31(response.data.or31);
-            setRm32(response.data.or32);
-            //console.log('run fetch');
-        }
-        fetchData();
-    }, [lastadded])
+
     useEffect(() => {
         const interval = setInterval(() => {
 
@@ -425,10 +401,7 @@ function SelectedCaseContent(props) {
         return () => clearInterval(interval);
     }, [caseNum]);
 
-    const arr_room_states = [rm1, rm2, rm3, rm4, rm5, rm6, rm7, rm8, rm9, rm10,
-        rm11, rm12, rm13, rm14, rm15, rm16, rm17, rm18, rm19, rm20,
-        rm21, rm22, rm23, rm24, rm25, rm26, rm27, rm28, rm29, rm30,
-        rm31, rm32]
+
     const arr_rooms = [{ roomnumber: roomComp1, data: rm1 }, { roomnumber: roomComp2, data: rm2 }, { roomnumber: roomComp3, data: rm3 },
     { roomnumber: roomComp4, data: rm4 }, { roomnumber: roomComp5, data: rm5 }, { roomnumber: roomComp6, data: rm6 },
     { roomnumber: roomComp7, data: rm7 },
@@ -536,5 +509,15 @@ function SelectedCaseContent(props) {
             {/* <FloatingAddButton clickhandle={handleShow} /> */}
         </>
     );
+}
+function PlaceHolderAnimation(){
+    return (
+        <>
+            <Placeholder as='p' animation='glow'>
+                <Placeholder xs={6} />
+            </Placeholder>
+        </>
+    );
+
 }
 export default SelectedCaseContent;

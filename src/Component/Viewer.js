@@ -7,10 +7,10 @@ function Viewer() {
     return (
         <>
             <div className='mainForm'>
-                    <ViewTable caseNum={1}/>
-                    <ViewTable caseNum={2}/>
-                    <ViewTable caseNum={3}/>
-                    <ViewTable caseNum={4}/>
+                    <ViewTable key={1} caseNum={1}/>
+                    <ViewTable key={2} caseNum={2}/>
+                    <ViewTable key={3} caseNum={3}/>
+                    <ViewTable key={4} caseNum={4}/>
             </div>
         </>
     );
