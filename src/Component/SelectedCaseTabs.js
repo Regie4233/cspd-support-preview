@@ -58,6 +58,7 @@ class SelectedCaseTabs extends react.Component {
                         activeKey={this.props.caseNum}
                         onSelect={(k) => this.props.changeCase(k)} //setcaseNum(k)
                         className="mb-3 tabs"
+                        style={{backgroundColor: 'lightsteelblue'}}
                     >
                         <Tab eventKey={1} title="First Cases">
                             <Container>
@@ -86,7 +87,25 @@ class SelectedCaseTabs extends react.Component {
                                 </Row>
                             </Container>
                         </Tab>
-                        <Tab eventKey={4} title="Fourth++ Cases">
+                        <Tab eventKey={4} title="Fourth Cases">
+                            <Container>
+                                <Row>
+                                    {
+                                        this.props.arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
+                                    }
+                                </Row>
+                            </Container>
+                        </Tab>
+                        <Tab eventKey={5} title="Fifth Cases">
+                            <Container>
+                                <Row>
+                                    {
+                                        this.props.arr_rooms.map((value) => value.data.length > 0 ? <Col md='6'> {value.roomnumber}</Col> : null)
+                                    }
+                                </Row>
+                            </Container>
+                        </Tab>
+                        <Tab eventKey={6} title="Sixth++ Cases">
                             <Container>
                                 <Row>
                                     {

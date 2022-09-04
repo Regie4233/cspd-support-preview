@@ -129,7 +129,9 @@ function SelectedCaseContent(props) {
         { name: 'First Case', value: '1' },
         { name: 'Second Case', value: '2' },
         { name: 'Third Case', value: '3' },
-        { name: 'Fourth Case', value: '4' }
+        { name: 'Fourth Case', value: '4' },
+        { name: 'Fifth Case', value: '5' },
+        { name: 'Sixth Case', value: '6' }
     ]
 
     const handleClose = () => {
@@ -260,7 +262,6 @@ function SelectedCaseContent(props) {
 
     }
 
-    //const urgentTrays = <RoomCard key={urgent.id} roomNum={'Urgent Trays'} trayList={urgenttrays} buttonhandler={buttonHandler} />;
     const roomComp1 = <RoomCard key={rm1.id} roomNum={'OR 1'} trayList={rm1} buttonhandler={buttonHandler} />;
     const roomComp2 = <RoomCard key={rm2.id} roomNum={'OR 2'} trayList={rm2} buttonhandler={buttonHandler} />;
     const roomComp3 = <RoomCard key={rm3.id} roomNum={'OR 3'} trayList={rm3} buttonhandler={buttonHandler} />;
@@ -296,11 +297,12 @@ function SelectedCaseContent(props) {
 
     const roomComp31 = <RoomCard key={rm31.id} roomNum={'OR 31'} trayList={rm31} buttonhandler={buttonHandler} />;
     const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={buttonHandler} />;
+    const urgentRooms = <RoomCard key={rm32.id} roomNum={'Urgent Trays'} trayList={urgent} buttonhandler={buttonHandler} />;
 
     useEffect(() => {
         const fetchData = async () => {
             if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
-            //console.log(caseNum);
+            const respurgent = await Axios.get('https://mlmdb.herokuapp.com/api/get/urgentTrays');
             const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
             setRm1(response.data.or1);
             setRm2(response.data.or2);
@@ -334,7 +336,7 @@ function SelectedCaseContent(props) {
             setRm30(response.data.or30);
             setRm31(response.data.or31);
             setRm32(response.data.or32);
-            //console.log('run fetch');
+            setUrgent(respurgent.data);
         }
         fetchData();
         console.log('from useff ' + caseNum);
@@ -358,7 +360,7 @@ function SelectedCaseContent(props) {
 
             const fetchData = async () => {
                 if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
-                //console.log(caseNum);
+                const respurgent = await Axios.get('https://mlmdb.herokuapp.com/api/get/urgentTrays');
                 const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
                 setRm1(response.data.or1);
                 setRm2(response.data.or2);
@@ -392,7 +394,7 @@ function SelectedCaseContent(props) {
                 setRm30(response.data.or30);
                 setRm31(response.data.or31);
                 setRm32(response.data.or32);
-                //console.log('run fetch');
+                setUrgent(respurgent.data);
             }
             fetchData();
             setCounter((prevCounter) => prevCounter + 1);
@@ -402,7 +404,7 @@ function SelectedCaseContent(props) {
     }, [caseNum]);
 
 
-    const arr_rooms = [{ roomnumber: roomComp1, data: rm1 }, { roomnumber: roomComp2, data: rm2 }, { roomnumber: roomComp3, data: rm3 },
+    const arr_rooms = [{roomnumber: urgentRooms, data: urgent},{ roomnumber: roomComp1, data: rm1 }, { roomnumber: roomComp2, data: rm2 }, { roomnumber: roomComp3, data: rm3 },
     { roomnumber: roomComp4, data: rm4 }, { roomnumber: roomComp5, data: rm5 }, { roomnumber: roomComp6, data: rm6 },
     { roomnumber: roomComp7, data: rm7 },
     { roomnumber: roomComp8, data: rm8 }, { roomnumber: roomComp9, data: rm9 }, { roomnumber: roomComp10, data: rm10 },
@@ -415,11 +417,9 @@ function SelectedCaseContent(props) {
     { roomnumber: roomComp27, data: rm27 }, { roomnumber: roomComp28, data: rm28 }, { roomnumber: roomComp29, data: rm29 },
     { roomnumber: roomComp30, data: rm30 }, { roomnumber: roomComp31, data: rm31 }, { roomnumber: roomComp32, data: rm32 }];
 
-
-
-
     return (
         <>
+         <style>{'body {background-color: whitesmoke;}'}</style>
             <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} showModal={handleShow} />
 
             <Modal show={show} onHide={handleClose}>
