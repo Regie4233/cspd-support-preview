@@ -38,12 +38,12 @@ function App() {
           <Navbar bg="dark" variant="dark">
             <Container>
               <Nav className="me-auto">
-                {/* <Nav.Link href="https://regie4233.github.io/cspd-support-preview">Home</Nav.Link>
+                <Nav.Link href="https://regie4233.github.io/cspd-support-preview">Home</Nav.Link>
                 <Nav.Link href="https://regie4233.github.io/cspd-support-preview/reporter">Reporter</Nav.Link>
-                <Nav.Link href="https://regie4233.github.io/cspd-support-preview/viewer">Viewer</Nav.Link> */}
-                <Nav.Link href="http://localhost:3000">Home</Nav.Link>
+                <Nav.Link href="https://regie4233.github.io/cspd-support-preview/viewer">Viewer</Nav.Link>
+                {/* <Nav.Link href="http://localhost:3000">Home</Nav.Link>
                 <Nav.Link href="http://localhost:3000/reporter">Reporter</Nav.Link>
-                <Nav.Link href="http://localhost:3000/viewer">Viewer</Nav.Link>
+                <Nav.Link href="http://localhost:3000/viewer">Viewer</Nav.Link> */}
                 {/* <Nav.Link href="https://regie4233.github.io/cspd-support-preview/login">
                   {loginstatus === '' ? <p>You are not Logged In Click To Login</p> : <p> Logged as: {loginstatus}</p>}
                 </Nav.Link> */}
@@ -55,8 +55,8 @@ function App() {
         </div>
 
         <div> {/* show logoff button and name of user */}
-          {/* <Router basename={process.env.PUBLIC_URL}> */}
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
+          {/* <Router> */}
             <Routes>
               <Route path='/reporter'
                 element={
