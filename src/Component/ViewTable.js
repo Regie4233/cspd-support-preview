@@ -1,8 +1,7 @@
 import Table from 'react-bootstrap/Table';
 import ViewEntry from './ViewEntry';
-import react, { useReducer, useRef } from 'react';
 import Axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ViewerOffCanvas from './ViewerOffCanvas';
 
 function ViewTable(props) {
@@ -176,51 +175,81 @@ function ViewTable(props) {
 
   const ClickHandlers = {
     OffCanvasShow: (roomnum, newId, isUrgent) => {
-      setCanvas(true);
+
       if (!isUrgent) {
         const room = arr_room[roomnum - 1];
         const entry = room.find(x => x.id === newId);
-        //console.log(entry);
         setTargetEntry(entry); //for getting data and deleting
       } else {
-
         const entry = urgent.find(x => x.id === newId);
-        console.log(entry);
         setTargetEntry(entry); //for getting data and deleting
       }
+      setCanvas(true);
     },
     OffCanvasClose: () => {
       setCanvas(false);
     },
-    DeleteHandler: (newId, selectedRoom, isurgent) => {
-      Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${newId}${props.caseNum}`).then(() => {
-        const room = arr_room[selectedRoom - 1];
-        let ccc = room.find(x => x.id === newId);
-        if (ccc) {
-          const aaa = room.indexOf(ccc.id)
-          room.splice(aaa, 1);
-          console.log('deleting from ' + room + ' tray name ' + newId);
-          setlastadded((prevState) => !prevState);
-        } else {
-          console.log('Tray not found');
-
-        }
-      });
+    DeleteHandler: (newId, selectedRoom, isUrgent) => {
+      if (!isUrgent) {
+        Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${newId}${props.caseNum}`).then(() => {
+          const room = arr_room[selectedRoom - 1];
+          let ccc = room.find(x => x.id === newId);
+          if (ccc) {
+            const aaa = room.indexOf(ccc.id)
+            room.splice(aaa, 1);
+            setlastadded((prevState) => !prevState);
+          } else {
+            console.log('Tray not found');
+          }
+        });
+      } else {
+        Axios.delete(`https://mlmdb.herokuapp.com/api/delete/urgent/${newId}`).then(() => {
+          let ccc = urgent.find(x => x.id === newId);
+          if (ccc) {
+            const aaa = urgent.indexOf(ccc.id)
+            urgent.splice(aaa, 1);
+            setlastadded((prevState) => !prevState);
+          } else {
+            console.log('Tray not found');
+          }
+        });
+      }
     },
-    UpdateLocation: (newLocation, entryId) => {
-      Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
-        fid: entryId,
-        fcurrentLocation: newLocation,
-        fcasenum: props.caseNum
-      });
+    UpdateLocation: (newLocation, entryId, isUrgent) => {
+      if (!isUrgent) {
+        Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+          fid: entryId,
+          fcurrentLocation: newLocation,
+          fcasenum: props.caseNum,
+          fisUrgent: false
+        });
+      } else {
+        Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+          fid: entryId,
+          fcurrentLocation: newLocation,
+          fcasenum: props.caseNum,
+          fisUrgent: true
+        });
+      }
+
       setlastadded((prevState) => !prevState);
     },
-    UpdateCaseCart: (newCaseCart, entryId) => {
-      Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-        fid: entryId,
-        fcasecart: newCaseCart,
-        fcasenum: props.caseNum
-      });
+    UpdateCaseCart: (newCaseCart, entryId, isUrgent) => {
+      if (!isUrgent) {
+        Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+          fid: entryId,
+          fcasecart: newCaseCart,
+          fcasenum: props.caseNum,
+          fisUrgent: false
+        });
+      } else {
+        Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+          fid: entryId,
+          fcasecart: newCaseCart,
+          fcasenum: props.caseNum,
+          fisUrgent: true
+        });
+      }
       setlastadded((prevState) => !prevState);
     },
     UpdateTrayName: (newname, entryId) => {
@@ -229,6 +258,24 @@ function ViewTable(props) {
         fname: newname
       });
       setlastadded((prevState) => !prevState);
+    },
+    UpdateNotes: (newNotes, entryId, isUrgent) => {
+      if (!isUrgent) {
+        Axios.put('https://mlmdb.herokuapp.com/api/update/notes', {
+            fid: entryId,
+            fnotes: newNotes,
+            fcasenum: props.caseNum,
+            fisUrgent: false
+        });
+    } else {
+        Axios.put('https://mlmdb.herokuapp.com/api/update/notes', {
+            fid: entryId,
+            fnotes: newNotes,
+            fcasenum: 'Urgent',
+            fisUrgent: true
+        });
+    }
+    setlastadded((prevState) => !prevState);
     }
   }
 
@@ -248,7 +295,7 @@ function ViewTable(props) {
             </tr>
           </thead>
           <tbody>
-            {urgent.map((info) => <ViewEntry key={info.id} room={info} isUrgent={false} canvascontroller={props.canvascontroller} caseNum={props.caseNum}/>)}
+            {urgent.map((info) => <ViewEntry key={info.id} room={info} isUrgent={true} canvascontroller={ClickHandlers} caseNum={props.caseNum} />)}
             {/* {urgenttrays.map((info) => <ViewEntry room={info} isUrgent={true} canvascontroller={this.props.canvascontroller} />)} */}
           </tbody>
         </Table>

@@ -24,7 +24,7 @@ class RoomCard extends React.Component {
                     <ListGroup defaultActiveKey="#link1">
                         {this.props.trayList.map(info => <TrayCards key={info.id} trayinfo={info} buttonhandler={this.props.buttonhandler} roomNumber={intRoomNum}/>)}
                     </ListGroup>
-                    <Button variant="danger" onClick={() => this.props.buttonhandler.deleteAll(intRoomNum)} className='dButton'>Erase All</Button>
+                    <Button variant="danger" onClick={() => this.props.buttonhandler.deleteAll(intRoomNum, false)} className='dButton'>Erase All</Button>
                 </Card.Body>
             </Card>
             :
@@ -34,7 +34,7 @@ class RoomCard extends React.Component {
                     <ListGroup defaultActiveKey="#link1">
                         {this.props.trayList.map(info => <TrayCards key={info.id} trayinfo={info} buttonhandler={this.props.buttonhandler} roomNumber={intRoomNum}/>)}
                     </ListGroup>
-                    <Button variant="danger" onClick={() => this.props.buttonhandler.deleteAll(intRoomNum)} className='dButton'>Erase All</Button>
+                    <Button variant="danger" onClick={() => this.props.buttonhandler.deleteAll(intRoomNum, true)} className='dButton'>Erase All</Button>
                 </Card.Body>
             </Card>
             }

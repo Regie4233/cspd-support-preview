@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Col, Row, Tab, Tabs, ButtonGroup, ToggleButton, Form, InputGroup, Modal, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Container, Col, Row, ButtonGroup, ToggleButton, Form, InputGroup, Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomCard from './RoomCard';
 import Axios from 'axios';
@@ -58,7 +58,7 @@ function SelectedCaseContent(props) {
     const [rm32, setRm32] = useState([]);
 
     const [urgent, setUrgent] = useState([]);
-    const [traydata, settraydata] = useState([]);
+    const [showCaseSelector, setCaseSelector] = useState(false);
 
     const [caseNum, setcaseNum] = useState(1);
 
@@ -88,7 +88,7 @@ function SelectedCaseContent(props) {
     const arr_setters = [setRm1, setRm2, setRm3, setRm4, setRm5, setRm6, setRm7, setRm8, setRm9, setRm10,
         setRm11, setRm12, setRm13, setRm14, setRm15, setRm16, setRm17, setRm18, setRm19, setRm20,
         setRm21, setRm22, setRm23, setRm24, setRm25, setRm26, setRm27, setRm28, setRm29, setRm30,
-        setRm31, setRm32];
+        setRm31, setRm32, setUrgent];
 
     const radios = [
         { name: 'OR 1', value: '1' },
@@ -136,10 +136,18 @@ function SelectedCaseContent(props) {
 
     const handleClose = () => {
         setShow(false);
+        // setTrayname('');
+        // setRadioValue(0);
+        // setChecked(false);
+
+    }
+
+    const hideCaseSelector = () => {
+        setCaseSelector(false);
+        setShow(false);
         setTrayname('');
         setRadioValue(0);
         setChecked(false);
-
     }
 
     const changeCase = (val) => {
@@ -147,24 +155,32 @@ function SelectedCaseContent(props) {
     }
 
     const buttonHandler = {
-        deleteAll: (selectedRoom) => {
-            const room = arr_room_states[selectedRoom - 1];
-            room.forEach(element => {
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}${caseNum}`).then(() => {
-                    //Axios.delete(`http://localhost:3001/api/delete/${element.id}`).then(() => {
-                    room.splice(element.indexOf, 1);
-                    setlastadded((prevState) => !prevState);
+        deleteAll: (selectedRoom, isUrgent) => {
+            if (!isUrgent) {
+                const room = arr_room_states[selectedRoom - 1];
+                room.forEach(element => {
+                    Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${element.id}${caseNum}`).then(() => {
+                        room.splice(element.indexOf, 1);
+                        setlastadded((prevState) => !prevState);
+                    });
+
                 });
+            } else {
+                urgent.forEach(element => {
+                    Axios.delete(`https://mlmdb.herokuapp.com/api/delete/urgent/${element.id}`).then(() => {
+                        urgent.splice(element.indexOf, 1);
+                        setlastadded((prevState) => !prevState);
+                    });
 
-            });
+                });
+            }
+
         },
-        deleteHandler: (tname, selectedRoom, isurgent) => {
-            console.log("urg " + isurgent);
-            if (isurgent === 1) {
+        deleteHandler: (tname, selectedRoom, isUrgent) => {
+            console.log("urg " + isUrgent);
+            if (isUrgent) {
 
-                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}`).then(() => {
-                    //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
-                    console.log('Deleting ' + tname + ' ' + selectedRoom);
+                Axios.delete(`https://mlmdb.herokuapp.com/api/delete/urgent/${tname}`).then(() => {
 
                     let ccc = urgent.find(x => x.id === tname);
                     if (ccc) {
@@ -174,72 +190,90 @@ function SelectedCaseContent(props) {
                         setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
-
                     }
                 });
+
             } else {
                 Axios.delete(`https://mlmdb.herokuapp.com/api/delete/${tname}${caseNum}`).then(() => {
-                    //Axios.delete(`http://localhost:3001/api/delete/${tname}`).then(() => {
-                    console.log('Deleting ' + tname + ' ' + selectedRoom);
-
-                    // const room = eval(`rm${selectedRoom}`); 
-                    //the generated room number from roomcard minus 1 is the index of the array
                     const room = arr_room_states[selectedRoom - 1];
                     let ccc = room.find(x => x.id === tname);
                     if (ccc) {
                         const aaa = room.indexOf(ccc.id)
                         room.splice(aaa, 1);
-                        console.log('deleting from ' + room + ' tray name ' + tname);
                         setlastadded((prevState) => !prevState);
                     } else {
                         console.log('Tray not found');
-
                     }
                 });
             }
 
 
         },
-        UpdateLocation: (newLocation, entryId) => {
-            Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
-                //Axios.put('http://localhost:3001/api/update/location', {
-                fid: entryId,
-                fcurrentLocation: newLocation,
-                fcasenum: caseNum
-            });
+        UpdateLocation: (newLocation, entryId, isUrgent) => {
+            if (!isUrgent) {
+                Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+                    fid: entryId,
+                    fcurrentLocation: newLocation,
+                    fcasenum: caseNum,
+                    fisUrgent: false
+                });
+            } else {
+                Axios.put('https://mlmdb.herokuapp.com/api/update/location', {
+                    fid: entryId,
+                    fcurrentLocation: newLocation,
+                    fcasenum: caseNum,
+                    fisUrgent: true
+                });
+            }
             setlastadded((prevState) => !prevState);
         },
-        UpdateCaseCart: (newCaseCart, entryId) => {
+        UpdateCaseCart: (newCaseCart, entryId, isUrgent) => {
+            if(!isUrgent){
             Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
                 fid: entryId,
                 fcasecart: newCaseCart,
-                fcasenum: caseNum
+                fcasenum: caseNum,
+                fisUrgent: false
             });
+        } else {
+            Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+                fid: entryId,
+                fcasecart: newCaseCart,
+                fcasenum: caseNum,
+                fisUrgent: true
+            });
+        }
             setlastadded((prevState) => !prevState);
         },
-        UpdateNotes: (newNotes, entryId) => {
-            Axios.put('https://mlmdb.herokuapp.com/api/update/notes', {
-                fid: entryId,
-                fnotes: newNotes,
-                fcasenum: caseNum
-            });
+        UpdateNotes: (newNotes, entryId, isUrgent) => {
+            if (!isUrgent) {
+                Axios.put('https://mlmdb.herokuapp.com/api/update/notes', {
+                    fid: entryId,
+                    fnotes: newNotes,
+                    fcasenum: caseNum,
+                    fisUrgent: false
+                });
+            } else {
+                Axios.put('https://mlmdb.herokuapp.com/api/update/notes', {
+                    fid: entryId,
+                    fnotes: newNotes,
+                    fcasenum: 'Urgent',
+                    fisUrgent: true
+                });
+            }
             setlastadded((prevState) => !prevState);
         }
 
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const postData = (e) => {
+
         const dt = new Date();
         const timeStamp = `${dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours()}:${dt.getMinutes()} ${dt.getHours() > 12 ? 'pm' : 'am'}`;
         const date = new Date();
-        if (radioValue === 0) {
-            alert('Please Select a Room!');
-            return;
-        }
         Axios.post('https://mlmdb.herokuapp.com/api/insert', {
             ftrayname: otrayname,
             fcurrentlocation: '- -',
-            fnotes: 'no notes',
+            fnotes: '',
             fradioVal: radioValue,
             fisUrgent: checked,
             ftime: timeStamp,
@@ -249,15 +283,33 @@ function SelectedCaseContent(props) {
 
         }).then(() => {
             changeCase(newtraycaseNum);
-            createPlaceHolder(radioValue, otrayname, newtraycaseNum);
+            createPlaceHolder(radioValue, otrayname, newtraycaseNum, checked);
         });
         setlastadded((prevState) => !prevState);
+        hideCaseSelector();
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (radioValue === 0) {
+            alert('Please Select a Room!');
+            return;
+        }
+        if (checked) {
+            postData();
+        } else {
+            setCaseSelector(true);
+        }
         handleClose();
     }
 
-    function createPlaceHolder(newRoomnum, newTrayname) { //dynamic set state 
-        const selectedSetter = arr_setters[newRoomnum - 1];
-        selectedSetter([...arr_room_states[newRoomnum - 1], { trayname: newTrayname, currentLocation: <PlaceHolderAnimation/>, notes: <PlaceHolderAnimation/>}]);
+    function createPlaceHolder(newRoomnum, newTrayname, isUrgent) { //using dynamic set state 
+        if (!isUrgent) {
+            const selectedSetter = arr_setters[newRoomnum - 1];
+            selectedSetter([...arr_room_states[newRoomnum - 1], { trayname: newTrayname, currentLocation: <PlaceHolderAnimation />, notes: <PlaceHolderAnimation /> }]);
+        } else {
+            setUrgent([...urgent, { trayname: newTrayname, currentLocation: <PlaceHolderAnimation />, notes: <PlaceHolderAnimation /> }]);
+        }
+
 
 
     }
@@ -404,7 +456,7 @@ function SelectedCaseContent(props) {
     }, [caseNum]);
 
 
-    const arr_rooms = [{roomnumber: urgentRooms, data: urgent},{ roomnumber: roomComp1, data: rm1 }, { roomnumber: roomComp2, data: rm2 }, { roomnumber: roomComp3, data: rm3 },
+    const arr_rooms = [{ roomnumber: urgentRooms, data: urgent }, { roomnumber: roomComp1, data: rm1 }, { roomnumber: roomComp2, data: rm2 }, { roomnumber: roomComp3, data: rm3 },
     { roomnumber: roomComp4, data: rm4 }, { roomnumber: roomComp5, data: rm5 }, { roomnumber: roomComp6, data: rm6 },
     { roomnumber: roomComp7, data: rm7 },
     { roomnumber: roomComp8, data: rm8 }, { roomnumber: roomComp9, data: rm9 }, { roomnumber: roomComp10, data: rm10 },
@@ -419,7 +471,7 @@ function SelectedCaseContent(props) {
 
     return (
         <>
-         <style>{'body {background-color: whitesmoke;}'}</style>
+            <style>{'body {background-color: whitesmoke;}'}</style>
             <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} showModal={handleShow} />
 
             <Modal show={show} onHide={handleClose}>
@@ -427,6 +479,17 @@ function SelectedCaseContent(props) {
                     <Modal.Title>Add New Tray</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <ToggleButton
+                        className="mb-2"
+                        id="toggle-check"
+                        type="checkbox"
+                        variant="outline-danger"
+                        checked={checked}
+                        value="1"
+                        onChange={e => setChecked(e.currentTarget.checked)}
+                    >
+                        Mark as Urgent Tray
+                    </ToggleButton>
 
                     <InputGroup className="mb-3">
                         <InputGroup.Text id="basic-addon1">Tray Name</InputGroup.Text>
@@ -445,25 +508,6 @@ function SelectedCaseContent(props) {
                         />
                     </InputGroup>
                     <br />
-
-                    <div>
-                        <ButtonGroup>
-                            {casenumber_radio.map((radio, y) => (
-                                <ToggleButton
-                                    key={y}
-                                    id={`case-${y}`}
-                                    type="radio"
-                                    variant='outline-danger'
-                                    name="Case"
-                                    value={radio.value}
-                                    checked={newtraycaseNum === radio.value}
-                                    onChange={e => setnewtraycaseNum(e.currentTarget.value)}
-                                >
-                                    {radio.name}
-                                </ToggleButton>
-                            ))}
-                        </ButtonGroup>
-                    </div>
                     <div>
                         <ButtonGroup>
                             <Container>
@@ -490,27 +534,51 @@ function SelectedCaseContent(props) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <ToggleButton
-                        className="mb-2"
-                        id="toggle-check"
-                        type="checkbox"
-                        variant="outline-danger"
-                        checked={checked}
-                        value="1"
-                        onChange={e => setChecked(e.currentTarget.checked)}
-                    >
-                        Mark as Urgent Tray
-                    </ToggleButton>
-
                     <Button variant='secondary' onClick={handleClose}>Close</Button>
-                    <Button variant='primary' onClick={handleSubmit}>Submit</Button>
+                    <Button variant='success' onClick={handleSubmit}>Next</Button>
                 </Modal.Footer>
             </Modal>
-            {/* <FloatingAddButton clickhandle={handleShow} /> */}
+            {/* modal for case selection before finalizing */}
+            <Modal show={showCaseSelector}>
+                <Modal.Header>
+                    Please Select Case Number
+                </Modal.Header>
+                <Modal.Body>
+                    <div>
+                        <ButtonGroup>
+                            <Container>
+                                <Row>
+                                    {casenumber_radio.map((radio, y) => (
+                                        <Col className='mb-4'>
+                                            <ToggleButton
+                                                key={y}
+                                                id={`case-${y}`}
+                                                type="radio"
+                                                variant='outline-danger'
+                                                name="Case"
+                                                value={radio.value}
+                                                checked={newtraycaseNum === radio.value}
+                                                onChange={e => setnewtraycaseNum(e.currentTarget.value)}
+                                            >
+                                                {radio.name}
+                                            </ToggleButton>
+                                        </Col>
+
+                                    ))}
+                                </Row>
+                            </Container>
+                        </ButtonGroup>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='secondary' onClick={hideCaseSelector}>Close</Button>
+                    <Button onClick={postData}>Submit</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }
-function PlaceHolderAnimation(){
+function PlaceHolderAnimation() {
     return (
         <>
             <Placeholder as='p' animation='glow'>

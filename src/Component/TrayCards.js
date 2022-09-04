@@ -19,7 +19,7 @@ class TrayCards extends React.Component {
                             aria-describedby="basic-addon2"
                             onChange={(e) => this.setState({casecart: e.currentTarget.value})}
                         />
-                        <Button variant="primary" id="button-addon2" onClick={() => this.props.buttonhandler.UpdateCaseCart(this.state.casecart, this.props.trayinfo.id)}>
+                        <Button variant="primary" id="button-addon2" onClick={() => this.props.buttonhandler.UpdateCaseCart(this.state.casecart, this.props.trayinfo.id, this.props.trayinfo.isUrgent)}>
                             Change
                         </Button>
                     </InputGroup>
@@ -31,7 +31,7 @@ class TrayCards extends React.Component {
                             aria-describedby="basic-addon2"
                             onChange={(e) => this.setState({notes: e.currentTarget.value})}
                         />
-                        <Button variant="primary" id="button-addon2" onClick={() => this.props.buttonhandler.UpdateNotes(this.state.notes, this.props.trayinfo.id)}>
+                        <Button variant="primary" id="button-addon2" onClick={() => this.props.buttonhandler.UpdateNotes(this.state.notes, this.props.trayinfo.id, this.props.trayinfo.isUrgent)}>
                             Change
                         </Button>
                     </InputGroup>
@@ -77,9 +77,9 @@ const LocationUpdate = (props) => (
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-            <Dropdown.Item onClick={() => props.handler.UpdateLocation('Decontamination', props.traydata.id)}>Decontamination</Dropdown.Item>
-            <Dropdown.Item onClick={() => props.handler.UpdateLocation('Assembly Priority Rack', props.traydata.id)}>Assembly Priority Rack</Dropdown.Item>
-            <Dropdown.Item onClick={() => props.handler.UpdateLocation('Sterillization', props.traydata.id)}>Sterillization</Dropdown.Item>
+            <Dropdown.Item onClick={() => props.handler.UpdateLocation('Decontamination', props.traydata.id, props.traydata.isUrgent)}>Decontamination</Dropdown.Item>
+            <Dropdown.Item onClick={() => props.handler.UpdateLocation('Assembly Priority Rack', props.traydata.id, props.traydata.isUrgent)}>Assembly Priority Rack</Dropdown.Item>
+            <Dropdown.Item onClick={() => props.handler.UpdateLocation('Sterillization', props.traydata.id, props.traydata.isUrgent)}>Sterillization</Dropdown.Item>
         </Dropdown.Menu>
     </Dropdown>
 

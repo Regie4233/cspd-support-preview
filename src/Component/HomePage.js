@@ -16,14 +16,20 @@ function HomePage() {
 
     function clearDB() {
         console.log('1');
-        for (let i = 1; i > 4; i++) {
-            console.log('starting.. ' + i);
-            Axios.delete(`https://mlmdb.herokuapp.com/api/truncate/${i}`).then(() => { console.log('truncate successful') });
-        }
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/1').then(() => { console.log('truncate successful') });
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/2').then(() => { console.log('truncate successful') });
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/3').then(() => { console.log('truncate successful') });
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/4').then(() => { console.log('truncate successful') });
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/5').then(() => { console.log('truncate successful') });
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/6').then(() => { console.log('truncate successful') });
+        Axios.delete('https://mlmdb.herokuapp.com/api/truncate/urgent').then(() => { console.log('truncate successful') });
+        // for (let i = 1; i > 4; i++) {
+        //     console.log('starting.. ' + i);
+        //     Axios.delete(`https://mlmdb.herokuapp.com/api/truncate/${i}`).then(() => { console.log('truncate successful') });
+        // }
 
     }
     return (
-
         <>
             <style>{'body {background-color: darkslategray;}'}</style>
             <div className='headerL'>
@@ -53,7 +59,7 @@ function ControlPanel(props) {
 
 
                         <h6>WARNING: This will delete all of the entries from all the rooms and cases. Changes cannot be undone.</h6>
-                        <Button variant='danger'>Clear List</Button>
+                        <Button variant='danger' onClick={props.clear}>Clear List</Button>
 
 
                     </Card.Body>

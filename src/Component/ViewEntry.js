@@ -2,11 +2,11 @@ import react from 'react';
 
 class ViewEntry extends react.Component {
 
-    state = {color: this.props.selectedColor};
+    state = { color: this.props.selectedColor };
 
 
     render() {
-        
+
         return (
             <>
                 {this.props.caseNum === 'Urgent' ?
@@ -15,11 +15,11 @@ class ViewEntry extends react.Component {
                         <td className='traycard'>{this.props.room.trayname}</td>
                         <td>{this.props.room.currentLocation}</td>
                         <td>{this.props.room.casecartnum}</td>
-                        <td>- -</td>
+                        <td>{this.props.room.notes}</td>
                     </tr>
 
                     :
-                    <tr onClick={() =>this.props.canvascontroller.OffCanvasShow(this.props.room.roomnum, this.props.room.id, this.props.isUrgent)} style={{backgroundColor: this.state.color}}>
+                    <tr onClick={() => this.props.canvascontroller.OffCanvasShow(this.props.room.roomnum, this.props.room.id, this.props.isUrgent)} style={{ backgroundColor: this.state.color }}>
                         <td>OR {this.props.room.roomnum}{`-${this.props.caseNum}`}</td>
                         <td className='traycard'>{this.props.room.trayname}</td>
                         <td>{this.props.room.currentLocation}</td>
@@ -29,7 +29,7 @@ class ViewEntry extends react.Component {
 
 
                 }
-                
+
             </>
         );
     }
