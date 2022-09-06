@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cspd-support-preview.rsimon.dev/static/css/main.0ce37052.css",
-    "main.js": "/cspd-support-preview.rsimon.dev/static/js/main.71acd721.js",
-    "index.html": "/cspd-support-preview.rsimon.dev/index.html",
-    "main.0ce37052.css.map": "/cspd-support-preview.rsimon.dev/static/css/main.0ce37052.css.map",
-    "main.71acd721.js.map": "/cspd-support-preview.rsimon.dev/static/js/main.71acd721.js.map"
+    "main.css": "/static/css/main.0ce37052.css",
+    "main.js": "/static/js/main.caca231a.js",
+    "index.html": "/index.html",
+    "main.0ce37052.css.map": "/static/css/main.0ce37052.css.map",
+    "main.caca231a.js.map": "/static/js/main.caca231a.js.map"
   },
   "entrypoints": [
     "static/css/main.0ce37052.css",
-    "static/js/main.71acd721.js"
+    "static/js/main.caca231a.js"
   ]
 }
