@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Col, Row, ButtonGroup, ToggleButton, Form, InputGroup, Modal, Button } from 'react-bootstrap';
+import { Container, Col, Row, ButtonGroup, ToggleButton, Form, InputGroup, Modal, Button, ListGroup, Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomCard from './RoomCard';
 import Axios from 'axios';
 import SelectedCaseTabs from './SelectedCaseTabs';
 import Placeholder from 'react-bootstrap/Placeholder';
+import { RiContactsBookLine, RiDeleteBin6Fill } from 'react-icons/ri';
+
 
 
 function SelectedCaseContent(props) {
@@ -59,7 +61,7 @@ function SelectedCaseContent(props) {
 
     const [urgent, setUrgent] = useState([]);
     const [showCaseSelector, setCaseSelector] = useState(false);
-
+    const [modalbodysteps, setmodalbodysteps] = useState(1);
     const [caseNum, setcaseNum] = useState(1);
 
     const [newtraycaseNum, setnewtraycaseNum] = useState(1);
@@ -70,7 +72,8 @@ function SelectedCaseContent(props) {
 
     const handleShow = () => setShow(true);
 
-    const [otrayname, setTrayname] = useState('');
+    const [listTray, setListTray] = useState([]);
+    const [trayname, setTrayname] = useState('');
 
     const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState(0);
@@ -136,18 +139,13 @@ function SelectedCaseContent(props) {
 
     const handleClose = () => {
         setShow(false);
-        // setTrayname('');
-        // setRadioValue(0);
-        // setChecked(false);
-
-    }
-
-    const hideCaseSelector = () => {
-        setCaseSelector(false);
-        setShow(false);
+        setmodalbodysteps(1);
+        setListTray([]);
         setTrayname('');
         setRadioValue(0);
         setChecked(false);
+        setCaseCart('');
+
     }
 
     const changeCase = (val) => {
@@ -228,21 +226,21 @@ function SelectedCaseContent(props) {
             setlastadded((prevState) => !prevState);
         },
         UpdateCaseCart: (newCaseCart, entryId, isUrgent) => {
-            if(!isUrgent){
-            Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-                fid: entryId,
-                fcasecart: newCaseCart,
-                fcasenum: caseNum,
-                fisUrgent: false
-            });
-        } else {
-            Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
-                fid: entryId,
-                fcasecart: newCaseCart,
-                fcasenum: caseNum,
-                fisUrgent: true
-            });
-        }
+            if (!isUrgent) {
+                Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+                    fid: entryId,
+                    fcasecart: newCaseCart,
+                    fcasenum: caseNum,
+                    fisUrgent: false
+                });
+            } else {
+                Axios.put('https://mlmdb.herokuapp.com/api/update/casecart', {
+                    fid: entryId,
+                    fcasecart: newCaseCart,
+                    fcasenum: caseNum,
+                    fisUrgent: true
+                });
+            }
             setlastadded((prevState) => !prevState);
         },
         UpdateNotes: (newNotes, entryId, isUrgent) => {
@@ -266,52 +264,59 @@ function SelectedCaseContent(props) {
 
     }
     const postData = (e) => {
-
+        e.preventDefault();
         const dt = new Date();
         const timeStamp = `${dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours()}:${dt.getMinutes()} ${dt.getHours() > 12 ? 'pm' : 'am'}`;
         const date = new Date();
-        Axios.post('https://mlmdb.herokuapp.com/api/insert', {
-            ftrayname: otrayname,
-            fcurrentlocation: '- -',
-            fnotes: '',
-            fradioVal: radioValue,
-            fisUrgent: checked,
-            ftime: timeStamp,
-            fcasecart: caseCart,
-            fcasenum: newtraycaseNum,
-            fdate: date
+        listTray.forEach(element => {
+            Axios.post('https://mlmdb.herokuapp.com/api/insert', {
+                ftrayname: element,
+                fcurrentlocation: '- -',
+                fnotes: '',
+                fradioVal: radioValue,
+                fisUrgent: checked,
+                ftime: timeStamp,
+                fcasecart: caseCart,
+                fcasenum: newtraycaseNum,
+                fdate: date
 
-        }).then(() => {
-            changeCase(newtraycaseNum);
-            createPlaceHolder(radioValue, otrayname, newtraycaseNum, checked);
+            })
         });
-        setlastadded((prevState) => !prevState);
-        hideCaseSelector();
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (radioValue === 0) {
-            alert('Please Select a Room!');
-            return;
-        }
-        if (checked) {
-            postData();
-        } else {
-            setCaseSelector(true);
-        }
+        listTray.forEach(element => {
+            createPlaceHolder(radioValue, element, newtraycaseNum, checked);
+        });
+        changeCase(newtraycaseNum);
+        
         handleClose();
+        setlastadded((prevState) => !prevState);
+    }
+    const handleNextModal = () => {
+        if (listTray.length === 0) { return; }
+        setmodalbodysteps(modalbodysteps + 1);
+        setTrayname('');
+    }
+    const handlePrevModal = () => {
+        setmodalbodysteps(modalbodysteps - 1);
+        setTrayname('');
+    }
+    const addTraytoList = () => {
+
+        setListTray([...listTray, trayname]);
+        setTrayname('');
     }
 
-    function createPlaceHolder(newRoomnum, newTrayname, isUrgent) { //using dynamic set state 
-        if (!isUrgent) {
+    function createPlaceHolder(newRoomnum, newTrayname, isChecked) {
+        if (isChecked !== 1) {
             const selectedSetter = arr_setters[newRoomnum - 1];
             selectedSetter([...arr_room_states[newRoomnum - 1], { trayname: newTrayname, currentLocation: <PlaceHolderAnimation />, notes: <PlaceHolderAnimation /> }]);
         } else {
             setUrgent([...urgent, { trayname: newTrayname, currentLocation: <PlaceHolderAnimation />, notes: <PlaceHolderAnimation /> }]);
         }
+    }
 
-
-
+    function deleteFromModularList(index){
+        listTray.splice(index,1);
+        setlastadded((prevState) => !prevState);
     }
 
     const roomComp1 = <RoomCard key={rm1.id} roomNum={'OR 1'} trayList={rm1} buttonhandler={buttonHandler} />;
@@ -350,6 +355,20 @@ function SelectedCaseContent(props) {
     const roomComp31 = <RoomCard key={rm31.id} roomNum={'OR 31'} trayList={rm31} buttonhandler={buttonHandler} />;
     const roomComp32 = <RoomCard key={rm32.id} roomNum={'OR 32'} trayList={rm32} buttonhandler={buttonHandler} />;
     const urgentRooms = <RoomCard key={rm32.id} roomNum={'Urgent Trays'} trayList={urgent} buttonhandler={buttonHandler} />;
+
+    // useEffect(() => {
+
+    //     // function dateFormatter() {
+    //     //     const date = new Date();
+    //     //     let month = date.getMonth() + 1;
+    //     //     let day = date.getDate();
+    //     //     if(month.toString().length === 1){
+    //     //         month = '0'+ month;
+    //     //     }
+    //     //     return `${month}-${day}`;
+    //     // }
+    //     // console.log(dateFormatter());
+    // }, [newtraycaseNum]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -391,67 +410,10 @@ function SelectedCaseContent(props) {
             setUrgent(respurgent.data);
         }
         fetchData();
-        console.log('from useff ' + caseNum);
-    }, [caseNum])
-    // useEffect(() => {
-
-    //     // function dateFormatter() {
-    //     //     const date = new Date();
-    //     //     let month = date.getMonth() + 1;
-    //     //     let day = date.getDate();
-    //     //     if(month.toString().length === 1){
-    //     //         month = '0'+ month;
-    //     //     }
-    //     //     return `${month}-${day}`;
-    //     // }
-    //     // console.log(dateFormatter());
-    // }, [newtraycaseNum]);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-
-            const fetchData = async () => {
-                if (caseNum === null || caseNum === undefined || caseNum === 0) { console.log('no valid'); return; }
-                const respurgent = await Axios.get('https://mlmdb.herokuapp.com/api/get/urgentTrays');
-                const response = await Axios.get(`https://mlmdb.herokuapp.com/api/get/traydata/${caseNum}`);
-                setRm1(response.data.or1);
-                setRm2(response.data.or2);
-                setRm3(response.data.or3);
-                setRm4(response.data.or4);
-                setRm5(response.data.or5);
-                setRm6(response.data.or6);
-                setRm7(response.data.or7);
-                setRm8(response.data.or8);
-                setRm9(response.data.or9);
-                setRm10(response.data.or10);
-                setRm11(response.data.or11);
-                setRm12(response.data.or12);
-                setRm13(response.data.or13);
-                setRm14(response.data.or14);
-                setRm15(response.data.or15);
-                setRm16(response.data.or16);
-                setRm17(response.data.or17);
-                setRm18(response.data.or18);
-                setRm19(response.data.or19);
-                setRm20(response.data.or20);
-                setRm21(response.data.or21);
-                setRm22(response.data.or22);
-                setRm23(response.data.or23);
-                setRm24(response.data.or24);
-                setRm25(response.data.or25);
-                setRm26(response.data.or26);
-                setRm27(response.data.or27);
-                setRm28(response.data.or28);
-                setRm29(response.data.or29);
-                setRm30(response.data.or30);
-                setRm31(response.data.or31);
-                setRm32(response.data.or32);
-                setUrgent(respurgent.data);
-            }
-            fetchData();
-            setCounter((prevCounter) => prevCounter + 1);
+        const interval = setInterval(() => {  
+            fetchData(); 
         }, 8000);
-
+        
         return () => clearInterval(interval);
     }, [caseNum]);
 
@@ -469,112 +431,134 @@ function SelectedCaseContent(props) {
     { roomnumber: roomComp27, data: rm27 }, { roomnumber: roomComp28, data: rm28 }, { roomnumber: roomComp29, data: rm29 },
     { roomnumber: roomComp30, data: rm30 }, { roomnumber: roomComp31, data: rm31 }, { roomnumber: roomComp32, data: rm32 }];
 
+
+
+
     return (
         <>
             <style>{'body {background-color: whitesmoke;}'}</style>
             <SelectedCaseTabs arr_rooms={arr_rooms} caseNum={caseNum} changeCase={changeCase} showModal={handleShow} />
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} >
+
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New Tray</Modal.Title>
+                    <Modal.Title>OR#{radioValue}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <ToggleButton
-                        className="mb-2"
-                        id="toggle-check"
-                        type="checkbox"
-                        variant="outline-danger"
-                        checked={checked}
-                        value="1"
-                        onChange={e => setChecked(e.currentTarget.checked)}
-                    >
-                        Mark as Urgent Tray
-                    </ToggleButton>
 
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">Tray Name</InputGroup.Text>
-                        <Form.Control
-                            autoFocus
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                            onChange={event => setTrayname(event.target.value)}
-                        />
-                    </InputGroup>
-                    <InputGroup size='sm'>
-                        <InputGroup.Text id="basic-addon1">Case Cart #</InputGroup.Text>
-                        <Form.Control
-                            aria-describedby="basic-addon1"
-                            onChange={event => setCaseCart(event.target.value)}
-                        />
-                    </InputGroup>
-                    <br />
-                    <div>
-                        <ButtonGroup>
-                            <Container>
-                                <Row>
-                                    {radios.map((radio, idx) => (
-                                        <Col>
-                                            <ToggleButton
-                                                key={idx}
-                                                id={`radio-${idx}`}
-                                                type="radio"
-                                                variant={idx % 2 ? 'outline-success' : 'outline-danger'}
-                                                name="radio"
-                                                value={radio.value}
-                                                checked={radioValue === radio.value}
-                                                onChange={e => setRadioValue(e.currentTarget.value)}
-                                            >
-                                                {radio.name}
-                                            </ToggleButton>
-                                        </Col>
-                                    ))}
-                                </Row>
-                            </Container>
-                        </ButtonGroup>
-                    </div>
-                </Modal.Body>
+                <Modal.Dialog hidden={modalbodysteps !== 1 ? true : false} scrollable size='xl'>
+                    <Modal.Body style={{ height: '50vh' }}>
+                        <InputGroup className="mb-3" >
+                            <InputGroup.Text id="basic-addon1">Tray Name</InputGroup.Text>
+                            <Form.Control
+                                autoFocus
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                                onChange={event => setTrayname(event.target.value)}
+                                value={trayname}
+                            />
+                            <Button disabled={trayname.length > 0 ? false : true} onClick={addTraytoList}> Add </Button>
+                        </InputGroup>
+                        <InputGroup size='sm' style={{ width: '200px' }}>
+                            <InputGroup.Text id="basic-addon1">Case Cart #</InputGroup.Text>
+                            <Form.Control
+                                aria-describedby="basic-addon1"
+                                onChange={event => setCaseCart(event.target.value)}
+                            />
+                        </InputGroup>
+                        <ListGroup>
+                            <Card>
+                                <Card.Header>
+                                    Trays to be added:
+                                </Card.Header>
+                                <Card.Body>
+                                    {listTray.map((x, idx) => <ListGroup.Item>{x}<RiDeleteBin6Fill className='moveRight' onClick={() => deleteFromModularList(idx)}/></ListGroup.Item>)}
+                                </Card.Body>
+                            </Card>
+                        </ListGroup>
+                    </Modal.Body>
+                </Modal.Dialog>
+
+                <Modal.Dialog hidden={modalbodysteps !== 2 ? true : false}>
+                    <Modal.Body style={{ height: '50vh' }}>
+                        <ToggleButton
+                            className="mb-2"
+                            id="toggle-check"
+                            type="checkbox"
+                            variant="outline-danger"
+                            checked={checked}
+                            value="1"
+                            onChange={e => setChecked(e.currentTarget.checked)}
+                        >
+                            Mark as Urgent Tray
+                        </ToggleButton>
+                        <div>
+                            <ButtonGroup>
+                                <Container>
+                                    <Row>
+                                        {radios.map((radio, idx) => (
+                                            <Col>
+                                                <ToggleButton
+                                                    key={idx}
+                                                    id={`radio-${idx}`}
+                                                    type="radio"
+                                                    variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                                                    name="radio"
+                                                    value={radio.value}
+                                                    checked={radioValue === radio.value}
+                                                    onChange={e => setRadioValue(e.currentTarget.value)}
+                                                >
+                                                    {radio.name}
+                                                </ToggleButton>
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </Container>
+                            </ButtonGroup>
+                        </div>
+                    </Modal.Body>
+                </Modal.Dialog>
+
+                <Modal.Dialog hidden={modalbodysteps !== 3 ? true : false}>
+                    <Modal.Body style={{ height: '50vh' }}>
+                        <div>
+                            <ButtonGroup>
+                                <Container>
+                                    <Row>
+                                        {casenumber_radio.map((radio, y) => (
+                                            <Col className='mb-4'>
+                                                <ToggleButton
+                                                    key={y}
+                                                    id={`case-${y}`}
+                                                    type="radio"
+                                                    variant='outline-danger'
+                                                    name="Case"
+                                                    value={radio.value}
+                                                    checked={newtraycaseNum === radio.value}
+                                                    onChange={e => setnewtraycaseNum(e.currentTarget.value)}
+                                                >
+                                                    {radio.name}
+                                                </ToggleButton>
+                                            </Col>
+
+                                        ))}
+                                    </Row>
+                                </Container>
+                            </ButtonGroup>
+                        </div>
+                        <div>
+
+                            <Button className='moveRight' size='lg' onClick={postData}>Submit</Button>
+                        </div>
+                    </Modal.Body>
+                </Modal.Dialog>
+
+
                 <Modal.Footer>
-                    <Button variant='secondary' onClick={handleClose}>Close</Button>
-                    <Button variant='success' onClick={handleSubmit}>Next</Button>
+                    <Button variant='success' disabled={modalbodysteps === 1 ? true : false} onClick={handlePrevModal}>Prev</Button>
+                    <Button variant='success' disabled={modalbodysteps === 3 ? true : false} onClick={handleNextModal}>Next</Button>
                 </Modal.Footer>
             </Modal>
-            {/* modal for case selection before finalizing */}
-            <Modal show={showCaseSelector}>
-                <Modal.Header>
-                    Please Select Case Number
-                </Modal.Header>
-                <Modal.Body>
-                    <div>
-                        <ButtonGroup>
-                            <Container>
-                                <Row>
-                                    {casenumber_radio.map((radio, y) => (
-                                        <Col className='mb-4'>
-                                            <ToggleButton
-                                                key={y}
-                                                id={`case-${y}`}
-                                                type="radio"
-                                                variant='outline-danger'
-                                                name="Case"
-                                                value={radio.value}
-                                                checked={newtraycaseNum === radio.value}
-                                                onChange={e => setnewtraycaseNum(e.currentTarget.value)}
-                                            >
-                                                {radio.name}
-                                            </ToggleButton>
-                                        </Col>
 
-                                    ))}
-                                </Row>
-                            </Container>
-                        </ButtonGroup>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant='secondary' onClick={hideCaseSelector}>Close</Button>
-                    <Button onClick={postData}>Submit</Button>
-                </Modal.Footer>
-            </Modal>
         </>
     );
 }
@@ -588,4 +572,5 @@ function PlaceHolderAnimation() {
     );
 
 }
+
 export default SelectedCaseContent;

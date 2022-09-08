@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Form, Offcanvas, Button, Dropdown } from 'react-bootstrap';
 function ViewerOffCanvas(props) {
 
-  const [changeCaseCart, setChangeCaseCart] = useState('');
-  // const [changeTrayName, setTrayName] = useState('');
-  const [notes, setnotes] = useState('');
+  
+  
+  const [note, setNote] = useState('');
+  const [caseCart, setcaseCart] = useState('');
+  useEffect(()=>{
+    setNote(props.entrydata.notes);
+    setcaseCart(props.entrydata.casecartnum);
+  }, [props.entrydata.notes, props.entrydata.casecartnum]);
 
-  useEffect(() => {
-    // setTrayName(props.entrydata.trayname);
-
-  }, []);
   return (
     <>
 
@@ -29,12 +30,12 @@ function ViewerOffCanvas(props) {
 
             <Form.Group className="mb-3">
               <Form.Label>Case Cart #</Form.Label>
-              <Form.Control placeholder={props.entrydata.casecartnum} onChange={(e) => setChangeCaseCart(e.target.value)} />
+              <Form.Control placeholder={props.entrydata.casecartnum} onChange={(e) => setcaseCart(e.target.value)} />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Notes</Form.Label>
-              <Form.Control placeholder={props.entrydata.notes} onChange={(e) => setnotes(e.target.value)} />
+              <Form.Control placeholder={props.entrydata.notes} onChange={(e) => setNote(e.target.value)} />
             </Form.Group>
 
             <Dropdown>
@@ -57,8 +58,8 @@ function ViewerOffCanvas(props) {
             </Dropdown>
 
             <Button variant="primary" className='smallmargin' onClick={() => {
-              props.handlers.UpdateCaseCart(changeCaseCart, props.entrydata.id, props.entrydata.isUrgent);
-              props.handlers.UpdateNotes(notes, props.entrydata.id, props.entrydata.isUrgent);
+              props.handlers.UpdateCaseCart(caseCart, props.entrydata.id, props.entrydata.isUrgent);
+              props.handlers.UpdateNotes(note, props.entrydata.id, props.entrydata.isUrgent);
               props.handlers.OffCanvasClose();
             }}>
               Save Changes
