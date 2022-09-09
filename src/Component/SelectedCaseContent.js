@@ -478,7 +478,7 @@ function SelectedCaseContent(props) {
                     </Modal.Body>
                 </Modal.Dialog>
 
-                <Modal.Dialog hidden={modalbodysteps !== 2 ? true : false}>
+                <Modal.Dialog hidden={modalbodysteps !== 2 ? true : false} scrollable>
                     <Modal.Body style={{ height: '50vh' }}>
                         <ToggleButton
                             className="mb-2"
